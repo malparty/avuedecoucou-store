@@ -8,6 +8,7 @@ import { SpinnerColor } from './Spinner';
 
 export default function IconPathButton({
   icon,
+  title,
   path,
   prefetch,
   loaderDelay = 250,
@@ -16,6 +17,7 @@ export default function IconPathButton({
   spinnerColor,
 }: {
   icon: JSX.Element
+  title?: string
   path: string
   prefetch?: boolean
   loaderDelay?: number
@@ -49,6 +51,7 @@ export default function IconPathButton({
   return (
     <IconButton
       icon={icon}
+      title={title}
       onClick={() => startTransition(() => {
         if (shouldReplace) {
           router.replace(path, { scroll: shouldScroll });

@@ -26,30 +26,28 @@ export default function PhotoLarge({
   shouldShareSimulation,
   shouldScrollOnActions,
 }: {
-  photo: Photo
-  primaryTag?: string
-  priority?: boolean
-  prefetchActions?: boolean
-  showCamera?: boolean
-  showSimulation?: boolean
-  shouldShareTag?: boolean
-  shouldShareCamera?: boolean
-  shouldShareSimulation?: boolean
-  shouldScrollOnActions?: boolean
+  photo: Photo;
+  primaryTag?: string;
+  priority?: boolean;
+  prefetchActions?: boolean;
+  showCamera?: boolean;
+  showSimulation?: boolean;
+  shouldShareTag?: boolean;
+  shouldShareCamera?: boolean;
+  shouldShareSimulation?: boolean;
+  shouldScrollOnActions?: boolean;
 }) {
   const tags = sortTags(photo.tags, primaryTag);
 
   const camera = cameraFromPhoto(photo);
-  
-  const renderMiniGrid = (children: JSX.Element, rightPadding = true) =>
-    <div className={clsx(
-      'flex gap-y-4',
-      'flex-col sm:flex-row md:flex-col',
-      '[&>*]:sm:flex-grow',
-      rightPadding && 'pr-2',
-    )}>
+
+  const renderMiniGrid = (children: JSX.Element, rightPadding = true) => (
+    <div
+      className={clsx('flex gap-y-4', 'flex-col sm:flex-row md:flex-col', '[&>*]:sm:flex-grow', rightPadding && 'pr-2')}
+    >
       {children}
-    </div>;
+    </div>
+  );
 
   return (
     <SiteGrid
@@ -62,101 +60,103 @@ export default function PhotoLarge({
           aspectRatio={photo.aspectRatio}
           blurData={photo.blurData}
           priority={priority}
-        />}
+        />
+      }
       contentSide={
-        <div className={clsx(
-          'leading-snug',
-          'sticky top-4 self-start',
-          'grid grid-cols-2 md:grid-cols-1',
-          'gap-x-0.5 sm:gap-x-1',
-          'gap-y-4',
-          '-translate-y-1',
-          'mb-4',
-        )}>
-          {renderMiniGrid(<>
-            <div className="-space-y-0.5">
-              <div className="relative flex gap-2 items-start">
-                <div className="md:flex-grow">
-                  <Link
-                    href={pathForPhoto(photo)}
-                    className="font-bold uppercase"
-                  >
-                    {titleForPhoto(photo)}
-                  </Link>
-                </div>
-                <Suspense>
-                  <AdminPhotoMenu
-                    photoId={photo.id}
-                    buttonClassName="translate-y-[-3.5px]"
-                  />
-                </Suspense>
-              </div>
-              {tags.length > 0 &&
-                <PhotoTags tags={tags} />}
-            </div>
-            {showCamera && photoHasCameraData(photo) &&
-              <div className="space-y-0.5">
-                <PhotoCamera
-                  camera={camera}
-                  type="text-only"
-                />
-                {showSimulation && photo.filmSimulation &&
-                  <div className="translate-x-[-0.3rem]"> 
-                    <PhotoFilmSimulation
-                      simulation={photo.filmSimulation}
+        <div
+          className={clsx(
+            'leading-snug',
+            'sticky top-4 self-start',
+            'grid grid-cols-2 md:grid-cols-1',
+            'gap-x-0.5 sm:gap-x-1',
+            'gap-y-4',
+            '-translate-y-1',
+            'mb-4'
+          )}
+        >
+          {renderMiniGrid(
+            <>
+              <div className="-space-y-0.5">
+                <div className="relative flex gap-2 items-start">
+                  <div className="md:flex-grow">
+                    <Link
+                      href={pathForPhoto(photo)}
+                      className="font-bold uppercase"
+                    >
+                      {titleForPhoto(photo)}
+                    </Link>
+                  </div>
+                  <Suspense>
+                    <AdminPhotoMenu
+                      photoId={photo.id}
+                      buttonClassName="translate-y-[-3.5px]"
                     />
-                  </div>}
-              </div>}
-          </>)}
-          {renderMiniGrid(<>
-            {photoHasExifData(photo) &&
-              <ul className="text-medium">
-                <li>
-                  {photo.focalLengthFormatted}
-                  {photo.focalLengthIn35MmFormatFormatted &&
-                    <>
-                      {' '}
-                      <span
-                        title="35mm equivalent"
-                        className="text-extra-dim"
-                      >
-                        {photo.focalLengthIn35MmFormatFormatted}
-                      </span>
-                    </>}
-                </li>
-                <li>{photo.fNumberFormatted}</li>
-                <li>{photo.exposureTimeFormatted}</li>
-                <li>{photo.isoFormatted}</li>
-                <li>{photo.exposureCompensationFormatted ?? '—'}</li>
-              </ul>}
-            <div className={clsx(
-              'flex gap-y-4',
-              'flex-col sm:flex-row md:flex-col',
-            )}>
-              <div className={clsx(
-                'grow uppercase',
-                'text-medium',
-              )}>
-                {photo.takenAtNaiveFormatted}
+                  </Suspense>
+                </div>
+                {tags.length > 0 && <PhotoTags tags={tags} />}
               </div>
-              <ShareButton
-                path={pathForPhotoShare(
-                  photo,
-                  shouldShareTag ? primaryTag : undefined,
-                  shouldShareCamera ? camera : undefined,
-                  shouldShareSimulation ? photo.filmSimulation : undefined,
-                )}
-                prefetch={prefetchActions}
-                shouldScroll={shouldScrollOnActions}
-              />
-              <AddButton
-                path={pathForPhotoAddCart(photo)}
-                prefetch={prefetchActions}
-                shouldScroll={shouldScrollOnActions}
-              />
-            </div>
-          </>, false)}
-        </div>}
+              {showCamera && photoHasCameraData(photo) && (
+                <div className="space-y-0.5">
+                  <PhotoCamera
+                    camera={camera}
+                    type="text-only"
+                  />
+                  {showSimulation && photo.filmSimulation && (
+                    <div className="translate-x-[-0.3rem]">
+                      <PhotoFilmSimulation simulation={photo.filmSimulation} />
+                    </div>
+                  )}
+                </div>
+              )}
+            </>
+          )}
+          {renderMiniGrid(
+            <>
+              {photoHasExifData(photo) && (
+                <ul className="text-medium">
+                  <li>
+                    {photo.focalLengthFormatted}
+                    {photo.focalLengthIn35MmFormatFormatted && (
+                      <>
+                        {' '}
+                        <span
+                          title="35mm equivalent"
+                          className="text-extra-dim"
+                        >
+                          {photo.focalLengthIn35MmFormatFormatted}
+                        </span>
+                      </>
+                    )}
+                  </li>
+                  <li>{photo.fNumberFormatted}</li>
+                  <li>{photo.exposureTimeFormatted}</li>
+                  <li>{photo.isoFormatted}</li>
+                  <li>{photo.exposureCompensationFormatted ?? '—'}</li>
+                </ul>
+              )}
+              <div className={clsx('flex gap-y-4', 'flex-col sm:flex-row md:flex-col')}>
+                <div className={clsx('grow uppercase', 'text-medium')}>{photo.takenAtNaiveFormatted}</div>
+                <ShareButton
+                  path={pathForPhotoShare(
+                    photo,
+                    shouldShareTag ? primaryTag : undefined,
+                    shouldShareCamera ? camera : undefined,
+                    shouldShareSimulation ? photo.filmSimulation : undefined
+                  )}
+                  prefetch={prefetchActions}
+                  shouldScroll={shouldScrollOnActions}
+                />
+                <AddButton
+                  path={pathForPhotoAddCart(photo)}
+                  prefetch={prefetchActions}
+                  shouldScroll={shouldScrollOnActions}
+                />
+              </div>
+            </>,
+            false
+          )}
+        </div>
+      }
     />
   );
-};
+}

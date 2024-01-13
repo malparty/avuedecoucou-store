@@ -7,6 +7,7 @@ import { clsx } from 'clsx/lite';
 import { BiCopy } from 'react-icons/bi';
 import { ReactNode } from 'react';
 import { toastSuccess } from '@/toast';
+import CheckOutForm from './CheckOutForm';
 
 export default function AddModal({
   title = 'Ajouter au panier',
@@ -20,7 +21,7 @@ export default function AddModal({
   children: ReactNode;
 }) {
   return (
-    <Modal onClosePath={pathClose}>
+    <Modal onClosePath={pathClose} large>
       <div className="space-y-3 md:space-y-4 w-full">
         <div className={clsx('flex items-center gap-x-3', 'text-xl md:text-3xl leading-snug')}>
           <TbPhotoShare
@@ -39,21 +40,7 @@ export default function AddModal({
           )}
         >
           <div className="truncate p-2 w-full">{photo.title}</div>
-          <div
-            className={clsx(
-              'p-3 border-l',
-              'border-gray-200 bg-gray-100 active:bg-gray-200',
-              // eslint-disable-next-line max-len
-              'dark:border-gray-800 dark:bg-gray-900 dark:hover:bg-gray-800/75 dark:active:bg-gray-900',
-              'cursor-pointer'
-            )}
-            onClick={() => {
-              navigator.clipboard.writeText(photo.title || '');
-              toastSuccess('Link to photo copied');
-            }}
-          >
-            <BiCopy size={18} />
-          </div>
+          <CheckOutForm />
         </div>
       </div>
     </Modal>

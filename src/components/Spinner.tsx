@@ -1,6 +1,6 @@
 import { clsx } from 'clsx/lite';
 
-const SIZE_DEFAULT = 12;
+const SIZE_DEFAULT = 24;
 
 export type SpinnerColor = 'text' | 'dim' | 'light-gray';
 
