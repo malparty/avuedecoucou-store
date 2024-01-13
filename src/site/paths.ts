@@ -35,6 +35,7 @@ export const PATH_ADMIN_UPLOAD_BLOB   = `${PATH_ADMIN_UPLOADS}/blob`;
 export const PATH_ADMIN_CONFIGURATION = `${PATH_ADMIN}/configuration`;
 
 // Modifiers
+const ADD = 'add';
 const SHARE = 'share';
 const NEXT  = 'next';
 const EDIT  = 'edit';
@@ -113,6 +114,11 @@ export const pathForPhotoShare = (
   simulation?: FilmSimulation,
 ) =>
   `${pathForPhoto(photo, tag, camera, simulation)}/${SHARE}`;
+
+export const pathForPhotoAddCart = (
+  photo: PhotoOrPhotoId,
+) =>
+  `${pathForPhoto(photo)}/${ADD}`;
 
 export const pathForTag = (tag: string, next?: number) =>
   pathWithNext(

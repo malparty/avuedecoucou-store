@@ -3,9 +3,10 @@ import SiteGrid from '@/components/SiteGrid';
 import ImageLarge from '@/components/ImageLarge';
 import { clsx } from 'clsx/lite';
 import Link from 'next/link';
-import { pathForPhoto, pathForPhotoShare } from '@/site/paths';
+import { pathForPhoto, pathForPhotoShare, pathForPhotoAddCart } from '@/site/paths';
 import PhotoTags from '@/tag/PhotoTags';
 import ShareButton from '@/components/ShareButton';
+import AddButton from '@/checkout/AddButton';
 import PhotoCamera from '../camera/PhotoCamera';
 import { cameraFromPhoto } from '@/camera';
 import PhotoFilmSimulation from '@/simulation/PhotoFilmSimulation';
@@ -17,24 +18,24 @@ export default function PhotoLarge({
   photo,
   primaryTag,
   priority,
-  prefetchShare,
+  prefetchActions,
   showCamera = true,
   showSimulation = true,
   shouldShareTag,
   shouldShareCamera,
   shouldShareSimulation,
-  shouldScrollOnShare,
+  shouldScrollOnActions,
 }: {
   photo: Photo
   primaryTag?: string
   priority?: boolean
-  prefetchShare?: boolean
+  prefetchActions?: boolean
   showCamera?: boolean
   showSimulation?: boolean
   shouldShareTag?: boolean
   shouldShareCamera?: boolean
   shouldShareSimulation?: boolean
-  shouldScrollOnShare?: boolean
+  shouldScrollOnActions?: boolean
 }) {
   const tags = sortTags(photo.tags, primaryTag);
 
@@ -145,8 +146,13 @@ export default function PhotoLarge({
                   shouldShareCamera ? camera : undefined,
                   shouldShareSimulation ? photo.filmSimulation : undefined,
                 )}
-                prefetch={prefetchShare}
-                shouldScroll={shouldScrollOnShare}
+                prefetch={prefetchActions}
+                shouldScroll={shouldScrollOnActions}
+              />
+              <AddButton
+                path={pathForPhotoAddCart(photo)}
+                prefetch={prefetchActions}
+                shouldScroll={shouldScrollOnActions}
               />
             </div>
           </>, false)}
