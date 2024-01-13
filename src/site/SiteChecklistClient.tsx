@@ -163,7 +163,7 @@ export default function SiteChecklistClient({
               AWS S3:
               {' '}
               {renderLink(
-                'https://github.com/sambecker/exif-photo-blog#aws-s3',
+                'https://github.com/malparty/avuedecoucou-store#aws-s3',
                 'create/configure bucket',
               )}
             </>

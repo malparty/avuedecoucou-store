@@ -1,53 +1,24 @@
-# 📷 `EXIF` Photo Blog
+![Vercel](http://therealsujitk-vercel-badge.vercel.app/?app=avuedecoucou&style=for-the-badge&logo=none)
 
-https://github.com/sambecker/exif-photo-blog/assets/169298/4253ea54-558a-4358-8834-89943cfbafb4
+## A Vue De Coucou Store
 
-[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?demo-title=Photo+Blog&demo-description=Store+photos+with+original+camera+data&demo-url=https%3A%2F%2Fphotos.sambecker.com&demo-image=https%3A%2F%2Fphotos.sambecker.com%2Ftemplate-image-tight&project-name=Photo+Blog&repository-name=exif-photo-blog&repository-url=https%3A%2F%2Fgithub.com%2Fsambecker%2Fexif-photo-blog&from=templates&skippable-integrations=1&teamCreateStatus=hidden&stores=%5B%7B%22type%22%3A%22postgres%22%7D%2C%7B%22type%22%3A%22blob%22%7D%5D)
+An E-commerce solution that is NOT made for businesses!
+Because some artists or artisans don't need advanced feature but can't afford the subscription and hosting fees that other e-commerce solutions require.
 
-Demo App
--
-https://photos.sambecker.com
+- [x] List items (features scaffolded from the [📷 EXIF Photo Blog](https://github.com/sambecker/exif-photo-blog) Next.js template)
 
-Features
--
-- Photo upload with EXIF extraction
-- Organize photos by tag and camera model
-- Infinite scroll
-- Built-in auth
-- Light/dark mode
-- Automatic OG image generation
-- Support for Fujifilm simulations
+Phase 1 (In Progress):
 
-<img src="/readme/og-image-share.png" alt="OG Image Preview" width=600 />
+- [ ] Send an "order" email for a single item, with a form asking for the customer details (no account management)
+- [ ] Manage "Cart" with multiple items
+- [ ] Select variants of each item
 
-Installation
--
-### 1. Deploy to Vercel
+Phase 2:
 
-1. Click Deploy
-2. Add required storage ([Vercel Postgres](https://vercel.com/docs/storage/vercel-postgres/quickstart#create-a-postgres-database) + [Vercel Blob](https://vercel.com/docs/storage/vercel-blob/quickstart#create-a-blob-store))
-3. Add environment variables
-- `NEXT_PUBLIC_SITE_TITLE` (e.g., My Photos)
-- `NEXT_PUBLIC_SITE_DOMAIN` (e.g., photos.domain.com)
-- `NEXT_PUBLIC_SITE_DESCRIPTION` (optional—mainly used for OG meta)
+- [ ] Multi-language (EN/FR)
+- [ ] Display the details of each variant in a modal
 
-### 2. Setup Auth
-
-1. [Generate auth secret](https://generate-secret.vercel.app/32)
-2. Add to environment variables:
-- `AUTH_SECRET`
-3. Add admin user to environment variables:
-- `ADMIN_EMAIL`
-- `ADMIN_PASSWORD`
-
-
-### 3. Upload your first photo
-1. Visit `/admin`
-2. Click "Choose File"
-3. Title your photo
-4. Click "Create"
-
-### 4. Develop locally
+## Contribution
 
 1. Clone code
 2. Run `pnpm i` to install dependencies
@@ -132,7 +103,7 @@ FAQ
 > Navigate to `/admin/configuration` and click "Clear Cache."
 
 #### I'm seeing server-side runtime errors when loading a page after updating my fork. What do I do?
-> Navigate to `/admin/configuration` and click "Clear Cache." If this doesn't help, [open an issue](https://github.com/sambecker/exif-photo-blog/issues/new).
+> Navigate to `/admin/configuration` and click "Clear Cache." If this doesn't help, [open an issue](https://github.com/malparty/avuedecoucou-store/issues/new).
 
 #### Why aren't my Fujifilm simulations importing alongside EXIF data?
 > Fujifilm simulation data is stored in vendor-specific Makernote binaries embedded in EXIF data. Under certain circumstances an intermediary may strip out this data for a variety of reasons. For instance, there is a known issue on iOS where editing an image, e.g., cropping it, causes Makernote data loss. If your simulation data appears to be missing, try importing the original file as it was stored by the camera. Additionally, if you can confirm the simulation mode on camera, you can then edit the photo record and manually select it.
