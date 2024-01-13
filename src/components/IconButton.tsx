@@ -5,6 +5,7 @@ import Spinner, { SpinnerColor } from './Spinner';
 
 export default function IconButton({
   icon,
+  title,
   onClick,
   isLoading,
   className,
@@ -12,6 +13,7 @@ export default function IconButton({
   spinnerSize,
 }: {
   icon: JSX.Element
+  title?: string
   onClick?: () => void
   isLoading?: boolean
   className?: string
@@ -21,14 +23,13 @@ export default function IconButton({
   return (
     <span className={clsx(
       className,
-      'relative inline-flex items-center',
-      'w-[1rem] h-[1.1rem]',
+      'relative inline-flex items-start'
     )}>
       {!isLoading
         ? <button
           onClick={onClick}
           className={clsx(
-            'inline-flex items-center justify-center',
+            'inline-flex items-start justify-start',
             'p-0 border-none shadow-none',
             'active:bg-transparent bg-transparent dark:bg-transparent',
             'translate-x-[-1px]',
@@ -36,16 +37,17 @@ export default function IconButton({
             'active:opacity-50',
           )}
         >
-          {icon}
+          {icon} {title}
         </button>
         : <span className={clsx(
-          'inline-flex items-center justify-center',
+          'inline-flex items-start justify-start',
           'h-full w-full',
         )}>
           <Spinner
             color={spinnerColor}
             size={spinnerSize}
           />
+          {title}
         </span>}
     </span>
   );

@@ -1,5 +1,6 @@
 {
-  "name": "exif-photo-blog",
+  "name": "avuedecoucou-store",
+  "license": "MIT",
   "scripts": {
     "dev": "next dev",
     "build": "next build",

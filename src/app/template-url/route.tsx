@@ -5,17 +5,17 @@ const REQUIRE_ENV_VARS = false;
 
 const TITLE = 'Photo Blog';
 const DESCRIPTION = 'Store photos with original camera data';
-const REPO_TEAM = 'sambecker';
-const REPO_NAME = 'exif-photo-blog';
+const REPO_TEAM = 'malparty';
+const REPO_NAME = 'avuedecoucou-store';
 
 export function GET() {
   const url = new URL('https://vercel.com/new/clone');
 
   url.searchParams.set('demo-title', TITLE);
   url.searchParams.set('demo-description', DESCRIPTION);
-  url.searchParams.set('demo-url', 'https://photos.sambecker.com');
+  url.searchParams.set('demo-url', 'https://photos.malparty.com');
   url.searchParams.set('demo-description', DESCRIPTION);
-  url.searchParams.set('demo-image', 'https://photos.sambecker.com/template-image-tight');
+  url.searchParams.set('demo-image', 'https://photos.malparty.com/template-image-tight');
   url.searchParams.set('project-name', TITLE);
   url.searchParams.set('repository-name', REPO_NAME);
   url.searchParams.set('repository-url', `https://github.com/${REPO_TEAM}/${REPO_NAME}`);

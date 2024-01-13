@@ -1,7 +1,7 @@
-import { TbPhotoShare } from 'react-icons/tb';
+import { FaCartPlus } from 'react-icons/fa6';
 import IconPathButton from '@/components/IconPathButton';
 
-export default function ShareButton({
+export default function AddButton({
   path,
   prefetch,
   shouldScroll,
@@ -16,9 +16,9 @@ export default function ShareButton({
     <IconPathButton
       {...{
         path,
-        title: 'Partager',
+        title: 'Ajouter au panier',
         icon: (
-          <TbPhotoShare
+          <FaCartPlus
             size={34}
             className={dim ? 'text-dim' : undefined}
           />

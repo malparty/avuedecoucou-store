@@ -12,9 +12,11 @@ import usePrefersReducedMotion from '@/utility/usePrefersReducedMotion';
 export default function Modal({
   onClosePath,
   children,
+  large,
 }: {
   onClosePath?: string
   children: ReactNode
+  large?: boolean
 }) {
   const router = useRouter();
 
@@ -41,8 +43,9 @@ export default function Modal({
   return (
     <motion.div
       className={clsx(
-        'fixed inset-0 z-50 flex items-center justify-center',
+        'fixed inset-0 z-50 flex justify-center',
         'bg-black',
+        large ? 'overflow-auto' : 'items-center'
       )}
       initial={!prefersReducedMotion
         ? { backgroundColor: 'rgba(0, 0, 0, 0)' }
@@ -60,7 +63,7 @@ export default function Modal({
             'dark:border dark:border-gray-800',
             'md:p-4 md:rounded-xl',
           )}
-          style={{ width: 'min(500px, 90vw)' }}
+          style={large ? { width: 'min(1000px, 180vw)' } : { width: 'min(500px, 90vw)' }}
           ref={contentRef}
         >
           {children}
