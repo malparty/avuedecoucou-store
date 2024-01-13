@@ -12,7 +12,7 @@ import usePrefersReducedMotion from '@/utility/usePrefersReducedMotion';
 export default function Modal({
   onClosePath,
   children,
-  large
+  large,
 }: {
   onClosePath?: string
   children: ReactNode
