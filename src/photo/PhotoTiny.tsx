@@ -6,18 +6,16 @@ import { pathForPhoto } from '@/site/paths';
 
 export default function PhotoTiny({
   photo,
-  tag,
   selected,
   className,
 }: {
   photo: Photo
-  tag?: string
   selected?: boolean
   className?: string
 }) {
   return (
     <Link
-      href={pathForPhoto(photo, tag)}
+      href={pathForPhoto(photo)}
       className={clsx(
         className,
         'active:brightness-75',
@@ -27,8 +25,6 @@ export default function PhotoTiny({
     >
       <ImageTiny
         src={photo.url}
-        aspectRatio={photo.aspectRatio}
-        blurData={photo.blurData}
         alt={titleForPhoto(photo)}
       />
     </Link>

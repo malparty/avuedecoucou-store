@@ -1,28 +1,16 @@
 import PhotoOGTile from '@/photo/PhotoOGTile';
-import { absolutePathForPhoto, pathForPhoto } from '@/site/paths';
+import { pathForPhoto } from '@/site/paths';
 import { Photo } from '.';
 import AddModal from '@/checkout/AddModal';
-import { Camera } from '@/camera';
-import { FilmSimulation } from '@/simulation';
 
-export default function PhotoAddModal({
-  photo,
-  tag,
-  camera,
-  simulation,
-}: {
-  photo: Photo
-  tag?: string
-  camera?: Camera
-  simulation?: FilmSimulation
-}) {
+export default function PhotoAddModal({ photo }: { photo: Photo }) {
   return (
     <AddModal
       title="Ajouter la photo au panier"
       photo={photo}
-      pathClose={pathForPhoto(photo, tag, camera, simulation)}
+      pathClose={pathForPhoto(photo)}
     >
       <PhotoOGTile photo={photo} />
     </AddModal>
   );
-};
+}

@@ -1,6 +1,5 @@
 import {
   Photo,
-  descriptionForPhoto,
   titleForPhoto,
 } from '@/photo';
 import { absolutePathForPhotoImage, pathForPhoto } from '@/site/paths';
@@ -26,7 +25,6 @@ export default function PhotoOGTile({
   return (
     <OGTile {...{
       title: titleForPhoto(photo),
-      description: descriptionForPhoto(photo),
       path: pathForPhoto(photo),
       pathImageAbsolute: absolutePathForPhotoImage(photo),
       loadingState: loadingStateExternal,

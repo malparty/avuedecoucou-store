@@ -4,9 +4,7 @@ import Modal from '@/components/Modal';
 import { TbPhotoShare } from 'react-icons/tb';
 import { Photo } from '@/photo';
 import { clsx } from 'clsx/lite';
-import { BiCopy } from 'react-icons/bi';
 import { ReactNode } from 'react';
-import { toastSuccess } from '@/toast';
 import CheckOutForm from './CheckOutForm';
 
 export default function AddModal({

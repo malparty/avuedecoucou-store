@@ -6,7 +6,6 @@ import SubmitButtonWithStatus from '@/components/SubmitButtonWithStatus';
 import { useLayoutEffect, useRef, useState } from 'react';
 import { useFormState } from 'react-dom';
 import ErrorNote from '@/components/ErrorNote';
-import { CREDENTIALS_SIGN_IN_ERROR } from '.';
 
 export default function CheckOutForm() {
   const [email, setEmail] = useState('');

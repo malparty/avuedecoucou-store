@@ -1,16 +1,14 @@
-import { getPhotoCached } from '@/cache';
-import AddModal from '@/checkout/AddModal';
+import { getPhoto } from '@/photo';
+import PhotoAddModal from '@/photo/PhotoAddModal';
 import { PATH_ROOT } from '@/site/paths';
 import { redirect } from 'next/navigation';
 
-export default async function Share({
-  params: { photoId },
-}: {
-  params: { photoId: string }
-}) {
-  const photo = await getPhotoCached(photoId);
+export default async function Share({ params: { photoId } }: { params: { photoId: string } }) {
+  const photo = getPhoto(photoId);
 
-  if (!photo) { return redirect(PATH_ROOT); }
+  if (!photo) {
+    return redirect(PATH_ROOT);
+  }
 
-  return <AddModal photo={photo} />;
+  return <PhotoAddModal photo={photo} />;
 }

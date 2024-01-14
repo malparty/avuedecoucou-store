@@ -1,4 +1,4 @@
-import { IMAGE_LARGE_WIDTH } from '@/site';
+import { IMAGE_LARGE_WIDTH, ASPECT_RATIO } from '@/site';
 import Image from 'next/image';
 import Link from 'next/link';
 
@@ -7,16 +7,12 @@ export default function ImageLarge({
   href,
   src,
   alt,
-  aspectRatio,
-  blurData,
   priority,
 }: {
   className?: string
   href: string
   src: string
   alt: string
-  aspectRatio: number
-  blurData: string
   priority?: boolean
 }) {
   return (
@@ -29,10 +25,9 @@ export default function ImageLarge({
         src,
         alt,
         priority,
-        blurDataURL: blurData,
-        placeholder: 'blur',
+        placeholder: 'empty',
         width: IMAGE_LARGE_WIDTH,
-        height: Math.round(IMAGE_LARGE_WIDTH / aspectRatio),
+        height: Math.round(IMAGE_LARGE_WIDTH / ASPECT_RATIO),
       }} />
     </Link>
   );
