@@ -11,7 +11,6 @@ export type OGLoadingState = 'unloaded' | 'loading' | 'loaded' | 'failed';
 
 export default function OGTile({
   title,
-  description,
   path,
   pathImageAbsolute,
   loadingState: loadingStateExternal,
@@ -21,7 +20,6 @@ export default function OGTile({
   retryTime,
 }: {
   title: string
-  description: string
   path: string
   pathImageAbsolute: string
   loadingState?: OGLoadingState
@@ -120,9 +118,6 @@ export default function OGTile({
       )}>
         <div className="text-gray-800 dark:text-white font-medium">
           {title}
-        </div>
-        <div className="text-medium">
-          {description}
         </div>
       </div>
     </Link>

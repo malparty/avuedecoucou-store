@@ -30,21 +30,6 @@ export const BASE_URL = process.env.NODE_ENV === 'production'
   ? makeUrlAbsolute(SITE_DOMAIN)?.toLowerCase()
   : 'http://localhost:3000';
 
-// STORAGE: VERCEL BLOB
-export const HAS_VERCEL_BLOB =
-  (process.env.BLOB_READ_WRITE_TOKEN ?? '').length > 0;
-
-// STORAGE: AWS S3
-// Includes separate check for client-side usage,
-// i.e., uploading, url construction
-export const HAS_AWS_S3_STORAGE_CLIENT =
-  (process.env.NEXT_PUBLIC_AWS_S3_BUCKET ?? '').length > 0 &&
-  (process.env.NEXT_PUBLIC_AWS_S3_REGION ?? '').length > 0;
-export const HAS_AWS_S3_STORAGE =
-  HAS_AWS_S3_STORAGE_CLIENT &&
-  (process.env.AWS_S3_ACCESS_KEY ?? '').length > 0 &&
-  (process.env.AWS_S3_SECRET_ACCESS_KEY ?? '').length > 0;
-
 // SETTINGS
 
 export const PRO_MODE_ENABLED = process.env.NEXT_PUBLIC_PRO_MODE === '1';
@@ -53,8 +38,6 @@ export const PRIORITY_ORDER_ENABLED =
   process.env.NEXT_PUBLIC_IGNORE_PRIORITY_ORDER !== '1';
 export const PUBLIC_API_ENABLED = process.env.NEXT_PUBLIC_PUBLIC_API === '1';
 export const SHOW_REPO_LINK = process.env.NEXT_PUBLIC_HIDE_REPO_LINK !== '1';
-export const SHOW_FILM_SIMULATIONS =
-  process.env.NEXT_PUBLIC_HIDE_FILM_SIMULATIONS !== '1';
 export const GRID_ASPECT_RATIO = process.env.NEXT_PUBLIC_GRID_ASPECT_RATIO
   ? parseFloat(process.env.NEXT_PUBLIC_GRID_ASPECT_RATIO)
   : 1;
@@ -64,19 +47,9 @@ export const OG_TEXT_BOTTOM_ALIGNMENT =
 export const HIGH_DENSITY_GRID = GRID_ASPECT_RATIO <= 1;
 
 export const CONFIG_CHECKLIST_STATUS = {
-  hasPostgres: (process.env.POSTGRES_HOST ?? '').length > 0,
-  hasBlob: HAS_VERCEL_BLOB || HAS_AWS_S3_STORAGE,
-  hasVercelBlob: HAS_VERCEL_BLOB,
-  hasAwsS3Storage: HAS_AWS_S3_STORAGE,
-  hasAuth: (process.env.AUTH_SECRET ?? '').length > 0,
-  hasAdminUser: (
-    (process.env.ADMIN_EMAIL ?? '').length > 0 &&
-    (process.env.ADMIN_PASSWORD ?? '').length > 0
-  ),
   hasTitle: (process.env.NEXT_PUBLIC_SITE_TITLE ?? '').length > 0,
   hasDomain: (process.env.NEXT_PUBLIC_SITE_DOMAIN ?? '').length > 0,
   showRepoLink: SHOW_REPO_LINK,
-  showFilmSimulations: SHOW_FILM_SIMULATIONS,
   isProModeEnabled: PRO_MODE_ENABLED,
   isGeoPrivacyEnabled: GEO_PRIVACY_ENABLED,
   isPriorityOrderEnabled: PRIORITY_ORDER_ENABLED,
@@ -86,9 +59,3 @@ export const CONFIG_CHECKLIST_STATUS = {
 };
 
 export type ConfigChecklistStatus = typeof CONFIG_CHECKLIST_STATUS;
-
-export const IS_SITE_READY =
-  CONFIG_CHECKLIST_STATUS.hasPostgres &&
-  CONFIG_CHECKLIST_STATUS.hasBlob &&
-  CONFIG_CHECKLIST_STATUS.hasAuth &&
-  CONFIG_CHECKLIST_STATUS.hasAdminUser;

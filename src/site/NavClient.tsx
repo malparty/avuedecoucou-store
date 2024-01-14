@@ -6,34 +6,18 @@ import Link from 'next/link';
 import SiteGrid from '../components/SiteGrid';
 import { SITE_DOMAIN_OR_TITLE } from '@/site/config';
 import ViewSwitcher, { SwitcherSelection } from '@/site/ViewSwitcher';
-import {
-  PATH_ROOT,
-  isPathAdmin,
-  isPathGrid,
-  isPathProtected,
-  isPathSets,
-  isPathSignIn,
-} from '@/site/paths';
+import { PATH_ROOT, isPathGrid, isPathSets } from '@/site/paths';
 import AnimateItems from '../components/AnimateItems';
 
-export default function NavClient({
-  showAdmin,
-}: {
-  showAdmin?: boolean,
-}) {
+export default function NavClient() {
   const pathname = usePathname();
 
-  const showNav = !isPathSignIn(pathname);
-
-  const shouldAnimate = !isPathAdmin(pathname);
-
-  const renderLink = (
-    text: string,
-    linkOrAction: string | (() => void),
-  ) =>
-    typeof linkOrAction === 'string'
-      ? <Link href={linkOrAction}>{text}</Link>
-      : <button onClick={linkOrAction}>{text}</button>;
+  const renderLink = (text: string, linkOrAction: string | (() => void)) =>
+    typeof linkOrAction === 'string' ? (
+      <Link href={linkOrAction}>{text}</Link>
+    ) : (
+      <button onClick={linkOrAction}>{text}</button>
+    );
 
   const switcherSelectionForPath = (): SwitcherSelection | undefined => {
     if (pathname === PATH_ROOT) {
@@ -42,8 +26,6 @@ export default function NavClient({
       return 'grid';
     } else if (isPathSets(pathname)) {
       return 'sets';
-    } else if (isPathProtected(pathname)) {
-      return 'admin';
     }
   };
 
@@ -52,29 +34,21 @@ export default function NavClient({
       contentMain={
         <AnimateItems
           animateOnFirstLoadOnly
-          type={!shouldAnimate ? 'none' : 'bottom'}
+          type={'none'}
           distanceOffset={10}
-          items={showNav
-            ? [<div
+          items={[
+            <div
               key="nav"
-              className={clsx(
-                'flex items-center',
-                'w-full min-h-[4rem]',
-                'leading-none',
-              )}>
+              className={clsx('flex items-center', 'w-full min-h-[4rem]', 'leading-none')}
+            >
               <div className="flex flex-grow items-center gap-4">
-                <ViewSwitcher
-                  currentSelection={switcherSelectionForPath()}
-                  showAdmin={showAdmin}
-                />
+                <ViewSwitcher currentSelection={switcherSelectionForPath()} />
               </div>
-              <div className="hidden xs:block">
-                {renderLink(SITE_DOMAIN_OR_TITLE, PATH_ROOT)}
-              </div>
-            </div>]
-            : []}
+              <div className="hidden xs:block">{renderLink(SITE_DOMAIN_OR_TITLE, PATH_ROOT)}</div>
+            </div>,
+          ]}
         />
       }
     />
   );
-};
+}

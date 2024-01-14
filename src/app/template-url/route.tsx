@@ -3,8 +3,8 @@ import { NextResponse } from 'next/server';
 
 const REQUIRE_ENV_VARS = false;
 
-const TITLE = 'Photo Blog';
-const DESCRIPTION = 'Store photos with original camera data';
+const TITLE = 'A Vue de Coucou, la boutique';
+const DESCRIPTION = 'Commandez en ligne mes plus belles photos!';
 const REPO_TEAM = 'malparty';
 const REPO_NAME = 'avuedecoucou-store';
 
@@ -22,17 +22,12 @@ export function GET() {
   url.searchParams.set('from', 'templates');
   url.searchParams.set('skippable-integrations', '1');
   if (REQUIRE_ENV_VARS) {
-    url.searchParams.set('env-description', 'Configure your photo blog meta');
     url.searchParams.set('env-link', 'BLANK');
     url.searchParams.set('env', [
       'NEXT_PUBLIC_SITE_TITLE',
     ].join(','));
   }
   url.searchParams.set('teamCreateStatus', 'hidden');
-  url.searchParams.set('stores', JSON.stringify([
-    { type: 'postgres' },
-    { type: 'blob' },
-  ]));
 
   return NextResponse.json(url.toString());
 }
