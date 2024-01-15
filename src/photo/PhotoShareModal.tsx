@@ -6,7 +6,6 @@ import ShareModal from '@/components/ShareModal';
 export default function PhotoShareModal({ photo }: { photo: Photo }) {
   return (
     <ShareModal
-      title="Share Photo"
       pathShare={absolutePathForPhoto(photo)}
       pathClose={pathForPhoto(photo)}
     >

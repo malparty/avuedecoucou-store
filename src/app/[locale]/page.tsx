@@ -6,10 +6,13 @@ import PhotosEmptyState from '@/photo/PhotosEmptyState';
 import { pathForGrid } from '@/site/paths';
 import { PaginationParams, getPaginationForSearchParams } from '@/site/pagination';
 import PhotoGridSidebar from '@/photo/PhotoGridSidebar';
+import { unstable_setRequestLocale } from 'next-intl/server';
 
 export const runtime = 'edge';
 
-export default async function GridPage({ searchParams }: PaginationParams) {
+export default async function GridPage({ searchParams, params: { locale } }: PaginationParams) {
+  unstable_setRequestLocale(locale);
+
   const { offset, limit } = getPaginationForSearchParams(searchParams);
 
   const photos = getPhotos(limit, offset);

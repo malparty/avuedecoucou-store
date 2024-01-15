@@ -1,5 +1,6 @@
 import { FaCartPlus } from 'react-icons/fa6';
 import IconPathButton from '@/components/IconPathButton';
+import { useTranslations } from 'next-intl';
 
 export default function AddButton({
   path,
@@ -12,11 +13,12 @@ export default function AddButton({
   shouldScroll?: boolean;
   dim?: boolean;
 }) {
+  const t = useTranslations('checkout');
   return (
     <IconPathButton
       {...{
         path,
-        title: 'Ajouter au panier',
+        title: t('add_cart'),
         icon: (
           <FaCartPlus
             size={34}

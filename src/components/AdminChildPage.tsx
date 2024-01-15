@@ -1,5 +1,5 @@
 import { ReactNode } from 'react';
-import Link from 'next/link';
+import { Link } from '../navigation';
 import { FiArrowLeft } from 'react-icons/fi';
 import SiteGrid from './SiteGrid';
 import { clsx } from 'clsx/lite';

@@ -8,7 +8,7 @@ export const PHOTOS: Photo[] = [
   },
   {
     id: 'envol_aube',
-    title: "Envol de l'aube",
+    title: 'Envol de l\'aube',
     url: '/img/envol_aube.jpg',
   },
   {
@@ -33,22 +33,22 @@ export const PHOTOS: Photo[] = [
   },
   {
     id: 'levant_alpes_bernoises',
-    title: "Levant d'été sur les Alpes Bernoises",
+    title: 'Levant d\'été sur les Alpes Bernoises',
     url: '/img/levant_alpes_bernoises.jpg',
   },
   {
     id: 'nuit_hiver_vosges',
-    title: "Nuit d'hiver dans les Vosges",
+    title: 'Nuit d\'hiver dans les Vosges',
     url: '/img/nuit_hiver_vosges.jpg',
   },
   {
     id: 'pleine_lune_hiver_grand_ballon',
-    title: "Pleine lune d'hiver au Grand Ballon",
+    title: 'Pleine lune d\'hiver au Grand Ballon',
     url: '/img/pleine_lune_hiver_grand_ballon.jpg',
   },
   {
     id: 'pleine_lune_hiver_hohneck',
-    title: "Pleine lune d'hiver au Hohneck",
+    title: 'Pleine lune d\'hiver au Hohneck',
     url: '/img/pleine_lune_hiver_hohneck.jpg',
   },
   {

@@ -8,7 +8,7 @@ export const PATH_SETS = '/sets';
 export const PATH_OG = '/og';
 
 // Path prefixes
-export const PREFIX_PHOTO = '/p';
+export const PREFIX_PHOTO = '/photo';
 
 // Modifiers
 const ADD = 'add';

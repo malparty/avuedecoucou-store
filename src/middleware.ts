@@ -1,24 +1,15 @@
-import { NextRequest, NextResponse } from 'next/server';
-import type { NextApiRequest, NextApiResponse } from 'next';
-import {
-  PREFIX_PHOTO,
-} from './site/paths';
+import createMiddleware from 'next-intl/middleware';
 
-export default function middleware(req: NextRequest, res:NextResponse) {
-  const pathname = req.nextUrl.pathname;
-
-  if (/^\/photos\/(.)+$/.test(pathname)) {
-    // Accept /photos/* paths, but serve /p/*
-    const matches = pathname.match(/^\/photos\/(.+)$/);
-    return NextResponse.rewrite(new URL(
-      `${PREFIX_PHOTO}/${matches?.[1]}`,
-      req.url,
-    ));
-  }
-
-  return NextResponse.next();
-}
+import { locales, defaultLocale } from '@/i18n';
 
 export const config = {
-  matcher: ['/((?!api|_next/static|_next/image|favicon.ico).*)'],
+  matcher: ['/((?!api|_next/static|_next/image|favicons|img|favicon.ico).*)', '/', '/(en|fr)/:path*'],
 };
+
+export default createMiddleware({
+  // A list of all locales that are supported
+  locales: locales,
+
+  // Used when no locale matches
+  defaultLocale: defaultLocale,
+});

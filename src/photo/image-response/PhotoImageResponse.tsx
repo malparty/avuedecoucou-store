@@ -1,6 +1,4 @@
 import { Photo } from '..';
-import { AiFillApple } from 'react-icons/ai';
-import ImageCaption from './components/ImageCaption';
 import ImagePhotoGrid from './components/ImagePhotoGrid';
 import ImageContainer from './components/ImageContainer';
 import { OG_TEXT_BOTTOM_ALIGNMENT } from '@/site/config';
