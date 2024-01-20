@@ -2,6 +2,10 @@
   "checkout": {
     "add_cart": "Add to cart"
   },
+  "share": {
+    "share_photo": "Share",
+    "link_to_photo_copied": "The link of the photo has been saved to the clipboard."
+  },
   "link_to_photo_copied": "Link to photo copied",
   "photo": "photo",
   "share_photo": "Share Photo"

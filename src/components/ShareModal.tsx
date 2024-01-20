@@ -7,6 +7,7 @@ import { BiCopy } from 'react-icons/bi';
 import { ReactNode } from 'react';
 import { shortenUrl } from '@/utility/url';
 import { toastSuccess } from '@/toast';
+import { useTranslations } from 'next-intl';
 
 export default function ShareModal({
   pathShare,
@@ -17,8 +18,7 @@ export default function ShareModal({
   pathClose: string;
   children: ReactNode;
 }) {
-  const { t } = {t: (key: string) => key};
-
+  const t = useTranslations('share');
   return (
     <Modal onClosePath={pathClose}>
       <div className="space-y-3 md:space-y-4 w-full">

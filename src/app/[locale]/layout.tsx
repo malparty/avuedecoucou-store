@@ -15,7 +15,7 @@ import FooterClient from '@/site/FooterClient';
 import NavClient from '@/site/NavClient';
 
 import '../../site/globals.css';
-import { defaultLocale, locales } from '../../i18n';
+import { locales } from '../../i18n';
 import { useMessages } from 'next-intl';
 import { Providers } from '@/providers';
 import { unstable_setRequestLocale } from 'next-intl/server';

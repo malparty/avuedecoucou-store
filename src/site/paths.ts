@@ -33,7 +33,7 @@ const getPhotoId = (photoOrPhotoId: PhotoOrPhotoId) =>
 
 export const pathForPhoto = (photo: PhotoOrPhotoId) => `${PREFIX_PHOTO}/${getPhotoId(photo)}`;
 
-export const absolutePathForPhotoImage = (photo: Photo) => `${BASE_URL}/img/${photo.url}`;
+export const absolutePathForPhotoImage = (photo: Photo) => `${BASE_URL}/${photo.url}`;
 
 export const pathForPhotoShare = (photo: PhotoOrPhotoId) => `${pathForPhoto(photo)}/${SHARE}`;
 
