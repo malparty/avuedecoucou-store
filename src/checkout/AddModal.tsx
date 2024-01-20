@@ -33,7 +33,6 @@ export default function AddModal({
           className={clsx(
             'rounded-md',
             'w-full overflow-hidden',
-            'flex items-center justify-stretch',
             'border border-gray-200 dark:border-gray-800'
           )}
         >

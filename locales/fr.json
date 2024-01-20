@@ -1,6 +1,21 @@
 {
   "checkout": {
-    "add_cart": "Ajouter au panier"
+    "add_cart": "Ajouter au panier",
+    "form": {
+      "invalid_fields": "Certains champs sont invalides",
+      "fields": {
+        "email": "Adresse é-mail",
+        "phone": "Numéro de téléphone",
+        "firstName": "Prénom",
+        "lastName": "Nom",
+        "building": "Batiment, Etage, numéro de porte",
+        "address": "Adresse",
+        "city": "Ville",
+        "postal_code": "Code Postal",
+        "province": "Département / Région",
+        "country": "Pays"
+      }
+    }
   },
   "share": {
     "share_photo": "Partager",

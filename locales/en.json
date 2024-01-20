@@ -1,6 +1,21 @@
 {
   "checkout": {
-    "add_cart": "Add to cart"
+    "add_cart": "Add to cart",
+    "form": {
+      "invalid_fields": "Some fields are invalid.",
+      "fields": {
+        "email": "Email",
+        "phone": "Phone",
+        "firstName": "First name",
+        "lastName": "Last name",
+        "building": "Building, floor, door number",
+        "address": "Address",
+        "city": "City",
+        "postal_code": "Postal code",
+        "province": "Province",
+        "country": "Country"
+      }
+    }
   },
   "share": {
     "share_photo": "Share",
