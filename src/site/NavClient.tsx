@@ -2,7 +2,7 @@
 
 import { clsx } from 'clsx/lite';
 import { usePathname } from 'next/navigation';
-import Link from 'next/link';
+import { Link } from '../navigation';
 import SiteGrid from '../components/SiteGrid';
 import { SITE_DOMAIN_OR_TITLE } from '@/site/config';
 import ViewSwitcher, { SwitcherSelection } from '@/site/ViewSwitcher';

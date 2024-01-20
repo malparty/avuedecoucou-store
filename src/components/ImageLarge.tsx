@@ -1,6 +1,6 @@
 import { IMAGE_LARGE_WIDTH, ASPECT_RATIO } from '@/site';
 import Image from 'next/image';
-import Link from 'next/link';
+import { Link } from '../navigation';
 
 export default function ImageLarge({
   className,

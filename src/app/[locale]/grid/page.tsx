@@ -7,10 +7,12 @@ import { PaginationParams, getPaginationForSearchParams } from '@/site/paginatio
 import { pathForRoot } from '@/site/paths';
 import { getPhotos } from '@/photo';
 import { PHOTOS_COUNT } from '@/photo/data';
+import { unstable_setRequestLocale } from 'next-intl/server';
 
 export const runtime = 'edge';
 
-export default async function HomePage({ searchParams }: PaginationParams) {
+export default async function HomePage({ searchParams, params: { locale } }: PaginationParams) {
+  unstable_setRequestLocale(locale);
   const { offset, limit } = getPaginationForSearchParams(searchParams, 12);
 
   const photos = getPhotos(limit, offset);

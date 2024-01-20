@@ -1,6 +1,6 @@
 import { Photo, titleForPhoto } from '.';
 import ImageTiny from '@/components/ImageTiny';
-import Link from 'next/link';
+import { Link } from '../navigation';
 import { clsx } from 'clsx/lite';
 import { pathForPhoto } from '@/site/paths';
 

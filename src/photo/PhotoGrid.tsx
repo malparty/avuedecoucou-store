@@ -34,8 +34,8 @@ export default function PhotoGrid({
           small
             ? 'grid-cols-3 xs:grid-cols-6'
             : HIGH_DENSITY_GRID
-            ? 'grid-cols-2 xs:grid-cols-4 lg:grid-cols-5'
-            : 'grid-cols-2 sm:grid-cols-4 md:grid-cols-3 lg:grid-cols-4',
+              ? 'grid-cols-2 xs:grid-cols-4 lg:grid-cols-5'
+              : 'grid-cols-2 sm:grid-cols-4 md:grid-cols-3 lg:grid-cols-4',
           'items-center'
         )}
         type={animate === false ? 'none' : undefined}
@@ -51,11 +51,11 @@ export default function PhotoGrid({
               className={
                 GRID_ASPECT_RATIO !== 0
                   ? clsx(
-                      'aspect-square',
-                      'overflow-hidden',
-                      '[&>*]:flex [&>*]:w-full [&>*]:h-full',
-                      '[&>*>*]:object-cover [&>*>*]:min-h-full'
-                    )
+                    'aspect-square',
+                    'overflow-hidden',
+                    '[&>*]:flex [&>*]:w-full [&>*]:h-full',
+                    '[&>*>*]:object-cover [&>*>*]:min-h-full'
+                  )
                   : undefined
               }
               style={{

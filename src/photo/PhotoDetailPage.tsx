@@ -10,12 +10,10 @@ export default function PhotoDetailPage({
   photo,
   photos,
   photosGrid,
-  count,
 }: {
   photo: Photo;
   photos: Photo[];
   photosGrid?: Photo[];
-  count?: number;
 }) {
   return (
     <div>

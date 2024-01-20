@@ -8,7 +8,7 @@ export const PATH_SETS = '/sets';
 export const PATH_OG = '/og';
 
 // Path prefixes
-export const PREFIX_PHOTO = '/p';
+export const PREFIX_PHOTO = '/photo';
 
 // Modifiers
 const ADD = 'add';
@@ -33,7 +33,7 @@ const getPhotoId = (photoOrPhotoId: PhotoOrPhotoId) =>
 
 export const pathForPhoto = (photo: PhotoOrPhotoId) => `${PREFIX_PHOTO}/${getPhotoId(photo)}`;
 
-export const absolutePathForPhotoImage = (photo: Photo) => `${BASE_URL}/img/${photo.url}`;
+export const absolutePathForPhotoImage = (photo: Photo) => `${BASE_URL}/${photo.url}`;
 
 export const pathForPhotoShare = (photo: PhotoOrPhotoId) => `${pathForPhoto(photo)}/${SHARE}`;
 

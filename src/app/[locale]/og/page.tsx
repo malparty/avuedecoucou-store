@@ -4,8 +4,10 @@ import StaggeredOgPhotos from '@/photo/StaggeredOgPhotos';
 import { PHOTOS_COUNT } from '@/photo/data';
 import { PaginationParams, getPaginationForSearchParams } from '@/site/pagination';
 import { pathForOg } from '@/site/paths';
+import { unstable_setRequestLocale } from 'next-intl/server';
 
-export default async function GridPage({ searchParams }: PaginationParams) {
+export default async function GridPage({ searchParams, params: { locale } }: PaginationParams) {
+  unstable_setRequestLocale(locale);
   const { offset, limit } = getPaginationForSearchParams(searchParams);
 
   const photos = getPhotos(limit, offset);

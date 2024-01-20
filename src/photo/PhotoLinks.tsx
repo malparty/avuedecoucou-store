@@ -13,7 +13,7 @@ const LISTENER_KEYUP = 'keyup';
 const ANIMATION_LEFT: AnimationConfig = { type: 'left', duration: 0.3 };
 const ANIMATION_RIGHT: AnimationConfig = { type: 'right', duration: 0.3 };
 
-export default function PhotoLinks({ photo, photos }: { photo: Photo; photos: Photo[] }) {
+export default function PhotoLinks({ photo }: { photo: Photo }) {
   const router = useRouter();
 
   const { setNextPhotoAnimation } = useAppState();
@@ -24,20 +24,20 @@ export default function PhotoLinks({ photo, photos }: { photo: Photo; photos: Ph
   useEffect(() => {
     const onKeyUp = (e: KeyboardEvent) => {
       switch (e.key.toUpperCase()) {
-        case 'ARROWLEFT':
-        case 'J':
-          if (previousPhoto) {
-            setNextPhotoAnimation?.(ANIMATION_RIGHT);
-            router.push(pathForPhoto(previousPhoto), { scroll: false });
-          }
-          break;
-        case 'ARROWRIGHT':
-        case 'L':
-          if (nextPhoto) {
-            setNextPhotoAnimation?.(ANIMATION_LEFT);
-            router.push(pathForPhoto(nextPhoto), { scroll: false });
-          }
-          break;
+      case 'ARROWLEFT':
+      case 'J':
+        if (previousPhoto) {
+          setNextPhotoAnimation?.(ANIMATION_RIGHT);
+          router.push(pathForPhoto(previousPhoto), { scroll: false });
+        }
+        break;
+      case 'ARROWRIGHT':
+      case 'L':
+        if (nextPhoto) {
+          setNextPhotoAnimation?.(ANIMATION_LEFT);
+          router.push(pathForPhoto(nextPhoto), { scroll: false });
+        }
+        break;
       }
     };
     window.addEventListener(LISTENER_KEYUP, onKeyUp);

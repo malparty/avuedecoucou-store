@@ -1,7 +1,7 @@
 import { clsx } from 'clsx/lite';
 import { Photo } from '.';
 import PhotoGrid from './PhotoGrid';
-import Link from 'next/link';
+import { Link } from '../navigation';
 
 export default function PhotoLightbox({
   count,
