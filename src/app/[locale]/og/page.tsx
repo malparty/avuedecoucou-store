@@ -6,7 +6,7 @@ import { PaginationParams, getPaginationForSearchParams } from '@/site/paginatio
 import { pathForOg } from '@/site/paths';
 import { unstable_setRequestLocale } from 'next-intl/server';
 
-export default async function GridPage({ searchParams, params: { locale } }: PaginationParams) {
+export default async function OgPage({ searchParams, params: { locale } }: PaginationParams) {
   unstable_setRequestLocale(locale);
   const { offset, limit } = getPaginationForSearchParams(searchParams);
 

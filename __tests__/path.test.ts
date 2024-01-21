@@ -6,7 +6,7 @@ const PHOTO_ID = 'UsKSGcbt';
 const SHARE = 'share';
 
 const PATH_ROOT = '/';
-const PATH_GRID = '/grid';
+const PATH_FULL = '/full';
 
 const PATH_PHOTO = `/p/${PHOTO_ID}`;
 const PATH_PHOTO_SHARE = `${PATH_PHOTO}/${SHARE}`;
@@ -29,9 +29,9 @@ describe('Paths', () => {
   it('can be escaped', () => {
     // Root views
     expect(getEscapePath(PATH_ROOT)).toEqual(undefined);
-    expect(getEscapePath(PATH_GRID)).toEqual(undefined);
+    expect(getEscapePath(PATH_FULL)).toEqual(undefined);
     // Photo views
-    expect(getEscapePath(PATH_PHOTO)).toEqual(PATH_GRID);
+    expect(getEscapePath(PATH_PHOTO)).toEqual(PATH_FULL);
     expect(getEscapePath(PATH_PHOTO_SHARE)).toEqual(PATH_PHOTO);
   });
 });

@@ -6,6 +6,7 @@ import { Link } from '../navigation';
 import { pathForPhoto, pathForPhotoShare, pathForPhotoAddCart } from '@/site/paths';
 import ShareButton from '@/components/ShareButton';
 import AddButton from '@/checkout/AddButton';
+import SideBarTitle from '@/components/SideBarTitle';
 
 export default function PhotoLarge({
   photo,
@@ -50,20 +51,7 @@ export default function PhotoLarge({
           )}
         >
           {renderMiniGrid(
-            <>
-              <div className="-space-y-0.5">
-                <div className="relative flex gap-2 items-start">
-                  <div className="md:flex-grow">
-                    <Link
-                      href={pathForPhoto(photo)}
-                      className="font-bold uppercase"
-                    >
-                      {titleForPhoto(photo)}
-                    </Link>
-                  </div>
-                </div>
-              </div>
-            </>
+            <SideBarTitle href={pathForPhoto(photo)} title={titleForPhoto(photo)} />
           )}
           {renderMiniGrid(
             <>

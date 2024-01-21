@@ -1,5 +1,6 @@
 import { TbPhotoShare } from 'react-icons/tb';
 import IconPathButton from '@/components/IconPathButton';
+import { useTranslations } from 'next-intl';
 
 export default function ShareButton({
   path,
@@ -12,11 +13,13 @@ export default function ShareButton({
   shouldScroll?: boolean;
   dim?: boolean;
 }) {
+  const t = useTranslations('share');
+
   return (
     <IconPathButton
       {...{
         path,
-        title: 'Partager',
+        title: t('share_button'),
         icon: (
           <TbPhotoShare
             size={34}

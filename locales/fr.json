@@ -23,10 +23,10 @@
     }
   },
   "share": {
-    "share_photo": "Partager",
+    "share_button": "Partager",
+    "share_photo": "Partager la photo",
     "link_to_photo_copied": "Le lien de la photo est copier dans le press-papier."
   },
   "link_to_photo_copied": "Liens de la photo copié.",
-  "photo": "photo",
-  "share_photo": "Partager la photo"
+  "photo": "photo"
 }

@@ -1,9 +1,10 @@
 import { Photo } from '@/photo';
 import { BASE_URL } from './config';
+import { defaultLocale } from '@/i18n';
 
 // Core paths
 export const PATH_ROOT = '/';
-export const PATH_GRID = '/grid';
+export const PATH_FULL = '/full';
 export const PATH_SETS = '/sets';
 export const PATH_OG = '/og';
 
@@ -22,7 +23,7 @@ const pathWithNext = (path: string, next?: number) => (next !== undefined ? `${p
 
 export const pathForRoot = (next?: number) => pathWithNext(PATH_ROOT, next);
 
-export const pathForGrid = (next?: number) => pathWithNext(PATH_GRID, next);
+export const pathForGrid = (next?: number) => pathWithNext(PATH_FULL, next);
 
 export const pathForOg = (next?: number) => pathWithNext(PATH_OG, next);
 
@@ -47,11 +48,11 @@ export const isPathPhoto = (pathname = '') => new RegExp(`^${PREFIX_PHOTO}/[^/]+
 // p/[photoId]/share
 export const isPathPhotoShare = (pathname = '') => new RegExp(`^${PREFIX_PHOTO}/[^/]+/${SHARE}/?$`).test(pathname);
 
-export const checkPathPrefix = (pathname = '', prefix: string) => pathname.toLowerCase().startsWith(prefix);
+export const checkPathPrefix = (locale = defaultLocale, pathname = '', prefix: string) => pathname.toLowerCase().startsWith(`/${locale}${prefix}`);
 
-export const isPathGrid = (pathname?: string) => checkPathPrefix(pathname, PATH_GRID);
+export const isPathGrid = (locale?: string, pathname?: string) => checkPathPrefix(locale, pathname, PATH_FULL);
 
-export const isPathSets = (pathname?: string) => checkPathPrefix(pathname, PATH_SETS);
+export const isPathSets = (locale?: string, pathname?: string) => checkPathPrefix(locale, pathname, PATH_SETS);
 
 export const getPathComponents = (pathname = ''): { photoId?: string } => {
   return {
@@ -62,7 +63,7 @@ export const getPathComponents = (pathname = ''): { photoId?: string } => {
 export const getEscapePath = (pathname?: string) => {
   const { photoId } = getPathComponents(pathname);
   if (photoId && isPathPhoto(pathname)) {
-    return PATH_GRID;
+    return PATH_FULL;
   } else {
     return pathForPhoto(photoId || '');
   }

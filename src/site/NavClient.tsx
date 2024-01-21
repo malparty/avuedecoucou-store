@@ -8,11 +8,13 @@ import { SITE_DOMAIN_OR_TITLE } from '@/site/config';
 import ViewSwitcher, { SwitcherSelection } from '@/site/ViewSwitcher';
 import { PATH_ROOT, isPathGrid, isPathSets } from '@/site/paths';
 import AnimateItems from '../components/AnimateItems';
-import IconButton from '@/components/IconButton';
 import CartButton from '@/checkout/CartButton';
+import { useLocale } from 'next-intl';
+import LangSwitch from '@/components/LangSwitch';
 
 export default function NavClient() {
   const pathname = usePathname();
+  const locale = useLocale();
 
   const renderLink = (text: string, linkOrAction: string | (() => void)) =>
     typeof linkOrAction === 'string' ? (
@@ -22,11 +24,11 @@ export default function NavClient() {
     );
 
   const switcherSelectionForPath = (): SwitcherSelection | undefined => {
-    if (pathname === PATH_ROOT) {
-      return 'full-frame';
-    } else if (isPathGrid(pathname)) {
+    if (pathname === `/${locale}/`) {
       return 'grid';
-    } else if (isPathSets(pathname)) {
+    } else if (isPathGrid(locale, pathname)) {
+      return 'full-frame';
+    } else if (isPathSets(locale, pathname)) {
       return 'sets';
     }
   };
@@ -45,9 +47,24 @@ export default function NavClient() {
             >
               <div className="flex flex-grow items-center gap-4">
                 <ViewSwitcher currentSelection={switcherSelectionForPath()} />
+                <LangSwitch />
               </div>
               <div className="hidden xs:block">{renderLink(SITE_DOMAIN_OR_TITLE, PATH_ROOT)}</div>
-              <CartButton path='/cart' />
+            </div>,
+          ]}
+        />
+      }
+      contentSide={
+        <AnimateItems
+          animateOnFirstLoadOnly
+          type={'none'}
+          distanceOffset={10}
+          items={[
+            <div
+              key="nav"
+              className={clsx('flex items-center', 'w-full min-h-[4rem]', 'leading-none')}
+            >
+              <CartButton path="/cart" />
             </div>,
           ]}
         />

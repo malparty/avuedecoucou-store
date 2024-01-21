@@ -5,8 +5,8 @@ import { TbPhotoShare } from 'react-icons/tb';
 import { Photo } from '@/photo';
 import { clsx } from 'clsx/lite';
 import { ReactNode } from 'react';
-import CheckOutForm from './CheckOutForm';
 import { useTranslations } from 'next-intl';
+import InfoBlock from '@/components/InfoBlock';
 
 export default function AddModal({
   photo,
@@ -38,7 +38,9 @@ export default function AddModal({
           )}
         >
           <div className="truncate p-2 w-full">{photo.title}</div>
-          <CheckOutForm />
+          <InfoBlock>
+            Photo ajoutée avec success!! (ce message sera remplacé par une mini notification!)
+          </InfoBlock>
         </div>
       </div>
     </Modal>
