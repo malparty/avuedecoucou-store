@@ -28,10 +28,10 @@ describe('Paths', () => {
   });
   it('can be escaped', () => {
     // Root views
-    expect(getEscapePath(PATH_ROOT)).toEqual(undefined);
-    expect(getEscapePath(PATH_FULL)).toEqual(undefined);
+    expect(getEscapePath('en', PATH_ROOT)).toEqual(undefined);
+    expect(getEscapePath('en', PATH_FULL)).toEqual(undefined);
     // Photo views
-    expect(getEscapePath(PATH_PHOTO)).toEqual(PATH_FULL);
-    expect(getEscapePath(PATH_PHOTO_SHARE)).toEqual(PATH_PHOTO);
+    expect(getEscapePath('en', PATH_PHOTO)).toEqual(PATH_FULL);
+    expect(getEscapePath('en', PATH_PHOTO_SHARE)).toEqual(PATH_PHOTO);
   });
 });

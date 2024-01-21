@@ -36,7 +36,6 @@ export const PRO_MODE_ENABLED = process.env.NEXT_PUBLIC_PRO_MODE === '1';
 export const GEO_PRIVACY_ENABLED = process.env.NEXT_PUBLIC_GEO_PRIVACY === '1';
 export const PRIORITY_ORDER_ENABLED =
   process.env.NEXT_PUBLIC_IGNORE_PRIORITY_ORDER !== '1';
-export const PUBLIC_API_ENABLED = process.env.NEXT_PUBLIC_PUBLIC_API === '1';
 export const SHOW_REPO_LINK = process.env.NEXT_PUBLIC_HIDE_REPO_LINK !== '1';
 export const GRID_ASPECT_RATIO = process.env.NEXT_PUBLIC_GRID_ASPECT_RATIO
   ? parseFloat(process.env.NEXT_PUBLIC_GRID_ASPECT_RATIO)
@@ -53,7 +52,6 @@ export const CONFIG_CHECKLIST_STATUS = {
   isProModeEnabled: PRO_MODE_ENABLED,
   isGeoPrivacyEnabled: GEO_PRIVACY_ENABLED,
   isPriorityOrderEnabled: PRIORITY_ORDER_ENABLED,
-  isPublicApiEnabled: PUBLIC_API_ENABLED,
   isOgTextBottomAligned: OG_TEXT_BOTTOM_ALIGNMENT,
   gridAspectRatio: GRID_ASPECT_RATIO,
 };

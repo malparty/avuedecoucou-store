@@ -2,7 +2,6 @@ import { Photo, titleForPhoto } from '.';
 import SiteGrid from '@/components/SiteGrid';
 import ImageLarge from '@/components/ImageLarge';
 import { clsx } from 'clsx/lite';
-import { Link } from '../navigation';
 import { pathForPhoto, pathForPhotoShare, pathForPhotoAddCart } from '@/site/paths';
 import ShareButton from '@/components/ShareButton';
 import AddButton from '@/checkout/AddButton';
