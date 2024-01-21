@@ -1,7 +1,12 @@
 {
+  "cart": {
+    "cart_button": "View cart"
+  },
   "checkout": {
     "add_cart": "Add to cart",
     "form": {
+      "order": "Send the order",
+      "bottom_instructions": "After sending the order, we will contact you within 2 working days with instructions to process the payment.",
       "invalid_fields": "Some fields are invalid.",
       "fields": {
         "email": "Email",

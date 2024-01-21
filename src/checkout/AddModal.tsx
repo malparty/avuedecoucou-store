@@ -6,18 +6,19 @@ import { Photo } from '@/photo';
 import { clsx } from 'clsx/lite';
 import { ReactNode } from 'react';
 import CheckOutForm from './CheckOutForm';
+import { useTranslations } from 'next-intl';
 
 export default function AddModal({
-  title = 'Ajouter au panier',
   photo,
   pathClose,
   children,
 }: {
-  title?: string;
   photo: Photo;
   pathClose: string;
   children: ReactNode;
 }) {
+  const t = useTranslations('checkout');
+
   return (
     <Modal onClosePath={pathClose} large>
       <div className="space-y-3 md:space-y-4 w-full">
@@ -26,7 +27,7 @@ export default function AddModal({
             size={22}
             className="hidden xs:block"
           />
-          <div className="flex-grow">{title}</div>
+          <div className="flex-grow">{t('add_cart')}</div>
         </div>
         {children}
         <div

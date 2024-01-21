@@ -1,7 +1,12 @@
 {
+  "cart": {
+    "cart_button": "Mon panier"
+  },
   "checkout": {
     "add_cart": "Ajouter au panier",
     "form": {
+      "order": "Placer la commande",
+      "bottom_instructions": "Après le placement de votre commande, nous vous contacterons sous 2 jours ouvrés avec les informations pour procéder au paiement.",
       "invalid_fields": "Certains champs sont invalides",
       "fields": {
         "email": "Adresse é-mail",

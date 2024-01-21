@@ -6,13 +6,15 @@ import SubmitButtonWithStatus from '@/components/SubmitButtonWithStatus';
 import React, { useLayoutEffect, useRef, useState } from 'react';
 import { useFormState } from 'react-dom';
 import ErrorNote from '@/components/ErrorNote';
-import { useTranslations } from 'next-intl';
+import { useLocale, useTranslations } from 'next-intl';
 import CountrySelector from '@/components/CountrySelector';
 import { COUNTRIES } from '@/components/CountrySelector/countries';
 import { SelectMenuOption } from '@/components/CountrySelector/types';
 
 export default function CheckOutForm() {
   const t = useTranslations('checkout');
+  const locale = useLocale();
+  const countries = COUNTRIES[locale as 'en' | 'fr' | 'de'];
 
   const [email, setEmail] = useState('');
   const [firstName, setFirstName] = useState('');
@@ -76,12 +78,12 @@ export default function CheckOutForm() {
                 id="phone"
                 required
                 label={t('form.fields.phone')}
-                type="text"
+                type="tel"
                 value={phone}
                 onChange={setPhone}
               />
               <div className="pt-4">
-                <SubmitButtonWithStatus disabled={!isFormValid}>Placer la commande</SubmitButtonWithStatus>
+                <SubmitButtonWithStatus disabled={!isFormValid}>{t('form.order')}</SubmitButtonWithStatus>
               </div>
             </div>
             <div className="space-y-4">
@@ -125,20 +127,20 @@ export default function CheckOutForm() {
               />
               <CountrySelector
                 id={'countries'}
+                countries={countries}
                 required
                 label={t('form.fields.country')}
                 open={isOpen}
                 onToggle={() => setIsOpen(!isOpen)}
                 onChange={(val) => setCountry(val)}
                 // We use this type assertion because we are always sure this find will return a value but need to let TS know since it could technically return null
-                selectedValue={COUNTRIES.find((option) => option.value === country) as SelectMenuOption}
+                selectedValue={
+                  countries.find((option: SelectMenuOption) => option.value === country) as SelectMenuOption
+                }
               />
             </div>
           </div>
-          <InfoBlock>
-            Après le placement de votre commande, nous vous contacterons sous 2 jours ouvrés avec les informations pour
-            procéder au paiement.
-          </InfoBlock>
+          <InfoBlock>{t('form.bottom_instructions')}</InfoBlock>
         </div>
       </form>
     </InfoBlock>

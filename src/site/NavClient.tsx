@@ -8,6 +8,8 @@ import { SITE_DOMAIN_OR_TITLE } from '@/site/config';
 import ViewSwitcher, { SwitcherSelection } from '@/site/ViewSwitcher';
 import { PATH_ROOT, isPathGrid, isPathSets } from '@/site/paths';
 import AnimateItems from '../components/AnimateItems';
+import IconButton from '@/components/IconButton';
+import CartButton from '@/checkout/CartButton';
 
 export default function NavClient() {
   const pathname = usePathname();
@@ -45,6 +47,7 @@ export default function NavClient() {
                 <ViewSwitcher currentSelection={switcherSelectionForPath()} />
               </div>
               <div className="hidden xs:block">{renderLink(SITE_DOMAIN_OR_TITLE, PATH_ROOT)}</div>
+              <CartButton path='/cart' />
             </div>,
           ]}
         />

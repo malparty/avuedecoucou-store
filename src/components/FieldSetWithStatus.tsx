@@ -35,7 +35,7 @@ export default function FieldSetWithStatus({
   required?: boolean;
   readOnly?: boolean;
   capitalize?: boolean;
-  type?: 'text' | 'email' | 'password' | 'checkbox';
+  type?: 'tel' | 'text' | 'email' | 'password' | 'checkbox';
   inputRef?: LegacyRef<HTMLInputElement>;
 }) {
   const { pending } = useFormStatus();
@@ -92,7 +92,7 @@ export default function FieldSetWithStatus({
           type={type}
           autoComplete="off"
           readOnly={readOnly || pending}
-          className={clsx(type === 'text' && 'w-full', error && 'error')}
+          className={clsx(['text', 'tel'].includes(type) && 'w-full', error && 'error')}
           autoCapitalize={!capitalize ? 'off' : undefined}
         />
       )}

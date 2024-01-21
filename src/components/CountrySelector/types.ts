@@ -2,6 +2,7 @@ import { COUNTRIES } from './countries';
 
 export interface CountrySelectorProps {
   id: string;
+  countries: SelectMenuOption[];
   open: boolean;
   disabled?: boolean;
   label: string;
@@ -14,4 +15,7 @@ export interface CountrySelectorProps {
   required?: boolean;
 }
 
-export type SelectMenuOption = (typeof COUNTRIES)[number];
+export interface SelectMenuOption {
+  title: string
+  value: string
+};

@@ -6,6 +6,7 @@ import React, { MutableRefObject, useEffect, useRef, useState } from 'react';
 
 export default function CountrySelector({
   id,
+  countries,
   open,
   disabled = false,
   onToggle,
@@ -129,13 +130,13 @@ export default function CountrySelector({
                   'max-h-64 scrollbar scrollbar-track-gray-100 scrollbar-thumb-gray-300 hover:scrollbar-thumb-gray-600 scrollbar-thumb-rounded scrollbar-thin overflow-y-scroll'
                 }
               >
-                {COUNTRIES.filter((country) => country.title.toLowerCase().startsWith(query.toLowerCase())).length ===
+                {countries.filter((country) => country.title.toLowerCase().startsWith(query.toLowerCase())).length ===
                 0 ? (
                   <li className="text-gray-900 cursor-default select-none relative py-2 pl-3 pr-9">
                     No countries found
                   </li>
                 ) : (
-                  COUNTRIES.filter((country) => country.title.toLowerCase().startsWith(query.toLowerCase())).map(
+                  countries.filter((country) => country.title.toLowerCase().startsWith(query.toLowerCase())).map(
                     (value, index) => {
                       return (
                         <li
