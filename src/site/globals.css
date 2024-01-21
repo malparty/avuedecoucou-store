@@ -2,6 +2,48 @@
 @tailwind components;
 @tailwind utilities;
 
+@font-face {
+  font-family: Sansation;
+  font-weight: normal;
+  font-style: normal;
+  src: url("../../public/fonts/Sansation-Regular.ttf");
+}
+
+@font-face {
+  font-family: Sansation;
+  font-weight: normal;
+  font-style: italic;
+  src: url("../../public/fonts/Sansation-Italic.ttf");
+}
+
+@font-face {
+  font-family: Sansation;
+  font-weight: bold;
+  font-style: italic;
+  src: url("../../public/fonts/Sansation-BoldItalic.ttf");
+}
+
+@font-face {
+  font-family: Sansation;
+  font-weight: bold;
+  font-style: normal;
+  src: url("../../public/fonts/Sansation-Bold.ttf");
+}
+
+@font-face {
+  font-family: Sansation;
+  font-weight: light;
+  font-style: italic;
+  src: url("../../public/fonts/Sansation-LightItalic.ttf");
+}
+
+@font-face {
+  font-family: Sansation;
+  font-weight: light;
+  font-style: normal;
+  src: url("../../public/fonts/Sansation-Light.ttf");
+}
+
 @layer base {
   /* Core */
   body {

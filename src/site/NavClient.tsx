@@ -4,17 +4,17 @@ import { clsx } from 'clsx/lite';
 import { usePathname } from 'next/navigation';
 import { Link } from '../navigation';
 import SiteGrid from '../components/SiteGrid';
-import { SITE_DOMAIN_OR_TITLE } from '@/site/config';
 import ViewSwitcher, { SwitcherSelection } from '@/site/ViewSwitcher';
 import { PATH_ROOT, isPathGrid, isPathSets } from '@/site/paths';
 import AnimateItems from '../components/AnimateItems';
 import CartButton from '@/checkout/CartButton';
-import { useLocale } from 'next-intl';
+import { useLocale, useTranslations } from 'next-intl';
 import LangSwitch from '@/components/LangSwitch';
 
 export default function NavClient() {
   const pathname = usePathname();
   const locale = useLocale();
+  const t = useTranslations('layout');
 
   const renderLink = (text: string, linkOrAction: string | (() => void)) =>
     typeof linkOrAction === 'string' ? (
@@ -49,7 +49,7 @@ export default function NavClient() {
                 <ViewSwitcher currentSelection={switcherSelectionForPath()} />
                 <LangSwitch />
               </div>
-              <div className="hidden xs:block">{renderLink(SITE_DOMAIN_OR_TITLE, PATH_ROOT)}</div>
+              <div className="hidden xs:block">{renderLink(t('header_title'), PATH_ROOT)}</div>
             </div>,
           ]}
         />

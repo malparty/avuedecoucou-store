@@ -32,12 +32,14 @@ export default function IconButton({
             'inline-flex items-start justify-start',
             'p-0 border-none shadow-none',
             'active:bg-transparent bg-transparent dark:bg-transparent',
-            'translate-x-[-1px]',
             onClick !== undefined && 'cursor-pointer',
             'active:opacity-50',
           )}
         >
-          {icon} {title}
+          {icon}
+          <div className="p-1">
+            {title}
+          </div>
         </button>
         : <span className={clsx(
           'inline-flex items-start justify-start',
@@ -46,8 +48,11 @@ export default function IconButton({
           <Spinner
             color={spinnerColor}
             size={spinnerSize}
+            className="mr-2 mb-1"
           />
-          {title}
+          <div className="p-1">
+            {title}
+          </div>
         </span>}
     </span>
   );

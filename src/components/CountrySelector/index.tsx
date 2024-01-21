@@ -1,6 +1,5 @@
 import Spinner from '../Spinner';
-import { COUNTRIES } from './countries';
-import { CountrySelectorProps, SelectMenuOption } from './types';
+import { CountrySelectorProps } from './types';
 import { AnimatePresence, motion } from 'framer-motion';
 import React, { MutableRefObject, useEffect, useRef, useState } from 'react';
 
@@ -62,7 +61,7 @@ export default function CountrySelector({
           type="button"
           className={`${
             disabled ? 'bg-neutral-100' : 'bg-white'
-          } relative w-full border border-gray-300 rounded-md shadow-sm pl-3 pr-10 py-2 text-left cursor-default focus:outline-none focus:ring-1 focus:ring-blue-500 focus:border-blue-500 sm:text-sm`}
+          } relative w-full border border-gray-300 dark:border-gray-600 rounded-md shadow-sm pl-3 pr-10 py-2 text-left cursor-default focus:outline-none focus:ring-1 focus:ring-blue-500 focus:border-blue-500 sm:text-sm`}
           aria-haspopup="listbox"
           aria-expanded="true"
           aria-labelledby="listbox-label"
@@ -83,7 +82,7 @@ export default function CountrySelector({
             }`}
           >
             <svg
-              className="h-5 w-5 text-gray-400"
+              className="h-5 w-5 text-gray-400 dark:text-gray-400"
               xmlns="http://www.w3.org/2000/svg"
               viewBox="0 0 20 20"
               fill="currentColor"
@@ -105,24 +104,24 @@ export default function CountrySelector({
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
               transition={{ duration: 0.1 }}
-              className="absolute z-10 mt-1 w-full bg-white shadow-lg max-h-80 rounded-md text-base ring-1 ring-black ring-opacity-5 focus:outline-none sm:text-sm"
+              className="absolute z-10 mt-1 w-full bg-white dark:bg-gray-900 shadow-lg max-h-80 rounded-md text-base ring-1 ring-black ring-opacity-5 focus:outline-none sm:text-sm"
               tabIndex={-1}
               role="listbox"
               aria-labelledby="listbox-label"
               aria-activedescendant="listbox-option-3"
             >
-              <div className="sticky top-0 z-10 bg-white">
-                <li className=" text-gray-900 cursor-default select-none relative py-2 px-3">
+              <div className="sticky top-0 z-10 bg-white dark:bg-gray-900">
+                <li className="text-gray-800 dark:text-gray-400 cursor-default select-none relative py-2 px-3">
                   <input
                     type="search"
                     name="search"
                     autoComplete={'off'}
-                    className="focus:ring-blue-500 focus:border-blue-500 block w-full sm:text-sm border-gray-300 rounded-md"
+                    className="focus:ring-blue-500 focus:border-blue-500 block w-full sm:text-sm border-gray-300 dark:border-gray-600 dark:bg-black rounded-md"
                     placeholder={'Search a country'}
                     onChange={(e) => setQuery(e.target.value)}
                   />
                 </li>
-                <hr />
+                <hr className="dark:border-gray-600" />
               </div>
 
               <div
@@ -132,7 +131,7 @@ export default function CountrySelector({
               >
                 {countries.filter((country) => country.title.toLowerCase().startsWith(query.toLowerCase())).length ===
                 0 ? (
-                    <li className="text-gray-900 cursor-default select-none relative py-2 pl-3 pr-9">
+                    <li className="text-gray-800 dark:text-gray-400 cursor-default select-none relative py-2 pl-3 pr-9">
                     No countries found
                     </li>
                   ) : (
@@ -141,7 +140,7 @@ export default function CountrySelector({
                         return (
                           <li
                             key={`${id}-${index}`}
-                            className="text-gray-900 cursor-default select-none relative py-2 pl-3 pr-9 flex items-center hover:bg-gray-50 transition"
+                            className="text-gray-900 dark:text-gray-400 cursor-default select-none relative py-2 pl-3 pr-9 flex items-center hover:bg-gray-50 hover:dark:bg-gray-700 transition"
                             id="listbox-option-0"
                             role="option"
                             onClick={() => {

@@ -1,4 +1,7 @@
 {
+  "layout": {
+    "header_title": "A Vue de Coucou – The Shop"
+  },
   "cart": {
     "cart_button": "View cart"
   },

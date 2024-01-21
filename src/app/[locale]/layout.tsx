@@ -1,9 +1,8 @@
 import { Analytics } from '@vercel/analytics/react';
 import { SpeedInsights } from '@vercel/speed-insights/react';
 import { clsx } from 'clsx/lite';
-import { IBM_Plex_Mono } from 'next/font/google';
 import { Metadata } from 'next';
-import { BASE_URL, SITE_DESCRIPTION, SITE_TITLE } from '@/site/config';
+import { BASE_URL, SITE_DESCRIPTION } from '@/site/config';
 import StateProvider from '@/state/AppStateProvider';
 import ThemeProviderClient from '@/site/ThemeProviderClient';
 import Nav from '@/site/Nav';
@@ -24,22 +23,17 @@ export function generateStaticParams() {
   return locales.map((locale) => ({ locale }));
 }
 
-const ibmPlexMono = IBM_Plex_Mono({
-  subsets: ['latin'],
-  weight: ['400', '500', '700'],
-  variable: '--font-ibm-plex-mono',
-});
-
+const SITE_TITLE_META_DATA = 'A Vue De Coucou – La boutique | The shop';
 export const metadata: Metadata = {
-  title: SITE_TITLE,
+  title: SITE_TITLE_META_DATA,
   description: SITE_DESCRIPTION,
   ...(BASE_URL && { metadataBase: new URL(BASE_URL) }),
   openGraph: {
-    title: SITE_TITLE,
+    title: SITE_TITLE_META_DATA,
     description: SITE_DESCRIPTION,
   },
   twitter: {
-    title: SITE_TITLE,
+    title: SITE_TITLE_META_DATA,
     description: SITE_DESCRIPTION,
   },
   icons: [
@@ -87,7 +81,7 @@ export default function RootLayout({ children, params: { locale } }: RootLayoutP
       // next-themes behavior
       suppressHydrationWarning
     >
-      <body className={ibmPlexMono.variable}>
+      <body>
         <Providers
           locale={locale}
           messages={messages}
