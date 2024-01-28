@@ -47,8 +47,16 @@ export default function CheckOutForm() {
       <form action={action}>
         <div className="space-y-8">
           {response === undefined && <ErrorNote>{t('form.invalid_fields')}</ErrorNote>}
-          <div className="grid grid-cols-2 gap-4">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             <div className="space-y-4">
+              <FieldSetWithStatus
+                id="firstName"
+                required
+                label={t('form.fields.firstName')}
+                type="text"
+                value={firstName}
+                onChange={setFirstName}
+              />
               <FieldSetWithStatus
                 id="email"
                 required
@@ -57,14 +65,6 @@ export default function CheckOutForm() {
                 type="email"
                 value={email}
                 onChange={setEmail}
-              />
-              <FieldSetWithStatus
-                id="firstName"
-                required
-                label={t('form.fields.firstName')}
-                type="text"
-                value={firstName}
-                onChange={setFirstName}
               />
               <FieldSetWithStatus
                 id="lastName"
@@ -82,9 +82,6 @@ export default function CheckOutForm() {
                 value={phone}
                 onChange={setPhone}
               />
-              <div className="pt-4">
-                <SubmitButtonWithStatus disabled={!isFormValid}>{t('form.order')}</SubmitButtonWithStatus>
-              </div>
             </div>
             <div className="space-y-4">
               <FieldSetWithStatus
@@ -139,6 +136,11 @@ export default function CheckOutForm() {
                 }
               />
             </div>
+          </div>
+          <div className="pt-4">
+            <SubmitButtonWithStatus className="min-w-full" disabled={!isFormValid}>
+              {t('form.order')}
+            </SubmitButtonWithStatus>
           </div>
           <InfoBlock>{t('form.bottom_instructions')}</InfoBlock>
         </div>
