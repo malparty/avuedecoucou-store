@@ -58,6 +58,14 @@ export default function CheckOutForm() {
                 onChange={setFirstName}
               />
               <FieldSetWithStatus
+                id="lastName"
+                required
+                label={t('form.fields.lastName')}
+                type="text"
+                value={lastName}
+                onChange={setLastName}
+              />
+              <FieldSetWithStatus
                 id="email"
                 required
                 inputRef={emailRef}
@@ -65,14 +73,6 @@ export default function CheckOutForm() {
                 type="email"
                 value={email}
                 onChange={setEmail}
-              />
-              <FieldSetWithStatus
-                id="lastName"
-                required
-                label={t('form.fields.lastName')}
-                type="text"
-                value={lastName}
-                onChange={setLastName}
               />
               <FieldSetWithStatus
                 id="phone"
