@@ -1,5 +1,3 @@
-import { COUNTRIES } from './countries';
-
 export interface CountrySelectorProps {
   id: string;
   countries: SelectMenuOption[];

@@ -1,3 +1,4 @@
+import clsx from 'clsx';
 import Spinner from '../Spinner';
 import { CountrySelectorProps } from './types';
 import { AnimatePresence, motion } from 'framer-motion';
@@ -33,7 +34,7 @@ export default function CountrySelector({
     return () => {
       document.removeEventListener('mousedown', handleClickOutside);
     };
-  }, [ref]);
+  }, [ref, onToggle, open]);
 
   const [query, setQuery] = useState('');
 
@@ -59,9 +60,10 @@ export default function CountrySelector({
       <div className="mt-1 relative">
         <button
           type="button"
-          className={`${
-            disabled ? 'bg-neutral-100' : 'bg-white'
-          } relative w-full border border-gray-300 dark:border-gray-600 rounded-md shadow-sm pl-3 pr-10 py-2 text-left cursor-default focus:outline-none focus:ring-1 focus:ring-blue-500 focus:border-blue-500 sm:text-sm`}
+          className={clsx(disabled ? 'bg-neutral-100' : 'bg-white',
+            'relative w-full border border-gray-300 dark:border-gray-600',
+            'rounded-md shadow-sm pl-3 pr-10 py-2 text-left cursor-default',
+            'focus:outline-none focus:ring-1 focus:ring-blue-500 focus:border-blue-500 sm:text-sm')}
           aria-haspopup="listbox"
           aria-expanded="true"
           aria-labelledby="listbox-label"
@@ -90,6 +92,7 @@ export default function CountrySelector({
             >
               <path
                 fillRule="evenodd"
+                // eslint-disable-next-line max-len
                 d="M10 3a1 1 0 01.707.293l3 3a1 1 0 01-1.414 1.414L10 5.414 7.707 7.707a1 1 0 01-1.414-1.414l3-3A1 1 0 0110 3zm-3.707 9.293a1 1 0 011.414 0L10 14.586l2.293-2.293a1 1 0 011.414 1.414l-3 3a1 1 0 01-1.414 0l-3-3a1 1 0 010-1.414z"
                 clipRule="evenodd"
               />
@@ -104,7 +107,9 @@ export default function CountrySelector({
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
               transition={{ duration: 0.1 }}
-              className="absolute z-10 mt-1 w-full bg-white dark:bg-gray-900 shadow-lg max-h-80 rounded-md text-base ring-1 ring-black ring-opacity-5 focus:outline-none sm:text-sm"
+              className={clsx('absolute z-10 mt-1 w-full bg-white',
+                'dark:bg-gray-900 shadow-lg max-h-80 rounded-md',
+                'text-base ring-1 ring-black ring-opacity-5 focus:outline-none sm:text-sm')}
               tabIndex={-1}
               role="listbox"
               aria-labelledby="listbox-label"
@@ -116,7 +121,8 @@ export default function CountrySelector({
                     type="search"
                     name="search"
                     autoComplete={'off'}
-                    className="focus:ring-blue-500 focus:border-blue-500 block w-full sm:text-sm border-gray-300 dark:border-gray-600 dark:bg-black rounded-md"
+                    className={clsx('focus:ring-blue-500 focus:border-blue-500',
+                      'block w-full sm:text-sm border-gray-300 dark:border-gray-600 dark:bg-black rounded-md')}
                     placeholder={'Search a country'}
                     onChange={(e) => setQuery(e.target.value)}
                   />
@@ -125,9 +131,8 @@ export default function CountrySelector({
               </div>
 
               <div
-                className={
-                  'max-h-64 scrollbar scrollbar-track-gray-100 scrollbar-thumb-gray-300 hover:scrollbar-thumb-gray-600 scrollbar-thumb-rounded scrollbar-thin overflow-y-scroll'
-                }
+                className={clsx('max-h-64 scrollbar scrollbar-track-gray-100 scrollbar-thumb-gray-300',
+                  'hover:scrollbar-thumb-gray-600 scrollbar-thumb-rounded scrollbar-thin overflow-y-scroll')}
               >
                 {countries.filter((country) => country.title.toLowerCase().startsWith(query.toLowerCase())).length ===
                 0 ? (
@@ -140,8 +145,11 @@ export default function CountrySelector({
                         return (
                           <li
                             key={`${id}-${index}`}
-                            className="text-gray-900 dark:text-gray-400 cursor-default select-none relative py-2 pl-3 pr-9 flex items-center hover:bg-gray-50 hover:dark:bg-gray-700 transition"
+                            className={clsx('text-gray-900 dark:text-gray-400 cursor-default',
+                              'select-none relative py-2 pl-3 pr-9',
+                              'flex items-center hover:bg-gray-50 hover:dark:bg-gray-700 transition')}
                             id="listbox-option-0"
+                            // eslint-disable-next-line
                             role="option"
                             onClick={() => {
                               onChange(value.value);
@@ -167,6 +175,7 @@ export default function CountrySelector({
                                 >
                                   <path
                                     fillRule="evenodd"
+                                    // eslint-disable-next-line max-len
                                     d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
                                     clipRule="evenodd"
                                   />

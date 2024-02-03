@@ -31,7 +31,6 @@ export default function CheckOutForm() {
     alert('Bonnnnsoiiiiiirreeuh');
   }, undefined);
 
-  const myRef = React.createRef<HTMLDivElement>();
   const [isOpen, setIsOpen] = useState(false);
 
   const emailRef = useRef<HTMLInputElement>(null);
@@ -130,7 +129,8 @@ export default function CheckOutForm() {
                 open={isOpen}
                 onToggle={() => setIsOpen(!isOpen)}
                 onChange={(val) => setCountry(val)}
-                // We use this type assertion because we are always sure this find will return a value but need to let TS know since it could technically return null
+                // We use this type assertion because we are always sure this find will return a value
+                // but need to let TS know since it could technically return null
                 selectedValue={
                   countries.find((option: SelectMenuOption) => option.value === country) as SelectMenuOption
                 }

@@ -52,7 +52,8 @@ export const isPathPhoto = (pathname = '') =>
   new RegExp(`^/(${locales.join('|')})${PREFIX_PHOTO}/[^/]+/?$`).test(pathname);
 
 // p/[photoId]/share
-export const isPathPhotoShare = (pathname = '') => new RegExp(`^/(${locales.join('|')})${PREFIX_PHOTO}/[^/]+/${SHARE}/?$`).test(pathname);
+export const isPathPhotoShare = (pathname = '') =>
+  (new RegExp(`^/(${locales.join('|')})${PREFIX_PHOTO}/[^/]+/${SHARE}/?$`).test(pathname));
 
 export const checkPathPrefix = (locale = defaultLocale, pathname = '', prefix: string) =>
   pathname.toLowerCase().startsWith(`/${locale}${prefix}`);
