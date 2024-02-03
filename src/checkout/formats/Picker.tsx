@@ -1,0 +1,43 @@
+'use client';
+
+import { useEffect, useState } from 'react';
+import { FORMAT_KEYS, PRICES, SUPPORTS } from '../data';
+import FormatButton from './FormatButton';
+import SupportButton from './SupportButton';
+
+export default function FormatsPicker() {
+  const [currentFormatKey, setCurrentFormatKey] = useState(FORMAT_KEYS[0]);
+  const [currentSupport, setCurrentSupport] = useState(SUPPORTS[0]);
+  const [price, setPrice] = useState(0);
+
+  useEffect(()=>{
+    setPrice(PRICES[currentSupport][currentFormatKey]);
+  }, [currentFormatKey, currentSupport]);
+
+  return (
+    <div>
+      <div className='text-3xl'>Format</div>
+      <div className='flex flex-wrap mb-4'>
+        {FORMAT_KEYS.map((formatKey) => (
+          <FormatButton onClick={() => { return setCurrentFormatKey(formatKey);}}
+            key={formatKey}
+            isSelected={currentFormatKey === formatKey}
+            formatKey={formatKey} />
+        ))}
+      </div>
+      <div className='text-3xl'>Support</div>
+      <div className='flex flex-wrap mb-4'>
+        {SUPPORTS.map((support) => (
+          <SupportButton onClick={() => { return setCurrentSupport(support);}}
+            key={support}
+            isSelected={currentSupport === support}
+            support={support} />
+        ))}
+      </div>
+      <div className='flex my-4'>
+        <div className='text-3xl mr-1 pt-3'>Prix</div>
+        <div className='text-4xl'>{price} EUR</div>
+      </div>
+    </div>
+  );
+}

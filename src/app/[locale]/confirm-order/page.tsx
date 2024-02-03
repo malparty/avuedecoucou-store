@@ -4,7 +4,7 @@ import { sendMail } from '@/utility/emails';
 
 export default async function SendEmailPage() {
   await sendMail({
-    to: 'xavv1m@gmail.com',
+    to: process.env.NODEMAILER_EMAIL_TO || '',
     subject: 'Welcome to A vue de coucou.com!',
     html: render(OrderConfirmationTemplate()),
   });

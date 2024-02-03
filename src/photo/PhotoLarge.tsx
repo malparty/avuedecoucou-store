@@ -6,6 +6,7 @@ import { pathForPhoto, pathForPhotoShare, pathForPhotoAddCart } from '@/site/pat
 import ShareButton from '@/components/ShareButton';
 import AddButton from '@/checkout/AddButton';
 import SideBarTitle from '@/components/SideBarTitle';
+import FormatsPicker from '@/checkout/formats/Picker';
 
 export default function PhotoLarge({
   photo,
@@ -60,6 +61,7 @@ export default function PhotoLarge({
                   prefetch={prefetchActions}
                   shouldScroll={shouldScrollOnActions}
                 />
+                <FormatsPicker />
                 <AddButton
                   path={pathForPhotoAddCart(photo)}
                   prefetch={prefetchActions}
