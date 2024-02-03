@@ -12,7 +12,6 @@ export default function PhotoImageResponse({
   photo: Photo;
   width: NextImageSize;
   height: number;
-  fontFamily: string;
 }) {
   return (
     <ImageContainer {...{ width, height }}>

@@ -8,7 +8,6 @@ export default function TemplateImageResponse({
   photos,
   width,
   height,
-  fontFamily,
   outerMargin = 50,
   includeHeader = true,
   darkMode = true,
@@ -17,7 +16,6 @@ export default function TemplateImageResponse({
   photos: Photo[]
   width: NextImageSize
   height: number
-  fontFamily: string
   outerMargin?: number
   includeHeader?: boolean
   darkMode?: boolean
@@ -37,7 +35,6 @@ export default function TemplateImageResponse({
         : { background: 'white', color: 'black' },
       width,
       height,
-      fontFamily,
     }}>
       {includeHeader &&
         <div style={{

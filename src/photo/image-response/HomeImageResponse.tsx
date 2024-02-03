@@ -9,12 +9,10 @@ export default function HomeImageResponse({
   photos,
   width,
   height,
-  fontFamily,
 }: {
   photos: Photo[]
   width: NextImageSize
   height: number
-  fontFamily: string
 }) {
   const t = useTranslations('layout');
 
@@ -27,7 +25,7 @@ export default function HomeImageResponse({
           height,
         }}
       />
-      <ImageCaption {...{ width, height, fontFamily }}>
+      <ImageCaption {...{ width, height }}>
         {t('header_title')}
       </ImageCaption>
     </ImageContainer>
