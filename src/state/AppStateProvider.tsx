@@ -4,6 +4,7 @@ import { useState, useEffect, ReactNode } from 'react';
 import { AppStateContext } from '.';
 import { AnimationConfig } from '@/components/AnimateItems';
 import usePathnames from '@/utility/usePathnames';
+import { Cart } from '@/checkout/cart/Cart';
 
 export default function StateProvider({
   children,
@@ -13,7 +14,7 @@ export default function StateProvider({
   const { previousPathname } = usePathnames();
 
   const [hasLoaded, setHasLoaded] = useState(false);
-  
+
   const [nextPhotoAnimation, setNextPhotoAnimation] =
     useState<AnimationConfig>();
 
@@ -30,6 +31,7 @@ export default function StateProvider({
         nextPhotoAnimation,
         setNextPhotoAnimation,
         clearNextPhotoAnimation: () => setNextPhotoAnimation?.(undefined),
+        cart: new Cart(),
       }}
     >
       {children}

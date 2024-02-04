@@ -1,6 +1,9 @@
+'use client';
+
 import { FaCartShopping } from 'react-icons/fa6';
 import IconPathButton from '@/components/IconPathButton';
 import { useTranslations } from 'next-intl';
+import { useAppState } from '@/state';
 
 export default function CartButton({
   path,
@@ -11,8 +14,10 @@ export default function CartButton({
   prefetch?: boolean;
   shouldScroll?: boolean;
 }) {
+  const appState = useAppState();
+  console.log(appState);
   const t = useTranslations('cart');
-  const title = `${t('cart_button')} (2)`;
+  const title = `${t('cart_button')} (${appState.cart.items.length})`;
   return (
     <IconPathButton
       {...{

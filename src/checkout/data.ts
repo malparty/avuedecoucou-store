@@ -1,5 +1,5 @@
 export const FORMAT_KEYS = ['a', 'b', 'c', 'd', 'e'];
-export type formatKeysType = typeof FORMAT_KEYS[number];
+export type formatKeysType = 'a' | 'b' | 'c' | 'd' | 'e';
 export type supportType = 'toile' | 'forex' | 'aluminium' | 'acrylique';
 
 type formatsType = {[key in formatKeysType]: string}

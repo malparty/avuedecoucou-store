@@ -1,5 +1,5 @@
-import CartPage from '@/cart/CartPage';
-import CartSideBar from '@/cart/CartSideBar';
+import CartPage from '@/checkout/cart/CartPage';
+import CartSideBar from '@/checkout/cart/CartSideBar';
 import SiteGrid from '@/components/SiteGrid';
 import { PaginationParams } from '@/site/pagination';
 import { unstable_setRequestLocale } from 'next-intl/server';

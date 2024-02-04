@@ -7,7 +7,7 @@ import SiteGrid from '../components/SiteGrid';
 import ViewSwitcher, { SwitcherSelection } from '@/site/ViewSwitcher';
 import { PATH_ROOT, isPathGrid, isPathSets } from '@/site/paths';
 import AnimateItems from '../components/AnimateItems';
-import CartButton from '@/checkout/CartButton';
+import CartButton from '@/checkout/cart/CartButton';
 import { useLocale, useTranslations } from 'next-intl';
 import LangSwitch from '@/components/LangSwitch';
 

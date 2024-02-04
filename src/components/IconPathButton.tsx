@@ -5,6 +5,8 @@ import IconButton from './IconButton';
 import { useEffect, useState, useTransition } from 'react';
 import { clsx } from 'clsx/lite';
 import { SpinnerColor } from './Spinner';
+import { useAppState } from '@/state';
+import { CartItem } from '@/checkout/cart/Cart';
 
 export default function IconPathButton({
   icon,
@@ -26,6 +28,7 @@ export default function IconPathButton({
   spinnerColor?: SpinnerColor
 }) {
   const router = useRouter();
+  const { cart } = useAppState();
 
   const [isPending, startTransition] = useTransition();
 
@@ -53,11 +56,7 @@ export default function IconPathButton({
       icon={icon}
       title={title}
       onClick={() => startTransition(() => {
-        if (shouldReplace) {
-          router.replace(path, { scroll: shouldScroll });
-        } else {
-          router.push(path, { scroll: shouldScroll });
-        }
+        cart.addItem(new CartItem({formatKey: 'a', support: 'acrylique', photoTitle: 'Test Photo', quantity: 4}));
       })}
       isLoading={shouldShowLoader}
       className={clsx(
