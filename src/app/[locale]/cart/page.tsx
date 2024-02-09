@@ -5,6 +5,7 @@ import { PaginationParams } from '@/site/pagination';
 import { unstable_setRequestLocale } from 'next-intl/server';
 
 export const runtime = 'edge';
+export const dynamic = 'force-dynamic';
 
 export default async function CartAppPage({ params: { locale } }: PaginationParams) {
   unstable_setRequestLocale(locale);

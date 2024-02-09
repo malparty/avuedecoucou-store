@@ -24,8 +24,12 @@ export class CartItem implements CartItemProps {
     this.quantity = props.quantity;
   }
 
-  price() {
-    return this.quantity * PRICES[this.support][this.formatKey];
+  unitPrice() {
+    return PRICES[this.support][this.formatKey];
+  };
+
+  totalPrice() {
+    return this.quantity * this.unitPrice();
   };
 };
 
@@ -39,13 +43,14 @@ export class Cart {
       return [];
 
     const currentItems = localStorage.getItem(CART_ITEMS_KEY);
-    this._items = currentItems ? (JSON.parse(currentItems) as (CartItem[] | undefined) || []) : [];
+    const parsedItems  = currentItems ? (JSON.parse(currentItems) as (CartItem[] | undefined) || []) : [];
 
+    this._items = parsedItems.map(item => new CartItem(item));
     return this._items;
   }
 
   totalPrice() {
-    return this.getItems().reduce((sum, current) => sum + current.price(), 0);
+    return this.getItems().reduce((sum, current) => sum + current.totalPrice(), 0);
   }
 
   addItem(item: CartItem) {
