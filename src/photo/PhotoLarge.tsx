@@ -2,9 +2,8 @@ import { Photo, titleForPhoto } from '.';
 import SiteGrid from '@/components/SiteGrid';
 import ImageLarge from '@/components/ImageLarge';
 import { clsx } from 'clsx/lite';
-import { pathForPhoto, pathForPhotoShare, pathForPhotoAddCart } from '@/site/paths';
+import { pathForPhoto, pathForPhotoShare } from '@/site/paths';
 import ShareButton from '@/components/ShareButton';
-import AddButton from '@/checkout/AddButton';
 import SideBarTitle from '@/components/SideBarTitle';
 import FormatsPicker from '@/checkout/formats/Picker';
 
@@ -12,12 +11,10 @@ export default function PhotoLarge({
   photo,
   priority,
   prefetchActions,
-  shouldScrollOnActions,
 }: {
   photo: Photo;
   priority?: boolean;
   prefetchActions?: boolean;
-  shouldScrollOnActions?: boolean;
 }) {
   const renderMiniGrid = (children: JSX.Element, rightPadding = true) => (
     <div
@@ -59,14 +56,8 @@ export default function PhotoLarge({
                 <ShareButton
                   path={pathForPhotoShare(photo)}
                   prefetch={prefetchActions}
-                  shouldScroll={shouldScrollOnActions}
                 />
-                <FormatsPicker />
-                <AddButton
-                  path={pathForPhotoAddCart(photo)}
-                  prefetch={prefetchActions}
-                  shouldScroll={shouldScrollOnActions}
-                />
+                <FormatsPicker photoTitle={photo.title} />
               </div>
             </>,
             false

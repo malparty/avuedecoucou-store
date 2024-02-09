@@ -1,4 +1,4 @@
-export const FORMAT_KEYS = ['a', 'b', 'c', 'd', 'e'];
+export const FORMAT_KEYS : formatType[] = ['a', 'b', 'c', 'd', 'e'];
 export type formatKeysType = 'a' | 'b' | 'c' | 'd' | 'e';
 export type supportType = 'toile' | 'forex' | 'aluminium' | 'acrylique';
 

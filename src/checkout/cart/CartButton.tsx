@@ -14,10 +14,11 @@ export default function CartButton({
   prefetch?: boolean;
   shouldScroll?: boolean;
 }) {
-  const appState = useAppState();
-  console.log(appState);
+  const {cartCount} = useAppState();
   const t = useTranslations('cart');
-  const title = `${t('cart_button')} (${appState.cart.items.length})`;
+
+  const title = `${t('cart_button')} (${cartCount})`;
+
   return (
     <IconPathButton
       {...{

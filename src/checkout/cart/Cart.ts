@@ -30,30 +30,36 @@ export class CartItem implements CartItemProps {
 };
 
 export class Cart {
-  items: CartItem[] = [];
+  _items?: CartItem[];
 
-  constructor() {
+  getItems(): CartItem[] {
+    if(this._items !== undefined)
+      return this._items;
+    if(typeof window === 'undefined')
+      return [];
+
     const currentItems = localStorage.getItem(CART_ITEMS_KEY);
-    if(currentItems) {
-      this.items = JSON.parse(currentItems);
-    }
+    this._items = currentItems ? (JSON.parse(currentItems) as (CartItem[] | undefined) || []) : [];
+
+    return this._items;
   }
 
   totalPrice() {
-    return this.items.reduce((sum, current) => sum + current.price(), 0);
+    return this.getItems().reduce((sum, current) => sum + current.price(), 0);
   }
 
   addItem(item: CartItem) {
-    this.items.push(item);
+    this.getItems().push(item);
     this._updateLocalStorage();
   }
 
   removeItemAt(index: number) {
-    this.items.splice(index, 1);
+    this.getItems().splice(index, 1);
     this._updateLocalStorage();
   }
 
   _updateLocalStorage() {
-    localStorage.setItem(CART_ITEMS_KEY, JSON.stringify(this.items));
+    if(typeof window !== 'undefined')
+      localStorage.setItem(CART_ITEMS_KEY, JSON.stringify(this._items));
   }
 }

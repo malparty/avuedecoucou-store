@@ -4,11 +4,14 @@ import { useEffect, useState } from 'react';
 import { FORMAT_KEYS, PRICES, SUPPORTS } from '../data';
 import FormatButton from './FormatButton';
 import SupportButton from './SupportButton';
+import AddButton from '../AddButton';
+import { useTranslations } from 'next-intl';
 
-export default function FormatsPicker() {
+export default function FormatsPicker({photoTitle}: {photoTitle: string}) {
   const [currentFormatKey, setCurrentFormatKey] = useState(FORMAT_KEYS[0]);
   const [currentSupport, setCurrentSupport] = useState(SUPPORTS[0]);
   const [price, setPrice] = useState(0);
+  const t = useTranslations('checkout');
 
   useEffect(()=>{
     setPrice(PRICES[currentSupport][currentFormatKey]);
@@ -38,6 +41,12 @@ export default function FormatsPicker() {
         <div className='text-3xl mr-1 pt-3'>Prix</div>
         <div className='text-4xl'>{price} EUR</div>
       </div>
+      <AddButton title={t('add_cart')}
+        formatKey={currentFormatKey}
+        support={currentSupport}
+        photoTitle={photoTitle}
+        quantity={1}
+      />
     </div>
   );
 }

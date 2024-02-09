@@ -5,12 +5,10 @@ import { useTranslations } from 'next-intl';
 export default function ShareButton({
   path,
   prefetch,
-  shouldScroll,
   dim,
 }: {
   path: string;
   prefetch?: boolean;
-  shouldScroll?: boolean;
   dim?: boolean;
 }) {
   const t = useTranslations('share');
@@ -27,8 +25,6 @@ export default function ShareButton({
           />
         ),
         prefetch,
-        shouldScroll,
-        shouldReplace: true,
         spinnerColor: 'dim',
       }}
     />

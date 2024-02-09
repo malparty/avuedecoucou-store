@@ -1,6 +1,5 @@
 import { createContext, useContext } from 'react';
 import { AnimationConfig } from '@/components/AnimateItems';
-import { Cart } from '@/checkout/cart/Cart';
 
 export interface AppStateContext {
   previousPathname?: string
@@ -9,9 +8,10 @@ export interface AppStateContext {
   nextPhotoAnimation?: AnimationConfig
   setNextPhotoAnimation?: (animation?: AnimationConfig) => void
   clearNextPhotoAnimation?: () => void
-  cart?: Cart
+  cartCount: number
+  setCartCount?: (count: number) => void
 }
 
-export const AppStateContext = createContext<AppStateContext>({});
+export const AppStateContext = createContext<AppStateContext>({cartCount: 0});
 
 export const useAppState = () => useContext(AppStateContext);

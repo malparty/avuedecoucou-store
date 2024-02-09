@@ -13,7 +13,10 @@ export default function StateProvider({
 }) {
   const { previousPathname } = usePathnames();
 
+  const cart = new Cart();
+
   const [hasLoaded, setHasLoaded] = useState(false);
+  const [cartCount, setCartCount] = useState(cart.getItems().length);
 
   const [nextPhotoAnimation, setNextPhotoAnimation] =
     useState<AnimationConfig>();
@@ -31,7 +34,8 @@ export default function StateProvider({
         nextPhotoAnimation,
         setNextPhotoAnimation,
         clearNextPhotoAnimation: () => setNextPhotoAnimation?.(undefined),
-        cart: new Cart(),
+        cartCount,
+        setCartCount: setCartCount,
       }}
     >
       {children}
