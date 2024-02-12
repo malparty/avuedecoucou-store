@@ -6,7 +6,9 @@
     "cart_button": "View cart"
   },
   "checkout": {
+    "photos_in_cart": "photos in cart",
     "add_cart": "Add to cart",
+    "total": "Total",
     "form": {
       "order": "Send the order",
       "bottom_instructions": "After sending the order, we will contact you within 2 working days with instructions to process the payment.",

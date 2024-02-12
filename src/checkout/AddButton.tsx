@@ -55,11 +55,12 @@ export default function AddButton({
       onClick={() => startTransition(() => {
         console.log('Adding new item!!');
         const cart = new Cart();
-        cart.addItem(new CartItem({
-          formatKey: formatKey,
-          support: support,
-          photoTitle: photoTitle,
-          quantity: quantity}));
+        cart.addItem(
+          new CartItem({
+            formatKey: formatKey,
+            support: support,
+            photoTitle: photoTitle,
+            quantity: quantity}));
         setCartCount?.(cart.getItems().length);
       })}
       isLoading={shouldShowLoader}

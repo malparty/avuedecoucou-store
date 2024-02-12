@@ -6,7 +6,9 @@
     "cart_button": "Mon panier"
   },
   "checkout": {
+    "photos_in_cart": "photos dans le panier",
     "add_cart": "Ajouter au panier",
+    "total": "Total",
     "form": {
       "order": "Placer la commande",
       "bottom_instructions": "Après le placement de votre commande, nous vous contacterons sous 2 jours ouvrés avec les informations pour procéder au paiement.",

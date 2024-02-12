@@ -1,11 +1,12 @@
 import CartPage from '@/checkout/cart/CartPage';
-import CartSideBar from '@/checkout/cart/CartSideBar';
 import SiteGrid from '@/components/SiteGrid';
 import { PaginationParams } from '@/site/pagination';
 import { unstable_setRequestLocale } from 'next-intl/server';
+import dynamic from 'next/dynamic';
+
+const CartSideBar = dynamic(() => import('@/checkout/cart/CartSideBar'), { ssr: false });
 
 export const runtime = 'edge';
-export const dynamic = 'force-dynamic';
 
 export default async function CartAppPage({ params: { locale } }: PaginationParams) {
   unstable_setRequestLocale(locale);

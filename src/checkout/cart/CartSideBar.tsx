@@ -6,14 +6,16 @@ import { Cart } from './Cart';
 import { PHOTOS } from '@/photo/data';
 import ImageSmall from '@/components/ImageSmall';
 import { FORMATS } from '../data';
+import { useTranslations } from 'next-intl';
 
 export default function CartSideBar() {
   const { cartCount } = useAppState();
   const cart = new Cart();
+  const t = useTranslations('checkout');
 
   return (<div>
-    <SideBarTitle href="/cart" title={`${cartCount} photos dans le panier`} />
-    <div>Total: {cart.totalPrice()}EUR</div>
+    <SideBarTitle href="/cart" title={`${cartCount} ${t('photos_in_cart')}`} />
+    <div>{t('checkout.total')}: {cart.totalPrice()}EUR</div>
     {
       cart.getItems().map(((item, index) => {
         const photo = PHOTOS.find(photo => photo.title == item.photoTitle);
@@ -33,7 +35,7 @@ export default function CartSideBar() {
                 <div>{item.support}</div>
                 <div>{FORMATS[item.formatKey]}</div>
                 <div>{item.quantity}x{item.unitPrice()}EUR</div>
-                <div>Total: {item.totalPrice()}EUR</div>
+                <div>{t('checkout.total')}: {item.totalPrice()}EUR</div>
               </div>
             </div>
           </div>

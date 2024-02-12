@@ -4,6 +4,7 @@ import { FaCartShopping } from 'react-icons/fa6';
 import IconPathButton from '@/components/IconPathButton';
 import { useTranslations } from 'next-intl';
 import { useAppState } from '@/state';
+import { useEffect, useState } from 'react';
 
 export default function CartButton({
   path,
@@ -16,8 +17,14 @@ export default function CartButton({
 }) {
   const {cartCount} = useAppState();
   const t = useTranslations('cart');
+  const [isClient, setIsClient] = useState(false);
 
-  const title = `${t('cart_button')} (${cartCount})`;
+  useEffect(() => {
+    setIsClient(true);
+  }, []);
+
+  const numberItems = isClient ? ` (${cartCount})` : '';
+  const title = `${t('cart_button')}${numberItems}`;
 
   return (
     <IconPathButton
