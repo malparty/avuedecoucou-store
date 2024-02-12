@@ -21,9 +21,13 @@
         "building": "Building, floor, door number",
         "address": "Address",
         "city": "City",
-        "postal_code": "Postal code",
+        "postalCode": "Postal code",
         "province": "Province",
         "country": "Country"
+      },
+      "errors": {
+        "invalid": "invalid",
+        "required": "required"
       }
     }
   },

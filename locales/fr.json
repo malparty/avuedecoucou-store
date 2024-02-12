@@ -21,9 +21,13 @@
         "building": "Batiment, Etage, numéro de porte",
         "address": "Adresse",
         "city": "Ville",
-        "postal_code": "Code Postal",
+        "postalCode": "Code Postal",
         "province": "Département / Région",
         "country": "Pays"
+      },
+      "errors": {
+        "invalid": "invalide",
+        "required": "champ obligatoire"
       }
     }
   },

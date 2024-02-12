@@ -10,6 +10,7 @@ import { useLocale, useTranslations } from 'next-intl';
 import CountrySelector from '@/components/CountrySelector';
 import { COUNTRIES } from '@/components/CountrySelector/countries';
 import { SelectMenuOption } from '@/components/CountrySelector/types';
+import { CustomerInfo } from './order/customerInfo';
 
 export default function CheckOutForm() {
   const t = useTranslations('checkout');
@@ -27,34 +28,39 @@ export default function CheckOutForm() {
   const [province, setProvince] = useState('');
   const [country, setCountry] = useState('FR');
 
-  const [response, action] = useFormState(() => {
-    alert('Bonnnnsoiiiiiirreeuh');
-  }, undefined);
-
   const [isOpen, setIsOpen] = useState(false);
 
-  const emailRef = useRef<HTMLInputElement>(null);
-  useLayoutEffect(() => {
-    emailRef.current?.focus();
-  }, []);
+  const [formState, formAction] = useFormState(async () => {
+    const customerInfo = new CustomerInfo({
+      firstName, lastName, email, phone, address, building, city, postalCode, province, country,
+    });
 
-  const isFormValid =
-    email.length > 0 && firstName.length > 0 && lastName.length > 0 && phone.length > 0 && address.length > 0;
+    customerInfo.validate();
+
+    return {success: customerInfo.errors.length === 0, customerInfo: customerInfo};
+  }, undefined);
+
+  const firstNameRef = useRef<HTMLInputElement>(null);
+  useLayoutEffect(() => {
+    firstNameRef.current?.focus();
+  }, []);
 
   return (
     <InfoBlock>
-      <form action={action}>
+      <form action={formAction}>
         <div className="space-y-8">
-          {response === undefined && <ErrorNote>{t('form.invalid_fields')}</ErrorNote>}
+          {formState?.success === false && <ErrorNote>{t('form.invalid_fields')}</ErrorNote>}
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             <div className="space-y-4">
               <FieldSetWithStatus
                 id="firstName"
+                inputRef={firstNameRef}
                 required
                 label={t('form.fields.firstName')}
                 type="text"
                 value={firstName}
                 onChange={setFirstName}
+                error={formState?.customerInfo?.fieldErrorMessage('firstName', t)}
               />
               <FieldSetWithStatus
                 id="lastName"
@@ -63,15 +69,16 @@ export default function CheckOutForm() {
                 type="text"
                 value={lastName}
                 onChange={setLastName}
+                error={formState?.customerInfo?.fieldErrorMessage('lastName', t)}
               />
               <FieldSetWithStatus
                 id="email"
                 required
-                inputRef={emailRef}
                 label={t('form.fields.email')}
                 type="email"
                 value={email}
                 onChange={setEmail}
+                error={formState?.customerInfo?.fieldErrorMessage('email', t)}
               />
               <FieldSetWithStatus
                 id="phone"
@@ -80,6 +87,7 @@ export default function CheckOutForm() {
                 type="tel"
                 value={phone}
                 onChange={setPhone}
+                error={formState?.customerInfo?.fieldErrorMessage('phone', t)}
               />
             </div>
             <div className="space-y-4">
@@ -89,6 +97,7 @@ export default function CheckOutForm() {
                 type="text"
                 value={building}
                 onChange={setBuilding}
+                error={formState?.customerInfo?.fieldErrorMessage('building', t)}
               />
               <FieldSetWithStatus
                 id="address"
@@ -97,6 +106,7 @@ export default function CheckOutForm() {
                 type="text"
                 value={address}
                 onChange={setAddress}
+                error={formState?.customerInfo?.fieldErrorMessage('address', t)}
               />
               <FieldSetWithStatus
                 id="city"
@@ -105,14 +115,16 @@ export default function CheckOutForm() {
                 type="text"
                 value={city}
                 onChange={setCity}
+                error={formState?.customerInfo?.fieldErrorMessage('city', t)}
               />
               <FieldSetWithStatus
-                id="postal_code"
+                id="postalCode"
                 required
-                label={t('form.fields.postal_code')}
+                label={t('form.fields.postalCode')}
                 type="text"
                 value={postalCode}
                 onChange={setPostalCode}
+                error={formState?.customerInfo?.fieldErrorMessage('postalCode', t)}
               />
               <FieldSetWithStatus
                 id="province"
@@ -120,6 +132,7 @@ export default function CheckOutForm() {
                 type="text"
                 value={province}
                 onChange={setProvince}
+                error={formState?.customerInfo?.fieldErrorMessage('province', t)}
               />
               <CountrySelector
                 id={'countries'}
@@ -129,6 +142,7 @@ export default function CheckOutForm() {
                 open={isOpen}
                 onToggle={() => setIsOpen(!isOpen)}
                 onChange={(val) => setCountry(val)}
+                error={formState?.customerInfo?.fieldErrorMessage('countries', t)}
                 // We use this type assertion because we are always sure this find will return a value
                 // but need to let TS know since it could technically return null
                 selectedValue={
@@ -138,7 +152,7 @@ export default function CheckOutForm() {
             </div>
           </div>
           <div className="pt-4">
-            <SubmitButtonWithStatus className="min-w-full" disabled={!isFormValid}>
+            <SubmitButtonWithStatus className="min-w-full">
               {t('form.order')}
             </SubmitButtonWithStatus>
           </div>
