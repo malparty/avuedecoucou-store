@@ -11,6 +11,8 @@ import CountrySelector from '@/components/CountrySelector';
 import { COUNTRIES } from '@/components/CountrySelector/countries';
 import { SelectMenuOption } from '@/components/CountrySelector/types';
 import { CustomerInfo } from './order/customerInfo';
+import { submitCheckoutForm } from './form/action';
+import { Cart } from './cart/Cart';
 
 export default function CheckOutForm() {
   const t = useTranslations('checkout');
@@ -37,7 +39,17 @@ export default function CheckOutForm() {
 
     customerInfo.validate();
 
-    return {success: customerInfo.errors.length === 0, customerInfo: customerInfo};
+    if(customerInfo.errors.length > 0)
+      return {success: false, customerInfo: customerInfo};
+
+    const cart = new Cart();
+    cart.getItems();
+
+    const result = await submitCheckoutForm(customerInfo, cart);
+
+    return result
+      ? {success: true, customerInfo: result}
+      : {success: false, customerInfo: customerInfo};
   }, undefined);
 
   const firstNameRef = useRef<HTMLInputElement>(null);

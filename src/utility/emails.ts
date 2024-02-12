@@ -3,6 +3,7 @@ import Mail from 'nodemailer/lib/mailer';
 
 type EmailPayload = {
   to: string
+  bcc: string
   subject: string
   html: string
 }
@@ -19,6 +20,7 @@ export async function sendMail(data: EmailPayload) {
   const mailOptions :Mail.Options = {
     from: process.env.NODEMAILER_EMAIL_FROM,
     to: data.to,
+    bcc: data.bcc,
     subject: data.subject,
     html: data.html,
   };
