@@ -1,39 +1,11 @@
 'use client';
 
-import { PRICES, formatKeysType, supportType } from '../data';
+import { Cart } from './Cart';
+import { CartItem } from './CartItem';
 
 const CART_ITEMS_KEY = 'cartItems';
 
-interface CartItemProps {
-  photoTitle: string
-  formatKey: formatKeysType
-  support: supportType
-  quantity: number
-}
-
-export class CartItem implements CartItemProps {
-  photoTitle: string;
-  formatKey: formatKeysType;
-  support: supportType;
-  quantity: number;
-
-  constructor(props: CartItemProps) {
-    this.photoTitle = props.photoTitle;
-    this.formatKey = props.formatKey;
-    this.support = props.support;
-    this.quantity = props.quantity;
-  }
-
-  unitPrice() {
-    return PRICES[this.support][this.formatKey];
-  };
-
-  totalPrice() {
-    return this.quantity * this.unitPrice();
-  };
-};
-
-export class Cart {
+export class CartClient extends Cart {
   _items?: CartItem[];
 
   getItems(): CartItem[] {
@@ -47,10 +19,6 @@ export class Cart {
 
     this._items = parsedItems.map(item => new CartItem(item));
     return this._items;
-  }
-
-  totalPrice() {
-    return this.getItems().reduce((sum, current) => sum + current.totalPrice(), 0);
   }
 
   addItem(item: CartItem) {

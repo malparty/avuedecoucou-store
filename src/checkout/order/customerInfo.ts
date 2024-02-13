@@ -1,4 +1,4 @@
-interface CustomerInfoParams {
+export interface CustomerInfoParams {
   email: string;
   firstName: string;
   lastName: string;

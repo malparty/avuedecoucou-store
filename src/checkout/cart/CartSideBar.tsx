@@ -2,7 +2,7 @@
 
 import SideBarTitle from '@/components/SideBarTitle';
 import { useAppState } from '@/state';
-import { Cart } from './Cart';
+import { CartClient } from './models/CartClient';
 import { PHOTOS } from '@/photo/data';
 import ImageSmall from '@/components/ImageSmall';
 import { FORMATS } from '../data';
@@ -10,7 +10,7 @@ import { useTranslations } from 'next-intl';
 
 export default function CartSideBar() {
   const { cartCount } = useAppState();
-  const cart = new Cart();
+  const cart = new CartClient();
   const t = useTranslations('checkout');
 
   return (<div>

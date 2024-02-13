@@ -11,8 +11,8 @@ import CountrySelector from '@/components/CountrySelector';
 import { COUNTRIES } from '@/components/CountrySelector/countries';
 import { SelectMenuOption } from '@/components/CountrySelector/types';
 import { CustomerInfo } from './order/customerInfo';
-import { submitCheckoutForm } from './form/action';
-import { Cart } from './cart/Cart';
+import { OrderApiBodyParams } from '@/app/api/order/route';
+import { CartClient } from './cart/models/CartClient';
 
 export default function CheckOutForm() {
   const t = useTranslations('checkout');
@@ -32,25 +32,52 @@ export default function CheckOutForm() {
 
   const [isOpen, setIsOpen] = useState(false);
 
-  const [formState, formAction] = useFormState(async () => {
-    const customerInfo = new CustomerInfo({
-      firstName, lastName, email, phone, address, building, city, postalCode, province, country,
-    });
+  const currentCustomerInfo = () => new CustomerInfo({
+    address,
+    city,
+    country,
+    email,
+    firstName,
+    lastName,
+    phone,
+    postalCode,
+    building,
+    province,
+  });
+
+
+  const submitCheckoutForm = async () => {
+    const customerInfo = currentCustomerInfo();
 
     customerInfo.validate();
-
-    if(customerInfo.errors.length > 0)
+    if(customerInfo.errors.length > 0) {
       return {success: false, customerInfo: customerInfo};
+    }
 
-    const cart = new Cart();
-    cart.getItems();
+    const bodyObject :OrderApiBodyParams = {
+      customerInfoData: customerInfo,
+      items: new CartClient().getItems(),
+    };
+    const body = JSON.stringify(bodyObject);
 
-    const result = await submitCheckoutForm(customerInfo, cart);
+    const resp = await fetch('/api/order', {
+      method: 'POST',
+      body: body,
+    });
 
-    return result
-      ? {success: true, customerInfo: result}
-      : {success: false, customerInfo: customerInfo};
-  }, undefined);
+    if(resp.status !== 200) {
+      return {success: false, customerInfo: customerInfo};
+    }
+
+    localStorage.setItem('LastConfirmedOrder', body);
+
+    return alert('TODO: redirect to order confirmation page');
+  };
+
+  const [formState, formAction] = useFormState(submitCheckoutForm, {
+    success: true,
+    customerInfo: currentCustomerInfo(),
+  });
 
   const firstNameRef = useRef<HTMLInputElement>(null);
   useLayoutEffect(() => {

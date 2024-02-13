@@ -3,7 +3,7 @@ import { Text } from '@react-email/text';
 import { Section } from '@react-email/section';
 import { Container } from '@react-email/container';
 import { CustomerInfo } from '@/checkout/order/customerInfo';
-import { Cart } from '@/checkout/cart/Cart';
+import { Cart } from '@/checkout/cart/models/Cart';
 
 export default function OrderConfirmationTemplate(customerInfo: CustomerInfo, cart: Cart) {
   return (

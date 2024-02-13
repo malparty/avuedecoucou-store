@@ -1,5 +1,7 @@
-import nodemailer from 'nodemailer';
-import Mail from 'nodemailer/lib/mailer';
+'use server';
+
+import { createTransport } from 'nodemailer';
+import { Options } from 'nodemailer/lib/mailer';
 
 type EmailPayload = {
   to: string
@@ -9,7 +11,7 @@ type EmailPayload = {
 }
 
 export async function sendMail(data: EmailPayload) {
-  const transporter = nodemailer.createTransport({
+  const transporter = createTransport({
     service: 'gmail',
     auth: {
       user: process.env.NODEMAILER_EMAIL_FROM,
@@ -17,7 +19,7 @@ export async function sendMail(data: EmailPayload) {
     },
   });
 
-  const mailOptions :Mail.Options = {
+  const mailOptions :Options = {
     from: process.env.NODEMAILER_EMAIL_FROM,
     to: data.to,
     bcc: data.bcc,

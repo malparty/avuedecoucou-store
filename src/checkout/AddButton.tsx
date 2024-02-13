@@ -4,7 +4,8 @@ import { FaCartPlus } from 'react-icons/fa6';
 import { useAppState } from '@/state';
 import { useEffect, useState, useTransition } from 'react';
 import { clsx } from 'clsx/lite';
-import { Cart, CartItem } from '@/checkout/cart/Cart';
+import { CartItem } from '@/checkout/cart/models/CartItem';
+import { CartClient } from '@/checkout/cart/models/CartClient';
 import IconButton from '@/components/IconButton';
 import { formatKeysType, supportType } from './data';
 
@@ -53,8 +54,7 @@ export default function AddButton({
       icon={icon}
       title={title}
       onClick={() => startTransition(() => {
-        console.log('Adding new item!!');
-        const cart = new Cart();
+        const cart = new CartClient();
         cart.addItem(
           new CartItem({
             formatKey: formatKey,

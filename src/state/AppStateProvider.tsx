@@ -4,7 +4,7 @@ import { useState, useEffect, ReactNode } from 'react';
 import { AppStateContext } from '.';
 import { AnimationConfig } from '@/components/AnimateItems';
 import usePathnames from '@/utility/usePathnames';
-import { Cart } from '@/checkout/cart/Cart';
+import { CartClient } from '@/checkout/cart/models/CartClient';
 
 export default function StateProvider({
   children,
@@ -13,7 +13,7 @@ export default function StateProvider({
 }) {
   const { previousPathname } = usePathnames();
 
-  const cart = new Cart();
+  const cart = new CartClient();
 
   const [hasLoaded, setHasLoaded] = useState(false);
   const [cartCount, setCartCount] = useState(cart.getItems().length);
