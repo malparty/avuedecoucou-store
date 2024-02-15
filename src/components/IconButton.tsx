@@ -37,9 +37,9 @@ export default function IconButton({
           )}
         >
           {icon}
-          <div className="p-1">
+          { title && (<div className="p-1">
             {title}
-          </div>
+          </div>)}
         </button>
         : <span className={clsx(
           'inline-flex items-start justify-start',
@@ -50,9 +50,9 @@ export default function IconButton({
             size={spinnerSize}
             className="mr-2 mb-1"
           />
-          <div className="p-1">
+          { title && (<div className="p-1">
             {title}
-          </div>
+          </div>)}
         </span>}
     </span>
   );

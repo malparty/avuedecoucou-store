@@ -7,15 +7,28 @@ import { PHOTOS } from '@/photo/data';
 import ImageSmall from '@/components/ImageSmall';
 import { FORMATS } from '../data';
 import { useTranslations } from 'next-intl';
+import PhotoLink from '@/photo/PhotoLink';
+import IconButton from '@/components/IconButton';
+import { CiCircleMinus, CiCirclePlus } from 'react-icons/ci';
+import { Photo } from '@/photo';
+
 
 export default function CartSideBar() {
   const { cartCount } = useAppState();
   const cart = new CartClient();
   const t = useTranslations('checkout');
 
+  const minusQuantity = (photo: Photo) => {
+    alert('minus ' + photo.title);
+  };
+
+  const plusQuantity = (photo: Photo) => {
+    alert('plus ' + photo.title);
+  };
+
   return (<div>
     <SideBarTitle href="/cart" title={`${cartCount} ${t('photos_in_cart')}`} />
-    <div>{t('checkout.total')}: {cart.totalPrice()}EUR</div>
+    <div>{t('total')}: {cart.totalPrice()}EUR</div>
     {
       cart.getItems().map(((item, index) => {
         const photo = PHOTOS.find(photo => photo.title == item.photoTitle);
@@ -23,19 +36,44 @@ export default function CartSideBar() {
           return;
 
         return (
-          <div key={index} className="pt-8">
-            <div>{item.photoTitle}</div>
-            <div className='flex gap-2'>
-              <ImageSmall
-                src={photo.url}
-                className="w-1/3"
-                alt={photo.title}
-              />
+          <div key={index} className="pt-4">
+            <PhotoLink photo={photo}>
+              <div className="text-lg font-bold pb-1">{item.photoTitle}</div>
+            </PhotoLink>
+            <div className='flex gap-1'>
+              <div className="w-1/3">
+                <PhotoLink photo={photo} >
+                  <ImageSmall
+                    src={photo.url}
+                    alt={photo.title}
+                  />
+                </PhotoLink>
+              </div>
               <div>
-                <div>{item.support}</div>
+                <div className="capitalize">{item.support}</div>
                 <div>{FORMATS[item.formatKey]}</div>
-                <div>{item.quantity}x{item.unitPrice()}EUR</div>
-                <div>{t('checkout.total')}: {item.totalPrice()}EUR</div>
+                <div className="font-bold">{item.unitPrice()}EUR</div>
+              </div>
+              <div>
+                <IconButton
+                  {...{
+                    onClick: () => minusQuantity(photo),
+                    icon:(
+                      <CiCircleMinus
+                        size={34}
+                      />
+                    )}
+                  } />
+                <span className="text-xl font-bold px-1 relative -top-3">{item.quantity}</span>
+                <IconButton
+                  {...{
+                    onClick: () => plusQuantity(photo),
+                    icon:(
+                      <CiCirclePlus
+                        size={34}
+                      />
+                    )}
+                  } />
               </div>
             </div>
           </div>

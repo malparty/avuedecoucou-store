@@ -7,7 +7,7 @@ export default function SideBarTitle({ title, href }: { title: string; href: str
         <div className="md:flex-grow">
           <Link
             href={href}
-            className="font-bold uppercase"
+            className="text-xl font-bold uppercase"
           >
             {title}
           </Link>
