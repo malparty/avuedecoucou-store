@@ -13,6 +13,8 @@ import { SelectMenuOption } from '@/components/CountrySelector/types';
 import { CustomerInfo } from './order/customerInfo';
 import { OrderApiBodyParams } from '@/app/api/order/route';
 import { CartClient } from './cart/models/CartClient';
+import { useAppState } from '@/state';
+import { Link } from '@/navigation';
 
 export default function CheckOutForm() {
   const t = useTranslations('checkout');
@@ -31,6 +33,7 @@ export default function CheckOutForm() {
   const [country, setCountry] = useState('FR');
 
   const [isOpen, setIsOpen] = useState(false);
+  const {cartCount} = useAppState();
 
   const currentCustomerInfo = () => new CustomerInfo({
     address,
@@ -83,6 +86,14 @@ export default function CheckOutForm() {
   useLayoutEffect(() => {
     firstNameRef.current?.focus();
   }, []);
+
+  if(!cartCount || cartCount === 0){
+    return (
+      <InfoBlock>
+        <div>{t('form.no_item_yet')}</div>
+        <Link className="font-bold" href="/">{t('form.explore_and_start')}</Link>
+      </InfoBlock>);
+  }
 
   return (
     <InfoBlock>

@@ -67,8 +67,11 @@ export default function AddButton({
       className={clsx(
         'translate-y-[-0.5px]',
         'active:translate-y-[1px]',
-        'text-medium',
-        'active:text-gray-600 dark:active:text-gray-300',
+        'text-medium pt-2 px-2 text-gray-400 hover:text-gray-600',
+        'text-gray-600 dark:text-gray-300',
+        'border rounded-md shadow',
+        'border-gray-200 hover:border-gray-300',
+        'dark:border-gray-700 dark:hover:border-gray-600',
       )}
       spinnerColor={'dim'}
     />

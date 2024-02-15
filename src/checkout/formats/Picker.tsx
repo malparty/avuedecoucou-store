@@ -37,9 +37,9 @@ export default function FormatsPicker({photoTitle}: {photoTitle: string}) {
             support={support} />
         ))}
       </div>
-      <div className='flex my-4'>
-        <div className='text-3xl mr-1 pt-3'>Prix</div>
-        <div className='text-4xl'>{price} EUR</div>
+      <div className='flex my-4 gap-1'>
+        <div className='text-3xl mr-1'>Prix</div>
+        <div className='text-3xl font-bold'>{price} EUR</div>
       </div>
       <AddButton title={t('add_cart')}
         formatKey={currentFormatKey}

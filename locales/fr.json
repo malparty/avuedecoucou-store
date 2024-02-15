@@ -10,6 +10,8 @@
     "add_cart": "Ajouter au panier",
     "total": "Total",
     "form": {
+      "no_item_yet": "Aucune photos dans le panier.",
+      "explore_and_start": "Explorez et ajoutez une ou plusieurs photos à votre panier.",
       "order": "Placer la commande",
       "bottom_instructions": "Après le placement de votre commande, nous vous contacterons sous 2 jours ouvrés avec les informations pour procéder au paiement.",
       "invalid_fields": "Certains champs sont invalides",

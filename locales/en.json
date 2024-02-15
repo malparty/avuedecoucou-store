@@ -10,6 +10,8 @@
     "add_cart": "Add to cart",
     "total": "Total",
     "form": {
+      "no_item_yet": "You do not have any photo in your cart.",
+      "explore_and_start": "Browse photos and add them to your cart first.",
       "order": "Send the order",
       "bottom_instructions": "After sending the order, we will contact you within 2 working days with instructions to process the payment.",
       "invalid_fields": "Some fields are invalid.",

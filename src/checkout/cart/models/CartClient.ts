@@ -26,9 +26,27 @@ export class CartClient extends Cart {
     this._updateLocalStorage();
   }
 
-  removeItemAt(index: number) {
-    this.getItems().splice(index, 1);
+  plusItemAt(index: number) {
+    if(!this._items || this._items?.length <= index)
+      return;
+
+    this._items[index].quantity ++;
     this._updateLocalStorage();
+  }
+
+  minusItemAt(index: number) {
+    if(!this._items || this._items?.length <= index) return;
+
+    this._items[index].quantity --;
+
+    if(this._items[index].quantity === 0){
+      this._removeItemAt(index);
+    }
+    this._updateLocalStorage();
+  }
+
+  _removeItemAt(index: number) {
+    this.getItems().splice(index, 1);
   }
 
   _updateLocalStorage() {

@@ -10,27 +10,36 @@ import { useTranslations } from 'next-intl';
 import PhotoLink from '@/photo/PhotoLink';
 import IconButton from '@/components/IconButton';
 import { CiCircleMinus, CiCirclePlus } from 'react-icons/ci';
-import { Photo } from '@/photo';
+import { useState } from 'react';
 
 
 export default function CartSideBar() {
-  const { cartCount } = useAppState();
+  const { cartCount, setCartCount } = useAppState();
   const cart = new CartClient();
+  const [items, setItems] = useState(cart.getItems());
   const t = useTranslations('checkout');
 
-  const minusQuantity = (photo: Photo) => {
-    alert('minus ' + photo.title);
+  const refreshItems = () => {
+    const newItems = cart.getItems();
+    setItems(newItems);
+    setCartCount?.(newItems.length);
   };
 
-  const plusQuantity = (photo: Photo) => {
-    alert('plus ' + photo.title);
+  const minusQuantity = (index: number) => {
+    cart.minusItemAt(index);
+    refreshItems();
+  };
+
+  const plusQuantity = (index: number) => {
+    cart.plusItemAt(index);
+    refreshItems();
   };
 
   return (<div>
     <SideBarTitle href="/cart" title={`${cartCount} ${t('photos_in_cart')}`} />
     <div>{t('total')}: {cart.totalPrice()}EUR</div>
     {
-      cart.getItems().map(((item, index) => {
+      items.map(((item, index) => {
         const photo = PHOTOS.find(photo => photo.title == item.photoTitle);
         if(photo == undefined)
           return;
@@ -52,12 +61,12 @@ export default function CartSideBar() {
               <div>
                 <div className="capitalize">{item.support}</div>
                 <div>{FORMATS[item.formatKey]}</div>
-                <div className="font-bold">{item.unitPrice()}EUR</div>
+                <div className="font-bold">{item.totalPrice()}EUR</div>
               </div>
               <div>
                 <IconButton
                   {...{
-                    onClick: () => minusQuantity(photo),
+                    onClick: () => minusQuantity(index),
                     icon:(
                       <CiCircleMinus
                         size={34}
@@ -67,7 +76,7 @@ export default function CartSideBar() {
                 <span className="text-xl font-bold px-1 relative -top-3">{item.quantity}</span>
                 <IconButton
                   {...{
-                    onClick: () => plusQuantity(photo),
+                    onClick: () => plusQuantity(index),
                     icon:(
                       <CiCirclePlus
                         size={34}
