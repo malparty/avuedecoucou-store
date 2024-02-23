@@ -29,6 +29,8 @@ export async function sendMail(data: EmailPayload) {
 
   transporter.sendMail(mailOptions, function (error, info) {
     if (error) {
+      console.error('CANNOT SEND Email', info);
+
       throw new Error(error.message);
     } else {
       console.log('Email Sent', info);

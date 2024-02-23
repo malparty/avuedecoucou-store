@@ -11,7 +11,6 @@ export interface OrderApiBodyParams { customerInfoData: CustomerInfoParams, item
 
 export async function POST(request: NextRequest) {
   const body = await request.json();
-  console.log('[[[[[ZZZZZZZZZZ', body);
   const { customerInfoData, items }: OrderApiBodyParams = body;
 
   const customerInfo = new CustomerInfo(customerInfoData);
@@ -26,12 +25,11 @@ export async function POST(request: NextRequest) {
   if(customerInfo.errors.length > 0) {
     return Response.json({data: {success: false, customerInfo: customerInfo}}, {status: 422});
   }
-  console.log('HERRRERERERER');
-  console.log(items);
-  console.log(CartItem);
-  console.log(new CartItem(items[0]));
   const cart = new Cart(items.map(i => (new CartItem(i))));
 
+  console.log('HERRRERERERERER');
+  console.log('MAIL TO:', customerInfo.email);
+  console.log('MAIL BCC:', process.env.NODEMAILER_EMAIL_TO);
   // Send order placement email.
   await sendMail({
     to: customerInfo.email,
