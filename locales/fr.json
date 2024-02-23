@@ -8,8 +8,16 @@
   "checkout": {
     "photos_in_cart": "photos dans le panier",
     "add_cart": "Ajouter au panier",
+    "add_info": {
+      "shipping": "Frais de port et système de fixation métallique arrière monté d’usine inclus.",
+      "tax": "TVA non applicable, art. 293B du CGI."
+    },
     "total": "Total",
     "form": {
+      "title_contact": "Information du Contact",
+      "title_shipping_address": "Adresse de livraison",
+      "title_invoice_address": "Adresse de facturation",
+      "invoice_address_same": "Utiliser la même adresse",
       "no_item_yet": "Aucune photos dans le panier.",
       "explore_and_start": "Explorez et ajoutez une ou plusieurs photos à votre panier.",
       "order": "Placer la commande",

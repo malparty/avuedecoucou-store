@@ -10,17 +10,29 @@ export default function OrderConfirmationTemplate(customerInfo: CustomerInfo, ca
     <Html>
       <Section style={main}>
         <Container style={container}>
-          <Text style={heading}>Votre commande de photos sur A Vue De Coucou a bien été reçue!</Text>
+          <Text style={paragraphBold}>Votre commande de photos sur A Vue De Coucou a bien été reçue!</Text>
           <Text style={paragraph}>Nous vous contacterons sous 5 jours ouvrés pour le paiement.</Text>
           <Text style={heading}>Vos coordonnées:</Text>
           <Text style={paragraph}>Nom, Prénom: {customerInfo.lastName}, {customerInfo.firstName}</Text>
           <Text style={paragraph}>Téléphone: {customerInfo.phone}</Text>
           <Text style={paragraph}>Email: {customerInfo.email}</Text>
-          <Text style={paragraph}>Address:</Text>
-          <Text style={paragraph}>{customerInfo.building}</Text>
-          <Text style={paragraph}>{customerInfo.address}</Text>
-          <Text style={paragraph}>{customerInfo.postalCode} – {customerInfo.city}</Text>
-          <Text style={paragraph}>{customerInfo.province} / {customerInfo.country}</Text>
+          <Container style={container}>
+            <Text style={heading2}>Shipping{customerInfo.useSameAddress && ' and Invoice'} Address:</Text>
+            <Text style={paragraph}>{customerInfo.shippingBuilding}</Text>
+            <Text style={paragraph}>{customerInfo.shippingAddress}</Text>
+            <Text style={paragraph}>{customerInfo.shippingPostalCode} – {customerInfo.shippingCity}</Text>
+            <Text style={paragraph}>{customerInfo.shippingProvince} / {customerInfo.shippingCountry}</Text>
+          </Container>
+
+          { !customerInfo.useSameAddress &&
+            <Container style={container}>
+              <Text style={heading2}>Invoice Address:</Text>
+              <Text style={paragraph}>{customerInfo.invoiceBuilding}</Text>
+              <Text style={paragraph}>{customerInfo.invoiceAddress}</Text>
+              <Text style={paragraph}>{customerInfo.invoicePostalCode} – {customerInfo.invoiceCity}</Text>
+              <Text style={paragraph}>{customerInfo.invoiceProvince} / {customerInfo.invoiceCountry}</Text>
+            </Container>
+          }
           <Text style={heading}>Votre commande:</Text>
           <Text style={paragraph}>Total: {cart.totalPrice()}</Text>
           <Text style={paragraph}>Photos:</Text>
@@ -45,7 +57,7 @@ const main = {
 const container = {
   margin: '0 auto',
   padding: '20px 0 48px',
-  width: '580px',
+  width: '720px',
 };
 
 const heading = {
@@ -55,8 +67,22 @@ const heading = {
   color: '#484848',
 };
 
+const heading2 = {
+  fontSize: '24px',
+  lineHeight: '1.2',
+  fontWeight: '700',
+  color: '#484848',
+};
+
 const paragraph = {
   fontSize: '18px',
+  lineHeight: '1.4',
+  color: '#484848',
+};
+
+const paragraphBold = {
+  fontSize: '18px',
+  fontWeight: 'bold',
   lineHeight: '1.4',
   color: '#484848',
 };

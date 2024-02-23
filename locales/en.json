@@ -8,8 +8,16 @@
   "checkout": {
     "photos_in_cart": "photos in cart",
     "add_cart": "Add to cart",
+    "add_info": {
+      "shipping": "Shipping costs and factory-fitted rear metal mounting system are included.",
+      "tax": "VAT not applicable, art. 293B from CGI."
+    },
     "total": "Total",
     "form": {
+      "title_contact": "Contact info",
+      "title_shipping_address": "Shipping address",
+      "title_invoice_address": "Invoice address",
+      "invoice_address_same": "Use the same as the shipping address",
       "no_item_yet": "You do not have any photo in your cart.",
       "explore_and_start": "Browse photos and add them to your cart first.",
       "order": "Send the order",

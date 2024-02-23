@@ -17,7 +17,7 @@ export default function Spinner({
     <span
       className={clsx(
         className,
-        color === 'light-gray' && 
+        color === 'light-gray' &&
           'text-gray-300 dark:text-gray-600',
         color === 'dim' &&
           'text-dim',

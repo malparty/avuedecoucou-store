@@ -6,46 +6,57 @@ import SubmitButtonWithStatus from '@/components/SubmitButtonWithStatus';
 import React, { useLayoutEffect, useRef, useState } from 'react';
 import { useFormState } from 'react-dom';
 import ErrorNote from '@/components/ErrorNote';
-import { useLocale, useTranslations } from 'next-intl';
-import CountrySelector from '@/components/CountrySelector';
-import { COUNTRIES } from '@/components/CountrySelector/countries';
-import { SelectMenuOption } from '@/components/CountrySelector/types';
+import { useTranslations } from 'next-intl';
 import { CustomerInfo } from './order/customerInfo';
 import { OrderApiBodyParams } from '@/app/api/order/route';
 import { CartClient } from './cart/models/CartClient';
 import { useAppState } from '@/state';
 import { Link } from '@/navigation';
+import AddressField from './AddressField';
 
 export default function CheckOutForm() {
   const t = useTranslations('checkout');
-  const locale = useLocale();
-  const countries = COUNTRIES[locale as 'en' | 'fr' | 'de'];
 
   const [email, setEmail] = useState('');
   const [firstName, setFirstName] = useState('');
   const [lastName, setLastName] = useState('');
   const [phone, setPhone] = useState('');
-  const [address, setAddress] = useState('');
-  const [building, setBuilding] = useState('');
-  const [city, setCity] = useState('');
-  const [postalCode, setPostalCode] = useState('');
-  const [province, setProvince] = useState('');
-  const [country, setCountry] = useState('FR');
+  // Shipping address
+  const [shippingAddress, setShippingAddress] = useState('');
+  const [shippingBuilding, setShippingBuilding] = useState('');
+  const [shippingCity, setShippingCity] = useState('');
+  const [shippingPostalCode, setShippingPostalCode] = useState('');
+  const [shippingProvince, setShippingProvince] = useState('');
+  const [shippingCountry, setShippingCountry] = useState('FR');
+  // Invoice address
+  const [useSameAddress, setUseSameAddress] = useState(true);
+  const [invoiceAddress, setInvoiceAddress] = useState('');
+  const [invoiceBuilding, setInvoiceBuilding] = useState('');
+  const [invoiceCity, setInvoiceCity] = useState('');
+  const [invoicePostalCode, setInvoicePostalCode] = useState('');
+  const [invoiceProvince, setInvoiceProvince] = useState('');
+  const [invoiceCountry, setInvoiceCountry] = useState('FR');
 
-  const [isOpen, setIsOpen] = useState(false);
   const {cartCount} = useAppState();
 
   const currentCustomerInfo = () => new CustomerInfo({
-    address,
-    city,
-    country,
-    email,
     firstName,
     lastName,
+    email,
     phone,
-    postalCode,
-    building,
-    province,
+    shippingAddress,
+    shippingBuilding,
+    shippingCity,
+    shippingPostalCode,
+    shippingProvince,
+    shippingCountry,
+    invoiceAddress,
+    invoiceCity,
+    invoiceCountry,
+    invoicePostalCode,
+    invoiceBuilding,
+    invoiceProvince,
+    useSameAddress,
   });
 
 
@@ -100,6 +111,7 @@ export default function CheckOutForm() {
       <form action={formAction}>
         <div className="space-y-8">
           {formState?.success === false && <ErrorNote>{t('form.invalid_fields')}</ErrorNote>}
+          <div className="text-3xl font-bold">{t('form.title_contact')}</div>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             <div className="space-y-4">
               <FieldSetWithStatus
@@ -121,6 +133,9 @@ export default function CheckOutForm() {
                 onChange={setLastName}
                 error={formState?.customerInfo?.fieldErrorMessage('lastName', t)}
               />
+            </div>
+
+            <div className="space-y-4">
               <FieldSetWithStatus
                 id="email"
                 required
@@ -140,69 +155,40 @@ export default function CheckOutForm() {
                 error={formState?.customerInfo?.fieldErrorMessage('phone', t)}
               />
             </div>
-            <div className="space-y-4">
-              <FieldSetWithStatus
-                id="building"
-                label={t('form.fields.building')}
-                type="text"
-                value={building}
-                onChange={setBuilding}
-                error={formState?.customerInfo?.fieldErrorMessage('building', t)}
-              />
-              <FieldSetWithStatus
-                id="address"
-                required
-                label={t('form.fields.address')}
-                type="text"
-                value={address}
-                onChange={setAddress}
-                error={formState?.customerInfo?.fieldErrorMessage('address', t)}
-              />
-              <FieldSetWithStatus
-                id="city"
-                required
-                label={t('form.fields.city')}
-                type="text"
-                value={city}
-                onChange={setCity}
-                error={formState?.customerInfo?.fieldErrorMessage('city', t)}
-              />
-              <FieldSetWithStatus
-                id="postalCode"
-                required
-                label={t('form.fields.postalCode')}
-                type="text"
-                value={postalCode}
-                onChange={setPostalCode}
-                error={formState?.customerInfo?.fieldErrorMessage('postalCode', t)}
-              />
-              <FieldSetWithStatus
-                id="province"
-                label={t('form.fields.province')}
-                type="text"
-                value={province}
-                onChange={setProvince}
-                error={formState?.customerInfo?.fieldErrorMessage('province', t)}
-              />
-              <CountrySelector
-                id={'countries'}
-                countries={countries}
-                required
-                label={t('form.fields.country')}
-                open={isOpen}
-                onToggle={() => setIsOpen(!isOpen)}
-                onChange={(val) => setCountry(val)}
-                error={formState?.customerInfo?.fieldErrorMessage('countries', t)}
-                // We use this type assertion because we are always sure this find will return a value
-                // but need to let TS know since it could technically return null
-                selectedValue={
-                  countries.find((option: SelectMenuOption) => option.value === country) as SelectMenuOption
-                }
-              />
-            </div>
           </div>
+
+          <div  className="text-3xl font-bold">{t('form.title_shipping_address')}</div>
+          <AddressField customerInfo={formState?.customerInfo}
+            prefix="shipping"
+            address={shippingAddress} setAddress={setShippingAddress}
+            building={shippingBuilding} setBuilding={setShippingBuilding}
+            city={shippingCity} setCity={setShippingCity}
+            postalCode={shippingPostalCode} setPostalCode={setShippingPostalCode}
+            province={shippingProvince} setProvince={setShippingProvince}
+            country={shippingCountry} setCountry={setShippingCountry}/>
+
+          <div className="flex justify-between">
+            <div  className="text-3xl font-bold">{t('form.title_invoice_address')}</div>
+            <FieldSetWithStatus
+              id="UseSameAddress"
+              label={t('form.invoice_address_same')}
+              type="checkbox"
+              value={useSameAddress ? 'true' : 'false'}
+              onChange={() => setUseSameAddress(!useSameAddress)}
+            />
+          </div>
+
+          { !useSameAddress && <AddressField customerInfo={formState?.customerInfo}
+            prefix="invoice"
+            address={invoiceAddress} setAddress={setInvoiceAddress}
+            building={invoiceBuilding} setBuilding={setInvoiceBuilding}
+            city={invoiceCity} setCity={setInvoiceCity}
+            postalCode={invoicePostalCode} setPostalCode={setInvoicePostalCode}
+            province={invoiceProvince} setProvince={setInvoiceProvince}
+            country={invoiceCountry} setCountry={setInvoiceCountry}/>
+          }
           <div className="pt-4">
-            <SubmitButtonWithStatus className="min-w-full">
+            <SubmitButtonWithStatus className="min-w-full font-bold">
               {t('form.order')}
             </SubmitButtonWithStatus>
           </div>

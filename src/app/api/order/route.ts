@@ -27,9 +27,6 @@ export async function POST(request: NextRequest) {
   }
   const cart = new Cart(items.map(i => (new CartItem(i))));
 
-  console.log('HERRRERERERERER');
-  console.log('MAIL TO:', customerInfo.email);
-  console.log('MAIL BCC:', process.env.NODEMAILER_EMAIL_TO);
   // Send order placement email.
   await sendMail({
     to: customerInfo.email,

@@ -41,7 +41,7 @@ export default function FieldSetWithStatus({
   const { pending } = useFormStatus();
 
   return (
-    <div className="space-y-1">
+    <div className={clsx('space-y-1', type === 'checkbox' && 'flex flex-row-reverse	gap-2')}>
       <label
         className="flex gap-2 items-center select-none"
         htmlFor={id}

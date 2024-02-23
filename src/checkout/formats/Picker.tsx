@@ -47,6 +47,10 @@ export default function FormatsPicker({photoTitle}: {photoTitle: string}) {
         photoTitle={photoTitle}
         quantity={1}
       />
+      <div className="italic mt-6 text-gray-600 dark:text-gray-300">
+        <div>{t('add_info.shipping')}</div>
+        <div>{t('add_info.tax')}</div>
+      </div>
     </div>
   );
 }

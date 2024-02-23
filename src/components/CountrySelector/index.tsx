@@ -84,7 +84,7 @@ export default function CountrySelector({
             }`}
           >
             <svg
-              className="h-5 w-5 text-gray-400 dark:text-gray-400"
+              className="h-5 w-5 text-gray-400 dark:text-gray-300"
               xmlns="http://www.w3.org/2000/svg"
               viewBox="0 0 20 20"
               fill="currentColor"
@@ -116,7 +116,7 @@ export default function CountrySelector({
               aria-activedescendant="listbox-option-3"
             >
               <div className="sticky top-0 z-10 bg-white dark:bg-gray-900">
-                <li className="text-gray-800 dark:text-gray-400 cursor-default select-none relative py-2 px-3">
+                <li className="text-gray-800 dark:text-gray-300 cursor-default select-none relative py-2 px-3">
                   <input
                     type="search"
                     name="search"
@@ -136,7 +136,7 @@ export default function CountrySelector({
               >
                 {countries.filter((country) => country.title.toLowerCase().startsWith(query.toLowerCase())).length ===
                 0 ? (
-                    <li className="text-gray-800 dark:text-gray-400 cursor-default select-none relative py-2 pl-3 pr-9">
+                    <li className="text-gray-800 dark:text-gray-300 cursor-default select-none relative py-2 pl-3 pr-9">
                     No countries found
                     </li>
                   ) : (
@@ -145,7 +145,7 @@ export default function CountrySelector({
                         return (
                           <li
                             key={`${id}-${index}`}
-                            className={clsx('text-gray-900 dark:text-gray-400 cursor-default',
+                            className={clsx('text-gray-900 dark:text-gray-300 cursor-default',
                               'select-none relative py-2 pl-3 pr-9',
                               'flex items-center hover:bg-gray-50 hover:dark:bg-gray-700 transition')}
                             id="listbox-option-0"
