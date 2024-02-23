@@ -13,6 +13,7 @@
       "tax": "TVA non applicable, art. 293B du CGI."
     },
     "total": "Total",
+    "loading": "Chargement...",
     "form": {
       "title_contact": "Information du Contact",
       "title_shipping_address": "Adresse de livraison",

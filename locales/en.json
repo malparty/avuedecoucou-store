@@ -13,6 +13,7 @@
       "tax": "VAT not applicable, art. 293B from CGI."
     },
     "total": "Total",
+    "loading": "Loading...",
     "form": {
       "title_contact": "Contact info",
       "title_shipping_address": "Shipping address",

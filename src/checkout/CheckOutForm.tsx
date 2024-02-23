@@ -3,7 +3,7 @@
 import FieldSetWithStatus from '@/components/FieldSetWithStatus';
 import InfoBlock from '@/components/InfoBlock';
 import SubmitButtonWithStatus from '@/components/SubmitButtonWithStatus';
-import React, { useLayoutEffect, useRef, useState } from 'react';
+import React, { useEffect, useLayoutEffect, useRef, useState } from 'react';
 import { useFormState } from 'react-dom';
 import ErrorNote from '@/components/ErrorNote';
 import { useTranslations } from 'next-intl';
@@ -36,6 +36,11 @@ export default function CheckOutForm() {
   const [invoicePostalCode, setInvoicePostalCode] = useState('');
   const [invoiceProvince, setInvoiceProvince] = useState('');
   const [invoiceCountry, setInvoiceCountry] = useState('FR');
+
+  const [isClient, setIsClient] = useState(false);
+  useEffect(() => {
+    setIsClient(true);
+  }, []);
 
   const {cartCount} = useAppState();
 
@@ -97,6 +102,13 @@ export default function CheckOutForm() {
   useLayoutEffect(() => {
     firstNameRef.current?.focus();
   }, []);
+
+  if(!isClient) {
+    return (
+      <InfoBlock>
+        {t('loading')}
+      </InfoBlock>);
+  }
 
   if(!cartCount || cartCount === 0){
     return (
