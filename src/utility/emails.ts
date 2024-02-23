@@ -13,6 +13,7 @@ type EmailPayload = {
 export async function sendMail(data: EmailPayload) {
   const transporter = createTransport({
     service: 'gmail',
+    port: 465,
     auth: {
       user: process.env.NODEMAILER_EMAIL_FROM,
       pass: process.env.NODEMAILER_PW,
@@ -27,14 +28,21 @@ export async function sendMail(data: EmailPayload) {
     html: data.html,
   };
 
-  transporter.sendMail(mailOptions, function (error, info) {
-    if (error) {
-      console.error('CANNOT SEND Email', info);
+  const sendMail = () => {
+    return new Promise(resolve => {
 
-      throw new Error(error.message);
-    } else {
-      console.log('Email Sent', info);
-      return true;
-    }
-  });
+      transporter.sendMail(mailOptions, function (error, info) {
+        if (error) {
+          console.error('CANNOT SEND Email', info);
+
+          return resolve(false);
+        } else {
+          console.log('Email Sent', info);
+          return resolve(true);
+        }
+      });
+    });
+  };
+
+  await sendMail();
 }
