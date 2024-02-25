@@ -10,7 +10,14 @@
     "add_cart": "Add to cart",
     "add_info": {
       "shipping": "Shipping costs and factory-fitted rear metal mounting system are included.",
-      "tax": "VAT not applicable, art. 293B from CGI."
+      "tax": "VAT not applicable, art. 293B from CGI.",
+      "contact": "To print another photo from the site, contact me.",
+      "contact_me": "Contact me"
+    },
+    "confirm": {
+      "success": "Your order has been placed. You will receive a confirmation email soon.",
+      "your_order": "Your order",
+      "no_order_yet": "Your order has not been placed yet."
     },
     "total": "Total",
     "loading": "Loading...",

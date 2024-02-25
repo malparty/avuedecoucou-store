@@ -11,7 +11,7 @@ import { CustomerInfo } from './order/customerInfo';
 import { OrderApiBodyParams } from '@/app/api/order/route';
 import { CartClient } from './cart/models/CartClient';
 import { useAppState } from '@/state';
-import { Link } from '@/navigation';
+import { Link, useRouter } from '@/navigation';
 import AddressField from './AddressField';
 
 export default function CheckOutForm() {
@@ -41,6 +41,8 @@ export default function CheckOutForm() {
   useEffect(() => {
     setIsClient(true);
   }, []);
+
+  const router = useRouter();
 
   const {cartCount} = useAppState();
 
@@ -90,7 +92,7 @@ export default function CheckOutForm() {
 
     localStorage.setItem('LastConfirmedOrder', body);
 
-    return alert('TODO: redirect to order confirmation page');
+    return router.push('/confirmation');
   };
 
   const [formState, formAction] = useFormState(submitCheckoutForm, {

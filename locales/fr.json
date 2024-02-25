@@ -10,7 +10,14 @@
     "add_cart": "Ajouter au panier",
     "add_info": {
       "shipping": "Frais de port et système de fixation métallique arrière monté d’usine inclus.",
-      "tax": "TVA non applicable, art. 293B du CGI."
+      "tax": "TVA non applicable, art. 293B du CGI.",
+      "contact": "Pour tout tirage d'une autre photo du site me contacter.",
+      "contact_me": "Me contacter"
+    },
+    "confirm": {
+      "success": "Votre commande à bien été enregistrée. Un email de confirmation vous a été envoyé.",
+      "your_order": "Votre commande",
+      "no_order_yet": "Votre commande n'est pas encore placée."
     },
     "total": "Total",
     "loading": "Chargement...",

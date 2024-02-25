@@ -6,6 +6,7 @@ import FormatButton from './FormatButton';
 import SupportButton from './SupportButton';
 import AddButton from '../AddButton';
 import { useTranslations } from 'next-intl';
+import SideInfo from '../SideInfo';
 
 export default function FormatsPicker({photoTitle}: {photoTitle: string}) {
   const [currentFormatKey, setCurrentFormatKey] = useState(FORMAT_KEYS[0]);
@@ -47,10 +48,7 @@ export default function FormatsPicker({photoTitle}: {photoTitle: string}) {
         photoTitle={photoTitle}
         quantity={1}
       />
-      <div className="italic mt-6 text-gray-600 dark:text-gray-300">
-        <div>{t('add_info.shipping')}</div>
-        <div>{t('add_info.tax')}</div>
-      </div>
+      <SideInfo />
     </div>
   );
 }

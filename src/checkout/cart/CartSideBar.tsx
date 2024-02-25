@@ -2,7 +2,6 @@
 
 import SideBarTitle from '@/components/SideBarTitle';
 import { useAppState } from '@/state';
-import { CartClient } from './models/CartClient';
 import { PHOTOS } from '@/photo/data';
 import ImageSmall from '@/components/ImageSmall';
 import { FORMATS } from '../data';
@@ -11,6 +10,8 @@ import PhotoLink from '@/photo/PhotoLink';
 import IconButton from '@/components/IconButton';
 import { CiCircleMinus, CiCirclePlus } from 'react-icons/ci';
 import { useState } from 'react';
+import SideInfo from '../SideInfo';
+import { CartClient } from './models/CartClient';
 
 
 export default function CartSideBar() {
@@ -89,9 +90,6 @@ export default function CartSideBar() {
 
         );}))
     }
-    <div className="italic mt-6 text-gray-600 dark:text-gray-300">
-      <div>{t('add_info.shipping')}</div>
-      <div>{t('add_info.tax')}</div>
-    </div>
+    <SideInfo />
   </div>);
 }
