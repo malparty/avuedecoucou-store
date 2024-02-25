@@ -4,20 +4,24 @@ import { Section } from '@react-email/section';
 import { Container } from '@react-email/container';
 import { CustomerInfo } from '@/checkout/order/customerInfo';
 import { Cart } from '@/checkout/cart/models/Cart';
+import { getTranslations } from 'next-intl/server';
 
-export default function OrderConfirmationTemplate(customerInfo: CustomerInfo, cart: Cart) {
+export default async function OrderConfirmationTemplate(customerInfo: CustomerInfo, cart: Cart) {
+  const t = await getTranslations({locale: 'en', namespace: 'confirm_email'});
   return (
     <Html>
       <Section style={main}>
         <Container style={container}>
-          <Text style={paragraphBold}>Votre commande de photos sur A Vue De Coucou a bien été reçue!</Text>
-          <Text style={paragraph}>Nous vous contacterons sous 5 jours ouvrés pour le paiement.</Text>
-          <Text style={heading}>Vos coordonnées:</Text>
-          <Text style={paragraph}>Nom, Prénom: {customerInfo.lastName}, {customerInfo.firstName}</Text>
-          <Text style={paragraph}>Téléphone: {customerInfo.phone}</Text>
-          <Text style={paragraph}>Email: {customerInfo.email}</Text>
+          <Text style={paragraphBold}>{t('order_received')}</Text>
+          <Text style={paragraph}>{t('next_step')}</Text>
+          <Text style={heading}>{t('contact_info')} </Text>
+          <Text style={paragraph}>{t('name')}: {customerInfo.lastName} {customerInfo.firstName}</Text>
+          <Text style={paragraph}>{t('phone')}: {customerInfo.phone}</Text>
+          <Text style={paragraph}>{t('email')}: {customerInfo.email}</Text>
           <Container style={container}>
-            <Text style={heading2}>Shipping{customerInfo.useSameAddress && ' and Invoice'} Address:</Text>
+            <Text style={heading2}>
+              {customerInfo.useSameAddress ? t('address_shipping_and_invoice') : t('address_shipping')}
+            </Text>
             <Text style={paragraph}>{customerInfo.shippingBuilding}</Text>
             <Text style={paragraph}>{customerInfo.shippingAddress}</Text>
             <Text style={paragraph}>{customerInfo.shippingPostalCode} – {customerInfo.shippingCity}</Text>
@@ -26,22 +30,23 @@ export default function OrderConfirmationTemplate(customerInfo: CustomerInfo, ca
 
           { !customerInfo.useSameAddress &&
             <Container style={container}>
-              <Text style={heading2}>Invoice Address:</Text>
-              <Text style={paragraph}>{customerInfo.invoiceBuilding}</Text>
-              <Text style={paragraph}>{customerInfo.invoiceAddress}</Text>
-              <Text style={paragraph}>{customerInfo.invoicePostalCode} – {customerInfo.invoiceCity}</Text>
-              <Text style={paragraph}>{customerInfo.invoiceProvince} / {customerInfo.invoiceCountry}</Text>
+              <Text style={heading2}>{t('address_invoice')}</Text>
+              <Text style={paragraph}>
+                {customerInfo.invoiceBuilding}<br />
+                {customerInfo.invoiceAddress}<br />
+                {[customerInfo.invoicePostalCode, customerInfo.invoiceCity].filter(x => x).join(' - ')}<br />
+                {[customerInfo.invoiceProvince, customerInfo.invoiceCountry].filter(x => x).join(' - ')}
+              </Text>
             </Container>
           }
-          <Text style={heading}>Votre commande:</Text>
-          <Text style={paragraph}>Total: {cart.totalPrice()}</Text>
-          <Text style={paragraph}>Photos:</Text>
+          <Text style={heading}>{t('your_order')}: </Text>
+          <Text style={heading2}>{t('total')}: {cart.totalPrice()}</Text>
+          <Text style={heading2}>{t('photos')}: </Text>
           {cart.getItems().map((item, index) => (
-            <Container key={index} style={container}>
-              <Text style={paragraph}>{item.photoTitle} ({item.formatKey} / {item.support})</Text>
-              <Text style={paragraph}>{item.quantity}x{item.unitPrice()}EUR</Text>
-              <Text style={paragraph}>{item.totalPrice()}EUR</Text>
-            </Container>
+            <Text style={paragraph} key={index}>
+              {item.photoTitle} ({item.formatKey} / {item.support})<br />
+              {item.quantity} x {item.unitPrice()} = {item.totalPrice()}EUR
+            </Text>
           ))}
         </Container>
       </Section>

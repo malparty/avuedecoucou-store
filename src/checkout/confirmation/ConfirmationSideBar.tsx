@@ -9,6 +9,7 @@ import PhotoLink from '@/photo/PhotoLink';
 import SideInfo from '../SideInfo';
 import { CartItem } from '../cart/models/CartItem';
 import { Cart } from '../cart/models/Cart';
+import { LAST_ORDER_KEY } from '../cart/models/constants';
 
 
 export default function ConfirmationSideBar() {

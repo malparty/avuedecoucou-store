@@ -7,6 +7,7 @@ import { CustomerInfoParams } from '../order/customerInfo';
 import AddressText from '../AddressText';
 import FieldSetWithStatus from '@/components/FieldSetWithStatus';
 import { Link } from '@/navigation';
+import { LAST_ORDER_KEY } from '../cart/models/constants';
 
 export default function ConfirmationPage() {
   const t = useTranslations('checkout');
@@ -22,7 +23,6 @@ export default function ConfirmationPage() {
   const {
     customerInfoData,
   }: {customerInfoData: CustomerInfoParams} = JSON.parse(lastConfirmedOrder ?? '');
-  console.log(customerInfoData);
 
   return (
     <InfoBlock>

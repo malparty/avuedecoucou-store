@@ -49,6 +49,20 @@
       }
     }
   },
+  "confirm_email": {
+    "order_received": "Votre commande de photos sur A Vue De Coucou a bien été reçue!",
+    "next_step": "Nous vous contacterons sous 5 jours ouvrés pour le paiement.",
+    "contact_info": "Vos coordonées",
+    "name": "Nom",
+    "phone": "Téléphone",
+    "email": "Email",
+    "address_shipping_and_invoice": "Adresse de facturation et livraison:",
+    "address_shipping": "Adresse de livraison:",
+    "address_invoice": "Adresse de facturation:",
+    "your_order": "Votre commande",
+    "total": "Total",
+    "photos": "Photos"
+  },
   "share": {
     "share_button": "Partager",
     "share_photo": "Partager la photo",

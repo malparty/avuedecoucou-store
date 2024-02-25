@@ -37,7 +37,6 @@ export async function sendMail(data: EmailPayload) {
 
           return resolve(false);
         } else {
-          console.log('Email Sent', info);
           return resolve(true);
         }
       });

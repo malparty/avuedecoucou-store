@@ -49,6 +49,20 @@
       }
     }
   },
+  "confirm_email": {
+    "order_received": "We receive your order of photos from A Vue De Coucou!",
+    "next_step": "We will contact you within 5 working days to process with the payment.",
+    "contact_info": "Your contact",
+    "name": "Name",
+    "phone": "Phone",
+    "email": "Email",
+    "address_shipping_and_invoice": "Shipping and Invoice Address:",
+    "address_shipping": "Shipping Address:",
+    "address_invoice": "Invoice Address:",
+    "your_order": "Your order",
+    "total": "Total",
+    "photos": "Photos"
+  },
   "share": {
     "share_button": "Share",
     "share_photo": "Share photo",

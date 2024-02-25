@@ -16,7 +16,6 @@ export async function POST(request: NextRequest) {
   const customerInfo = new CustomerInfo(customerInfoData);
 
   customerInfo.validate();
-
   if(customerInfo.errors.length > 0)
     return Response.json({data: {success: false, customerInfo: customerInfo}}, {status: 422});
 
@@ -26,13 +25,13 @@ export async function POST(request: NextRequest) {
     return Response.json({data: {success: false, customerInfo: customerInfo}}, {status: 422});
   }
   const cart = new Cart(items.map(i => (new CartItem(i))));
-
+  const emailHtml = render(await OrderConfirmationTemplate(customerInfo, cart));
   // Send order placement email.
   await sendMail({
     to: customerInfo.email,
     bcc: process.env.NODEMAILER_EMAIL_TO || '',
     subject: 'Votre commande de photos sur A Vue De Coucou',
-    html: render(OrderConfirmationTemplate(customerInfo, cart)),
+    html: emailHtml,
   });
   return Response.json({data: {success: true, customerInfo: customerInfo}}, {status: 200});
 }
