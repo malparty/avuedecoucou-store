@@ -14,11 +14,11 @@ import { Cart } from '../cart/models/Cart';
 export default function ConfirmationSideBar() {
   const t = useTranslations('checkout');
 
-  if (!localStorage.getItem('LastConfirmedOrder')){
+  if (!localStorage.getItem(LAST_ORDER_KEY)){
     return <div></div>;
   }
 
-  const { items }: {items: CartItem[]} = JSON.parse(localStorage.getItem('LastConfirmedOrder') ?? '');
+  const { items }: {items: CartItem[]} = JSON.parse(localStorage.getItem(LAST_ORDER_KEY) ?? '');
   const cartItems = items.map(props => new CartItem(props));
   const cart = new Cart(cartItems);
 

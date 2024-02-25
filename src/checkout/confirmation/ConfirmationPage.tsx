@@ -11,7 +11,7 @@ import { Link } from '@/navigation';
 export default function ConfirmationPage() {
   const t = useTranslations('checkout');
 
-  const lastConfirmedOrder = localStorage.getItem('LastConfirmedOrder');
+  const lastConfirmedOrder = localStorage.getItem(LAST_ORDER_KEY);
   if(!lastConfirmedOrder) {
     return <div>
       <div>{t('confirm.no_order_yet')}</div>

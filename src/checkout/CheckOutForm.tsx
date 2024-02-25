@@ -13,6 +13,7 @@ import { CartClient } from './cart/models/CartClient';
 import { useAppState } from '@/state';
 import { Link, useRouter } from '@/navigation';
 import AddressField from './AddressField';
+import { CART_ITEMS_KEY, LAST_ORDER_KEY } from './cart/models/constants';
 
 export default function CheckOutForm() {
   const t = useTranslations('checkout');
@@ -90,7 +91,8 @@ export default function CheckOutForm() {
       return {success: false, customerInfo: customerInfo};
     }
 
-    localStorage.setItem('LastConfirmedOrder', body);
+    localStorage.setItem(LAST_ORDER_KEY, body);
+    localStorage.removeItem(CART_ITEMS_KEY);
 
     return router.push('/confirmation');
   };

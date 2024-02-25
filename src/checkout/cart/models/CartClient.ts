@@ -2,8 +2,7 @@
 
 import { Cart } from './Cart';
 import { CartItem } from './CartItem';
-
-const CART_ITEMS_KEY = 'cartItems';
+import { CART_ITEMS_KEY } from './constants';
 
 export class CartClient extends Cart {
   _items?: CartItem[];
