@@ -7,7 +7,7 @@ import { CartItemProps } from '@/checkout/cart/models/CartTypes';
 import { CartItem } from '@/checkout/cart/models/CartItem';
 import { Cart } from '@/checkout/cart/models/Cart';
 
-export interface OrderApiBodyParams { customerInfoData: CustomerInfoParams, items: CartItemProps[]};
+export interface OrderApiBodyParams { customerInfoData: CustomerInfoParams, items: CartItemProps[], locale: string};
 
 export async function POST(request: NextRequest) {
   const body = await request.json();
@@ -25,7 +25,7 @@ export async function POST(request: NextRequest) {
     return Response.json({data: {success: false, customerInfo: customerInfo}}, {status: 422});
   }
   const cart = new Cart(items.map(i => (new CartItem(i))));
-  const emailHtml = render(await OrderConfirmationTemplate(customerInfo, cart));
+  const emailHtml = render(await OrderConfirmationTemplate(customerInfo, cart, body.locale));
   // Send order placement email.
   await sendMail({
     to: customerInfo.email,

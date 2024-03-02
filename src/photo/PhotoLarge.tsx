@@ -57,7 +57,7 @@ export default function PhotoLarge({
                   path={pathForPhotoShare(photo)}
                   prefetch={prefetchActions}
                 />
-                <FormatsPicker photoTitle={photo.title} />
+                <FormatsPicker photo={photo} />
               </div>
             </>,
             false

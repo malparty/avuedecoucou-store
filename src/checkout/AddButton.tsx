@@ -8,12 +8,13 @@ import { CartItem } from '@/checkout/cart/models/CartItem';
 import { CartClient } from '@/checkout/cart/models/CartClient';
 import IconButton from '@/components/IconButton';
 import { formatKeysType, supportType } from './data';
+import { Photo } from '@/photo';
 
 interface AddButtonnProps {
   title: string;
   formatKey: formatKeysType;
   support: supportType;
-  photoTitle: string;
+  photo: Photo;
   quantity: number;
 }
 
@@ -21,7 +22,7 @@ export default function AddButton({
   title,
   formatKey,
   support,
-  photoTitle,
+  photo,
   quantity,
 }: AddButtonnProps) {
   const  loaderDelay = 250;
@@ -59,7 +60,9 @@ export default function AddButton({
           new CartItem({
             formatKey: formatKey,
             support: support,
-            photoTitle: photoTitle,
+            photoId: photo.id,
+            photoTitle: photo.title,
+            photoUrl: photo.url,
             quantity: quantity}));
         setCartCount?.(cart.getItems().length);
       })}

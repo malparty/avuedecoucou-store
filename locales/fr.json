@@ -50,6 +50,9 @@
     }
   },
   "confirm_email": {
+    "date": "Date",
+    "order_placed": "Commande en cours de traitement",
+    "see_item": "Voir la photo",
     "order_received": "Votre commande de photos sur A Vue De Coucou a bien été reçue!",
     "next_step": "Nous vous contacterons sous 5 jours ouvrés pour le paiement.",
     "contact_info": "Vos coordonées",

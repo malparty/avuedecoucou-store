@@ -7,8 +7,9 @@ import SupportButton from './SupportButton';
 import AddButton from '../AddButton';
 import { useTranslations } from 'next-intl';
 import SideInfo from '../SideInfo';
+import { Photo } from '@/photo';
 
-export default function FormatsPicker({photoTitle}: {photoTitle: string}) {
+export default function FormatsPicker({photo}: {photo: Photo}) {
   const [currentFormatKey, setCurrentFormatKey] = useState(FORMAT_KEYS[0]);
   const [currentSupport, setCurrentSupport] = useState(SUPPORTS[0]);
   const [price, setPrice] = useState(0);
@@ -45,7 +46,7 @@ export default function FormatsPicker({photoTitle}: {photoTitle: string}) {
       <AddButton title={t('add_cart')}
         formatKey={currentFormatKey}
         support={currentSupport}
-        photoTitle={photoTitle}
+        photo={photo}
         quantity={1}
       />
       <SideInfo />

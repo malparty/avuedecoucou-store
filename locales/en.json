@@ -50,6 +50,9 @@
     }
   },
   "confirm_email": {
+    "date": "Date",
+    "order_placed": "Your order is being processed.",
+    "see_item": "See the photo",
     "order_received": "We receive your order of photos from A Vue De Coucou!",
     "next_step": "We will contact you within 5 working days to process with the payment.",
     "contact_info": "Your contact",

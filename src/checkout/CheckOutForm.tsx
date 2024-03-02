@@ -6,7 +6,7 @@ import SubmitButtonWithStatus from '@/components/SubmitButtonWithStatus';
 import React, { useEffect, useLayoutEffect, useRef, useState } from 'react';
 import { useFormState } from 'react-dom';
 import ErrorNote from '@/components/ErrorNote';
-import { useTranslations } from 'next-intl';
+import { useLocale, useTranslations } from 'next-intl';
 import { CustomerInfo } from './order/customerInfo';
 import { OrderApiBodyParams } from '@/app/api/order/route';
 import { CartClient } from './cart/models/CartClient';
@@ -17,6 +17,7 @@ import { CART_ITEMS_KEY, LAST_ORDER_KEY } from './cart/models/constants';
 
 export default function CheckOutForm() {
   const t = useTranslations('checkout');
+  const locale = useLocale();
 
   const [email, setEmail] = useState('');
   const [firstName, setFirstName] = useState('');
@@ -79,6 +80,7 @@ export default function CheckOutForm() {
     const bodyObject :OrderApiBodyParams = {
       customerInfoData: customerInfo,
       items: new CartClient().getItems(),
+      locale: locale,
     };
     const body = JSON.stringify(bodyObject);
 
