@@ -50,6 +50,9 @@
     }
   },
   "confirm_email": {
+    "shipping": "Shipping costs and factory-fitted rear metal mounting system are included.",
+    "tax": "VAT not applicable, art. 293B from CGI.",
+    "rights": "All rights reserved",
     "date": "Date",
     "order_placed": "Your order is being processed.",
     "see_item": "See the photo",

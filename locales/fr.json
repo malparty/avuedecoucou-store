@@ -50,6 +50,9 @@
     }
   },
   "confirm_email": {
+    "shipping": "Frais de port et système de fixation métallique arrière monté d’usine inclus.",
+    "tax": "TVA non applicable, art. 293B du CGI.",
+    "rights": "Tous droits réservés",
     "date": "Date",
     "order_placed": "Commande en cours de traitement",
     "see_item": "Voir la photo",
