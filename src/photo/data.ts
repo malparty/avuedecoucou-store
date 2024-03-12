@@ -2,19 +2,49 @@ import { Photo } from '.';
 
 export const PHOTOS: Photo[] = [
   {
-    id: 'coeur_vosgien',
-    title: 'Coeur Vosgien',
-    url: '/img/coeur_vosgien.jpg',
+    id: 'aube_automne_sur_la_route_des_vins',
+    title: 'Aube d\'automne sur la Route des Vins',
+    url: '/img/aube_automne_sur_la_route_des_vins.jpg',
+  },
+  { id: 'envol_aube',title: 'Envol de l\'aube', url: '/img/envol_aube.jpg'},
+  { id: 'piper_et_haut_koenigsbourg',title: 'Piper et Haut-Koenigsbourg', url: '/img/piper_et_haut_koenigsbourg.jpg'},
+  { id: 'cascades_vosgiennes',title: 'Cascades Vosgiennes', url: '/img/cascades_vosgiennes.jpg'},
+  { id: 'etoile_de_vauban',title: 'L\'Etoile de Vauban', url: '/img/etoile_de_vauban.jpg'},
+  {
+    id: 'communion_des_saisons_au_hohneck',
+    title: 'Communion des saisons au Hohneck',
+    url: '/img/communion_des_saisons_au_hohneck.jpg',
   },
   {
-    id: 'envol_aube',
-    title: 'Envol de l\'aube',
-    url: '/img/envol_aube.jpg',
+    id: 'miracle_dans_la_vallee_noble',
+    title: 'Miracle dans la Vallée Noble',
+    url: '/img/miracle_dans_la_vallee_noble.jpg',
+  },
+  { id: 'lac_de_pierre_percee',title: 'Lac de Pierre-Percée', url: '/img/lac_de_pierre_percee.jpg'},
+  {
+    id: 'piper_sur_la_route_des_vins',
+    title: 'Piper sur la Route des Vins',
+    url: '/img/piper_sur_la_route_des_vins.jpg',
+  },
+  {
+    id: 'couchant_sur_la_route_des_vins',
+    title: 'Couchant sur la Route des Vins',
+    url: '/img/couchant_sur_la_route_des_vins.jpg',
+  },
+  {
+    id: 'levant_au_kaiserstuhl',
+    title: 'Levant au Kaiserstuhl',
+    url: '/img/levant_au_kaiserstuhl.jpg',
   },
   {
     id: 'finale_15_euroairport',
     title: 'Finale 15 EuroAirport',
     url: '/img/finale_15_euroairport.jpg',
+  },
+  {
+    id: 'coeur_vosgien',
+    title: 'Coeur Vosgien',
+    url: '/img/coeur_vosgien.jpg',
   },
   {
     id: 'grand_ballon_alpes_bernoises',

@@ -1,6 +1,6 @@
 import { clsx } from 'clsx/lite';
 
-const SIZE_DEFAULT = 24;
+const SIZE_DEFAULT = 32;
 
 export type SpinnerColor = 'text' | 'dim' | 'light-gray';
 
@@ -17,7 +17,7 @@ export default function Spinner({
     <span
       className={clsx(
         className,
-        color === 'light-gray' && 
+        color === 'light-gray' &&
           'text-gray-300 dark:text-gray-600',
         color === 'dim' &&
           'text-dim',

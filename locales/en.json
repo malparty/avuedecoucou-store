@@ -1,12 +1,89 @@
 {
+  "layout": {
+    "header_title": "A Vue de Coucou – The Shop"
+  },
+  "cart": {
+    "cart_button": "View cart"
+  },
   "checkout": {
-    "add_cart": "Add to cart"
+    "photos_in_cart": "photos in cart",
+    "add_cart": "Add to cart",
+    "add_info": {
+      "shipping": "Shipping costs and factory-fitted rear metal mounting system are included.",
+      "tax": "VAT not applicable, art. 293B from CGI.",
+      "contact": "To print another photo from the site, contact me.",
+      "contact_me": "Contact me"
+    },
+    "confirm": {
+      "success": "Your order has been placed. You will receive a confirmation email soon.",
+      "your_order": "Your order",
+      "no_order_yet": "Your order has not been placed yet."
+    },
+    "total": "Total",
+    "loading": "Loading...",
+    "form": {
+      "title_contact": "Contact info",
+      "title_shipping_address": "Shipping address",
+      "title_invoice_address": "Invoice address",
+      "invoice_address_same": "Use the same as the shipping address",
+      "no_item_yet": "You do not have any photo in your cart.",
+      "explore_and_start": "Browse photos and add them to your cart first.",
+      "order": "Send the order",
+      "bottom_instructions": "After sending the order, we will contact you within 2 working days with instructions to process the payment.",
+      "invalid_fields": "Some fields are invalid.",
+      "fields": {
+        "email": "Email",
+        "phone": "Phone",
+        "firstName": "First name",
+        "lastName": "Last name",
+        "building": "Building, floor, door number",
+        "address": "Address",
+        "city": "City",
+        "postalCode": "Postal code",
+        "province": "Province",
+        "country": "Country"
+      },
+      "errors": {
+        "invalid": "invalid",
+        "required": "required"
+      }
+    }
+  },
+  "item_added": {
+    "item_added": "Photo added",
+    "congrats": "Congrats, the photo was added to your cart!",
+    "continue_shopping": "Continue shopping",
+    "checkout_now": "Checkout now"
+  },
+  "confirm_email": {
+    "shipping": "Shipping costs and factory-fitted rear metal mounting system are included.",
+    "tax": "VAT not applicable, art. 293B from CGI.",
+    "rights": "All rights reserved",
+    "date": "Date",
+    "order_placed": "Your order is being processed.",
+    "see_item": "See the photo",
+    "order_received": "We receive your order of photos from A Vue De Coucou!",
+    "next_step": "We will contact you within 5 working days to process with the payment.",
+    "contact_info": "Your contact",
+    "name": "Name",
+    "phone": "Phone",
+    "email": "Email",
+    "address_shipping_and_invoice": "Shipping and Invoice Address:",
+    "address_shipping": "Shipping Address:",
+    "address_invoice": "Invoice Address:",
+    "your_order": "Your order",
+    "total": "Total",
+    "photos": "Photos"
   },
   "share": {
-    "share_photo": "Share",
+    "share_button": "Share",
+    "share_photo": "Share photo",
     "link_to_photo_copied": "The link of the photo has been saved to the clipboard."
   },
+  "nav": {
+    "next": "NEXT",
+    "prev": "PREV"
+  },
   "link_to_photo_copied": "Link to photo copied",
-  "photo": "photo",
-  "share_photo": "Share Photo"
+  "photo": "photo"
 }

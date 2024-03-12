@@ -24,7 +24,7 @@ export default function Checklist({
       </div>
       <div className={clsx(
         'bg-white dark:bg-black',
-        'dark:text-gray-400',
+        'dark:text-gray-300',
         'border border-gray-200 dark:border-gray-800 rounded-md',
         'divide-y divide-gray-200 dark:divide-gray-800',
       )}>

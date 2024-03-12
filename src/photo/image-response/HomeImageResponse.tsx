@@ -1,21 +1,21 @@
-import { SITE_DOMAIN_OR_TITLE } from '@/site/config';
 import { Photo } from '..';
 import ImageCaption from './components/ImageCaption';
 import ImageContainer from './components/ImageContainer';
 import ImagePhotoGrid from './components/ImagePhotoGrid';
 import { NextImageSize } from '@/services/next-image';
+import { useTranslations } from 'next-intl';
 
 export default function HomeImageResponse({
   photos,
   width,
   height,
-  fontFamily,
 }: {
   photos: Photo[]
   width: NextImageSize
   height: number
-  fontFamily: string
 }) {
+  const t = useTranslations('layout');
+
   return (
     <ImageContainer {...{ width, height }} >
       <ImagePhotoGrid
@@ -25,8 +25,8 @@ export default function HomeImageResponse({
           height,
         }}
       />
-      <ImageCaption {...{ width, height, fontFamily }}>
-        {SITE_DOMAIN_OR_TITLE}
+      <ImageCaption {...{ width, height }}>
+        {t('header_title')}
       </ImageCaption>
     </ImageContainer>
   );

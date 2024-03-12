@@ -7,6 +7,7 @@ import { useRouter } from 'next/navigation';
 import { pathForPhoto } from '@/site/paths';
 import { useAppState } from '@/state';
 import { AnimationConfig } from '@/components/AnimateItems';
+import { useTranslations } from 'next-intl';
 
 const LISTENER_KEYUP = 'keyup';
 
@@ -15,7 +16,7 @@ const ANIMATION_RIGHT: AnimationConfig = { type: 'right', duration: 0.3 };
 
 export default function PhotoLinks({ photo }: { photo: Photo }) {
   const router = useRouter();
-
+  const t = useTranslations('nav');
   const { setNextPhotoAnimation } = useAppState();
 
   const previousPhoto = getPreviousPhoto(photo);
@@ -51,14 +52,14 @@ export default function PhotoLinks({ photo }: { photo: Photo }) {
         nextPhotoAnimation={ANIMATION_RIGHT}
         prefetch
       >
-        PREV
+        {t('prev')}
       </PhotoLink>
       <PhotoLink
         photo={nextPhoto}
         nextPhotoAnimation={ANIMATION_LEFT}
         prefetch
       >
-        NEXT
+        {t('next')}
       </PhotoLink>
     </>
   );

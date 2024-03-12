@@ -2,21 +2,19 @@ import { Photo, titleForPhoto } from '.';
 import SiteGrid from '@/components/SiteGrid';
 import ImageLarge from '@/components/ImageLarge';
 import { clsx } from 'clsx/lite';
-import { Link } from '../navigation';
-import { pathForPhoto, pathForPhotoShare, pathForPhotoAddCart } from '@/site/paths';
+import { pathForPhoto, pathForPhotoShare } from '@/site/paths';
 import ShareButton from '@/components/ShareButton';
-import AddButton from '@/checkout/AddButton';
+import SideBarTitle from '@/components/SideBarTitle';
+import FormatsPicker from '@/checkout/formats/Picker';
 
 export default function PhotoLarge({
   photo,
   priority,
   prefetchActions,
-  shouldScrollOnActions,
 }: {
   photo: Photo;
   priority?: boolean;
   prefetchActions?: boolean;
-  shouldScrollOnActions?: boolean;
 }) {
   const renderMiniGrid = (children: JSX.Element, rightPadding = true) => (
     <div
@@ -50,20 +48,7 @@ export default function PhotoLarge({
           )}
         >
           {renderMiniGrid(
-            <>
-              <div className="-space-y-0.5">
-                <div className="relative flex gap-2 items-start">
-                  <div className="md:flex-grow">
-                    <Link
-                      href={pathForPhoto(photo)}
-                      className="font-bold uppercase"
-                    >
-                      {titleForPhoto(photo)}
-                    </Link>
-                  </div>
-                </div>
-              </div>
-            </>
+            <SideBarTitle href={pathForPhoto(photo)} title={titleForPhoto(photo)} />
           )}
           {renderMiniGrid(
             <>
@@ -71,13 +56,8 @@ export default function PhotoLarge({
                 <ShareButton
                   path={pathForPhotoShare(photo)}
                   prefetch={prefetchActions}
-                  shouldScroll={shouldScrollOnActions}
                 />
-                <AddButton
-                  path={pathForPhotoAddCart(photo)}
-                  prefetch={prefetchActions}
-                  shouldScroll={shouldScrollOnActions}
-                />
+                <FormatsPicker photo={photo} />
               </div>
             </>,
             false

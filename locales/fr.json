@@ -1,12 +1,89 @@
 {
+  "layout": {
+    "header_title": "A Vue de Coucou – La boutique"
+  },
+  "cart": {
+    "cart_button": "Mon panier"
+  },
   "checkout": {
-    "add_cart": "Ajouter au panier"
+    "photos_in_cart": "photos dans le panier",
+    "add_cart": "Ajouter au panier",
+    "add_info": {
+      "shipping": "Frais de port et système de fixation métallique arrière monté d’usine inclus.",
+      "tax": "TVA non applicable, art. 293B du CGI.",
+      "contact": "Pour tout tirage d'une autre photo du site me contacter.",
+      "contact_me": "Me contacter"
+    },
+    "confirm": {
+      "success": "Votre commande à bien été enregistrée. Un email de confirmation vous a été envoyé.",
+      "your_order": "Votre commande",
+      "no_order_yet": "Votre commande n'est pas encore placée."
+    },
+    "total": "Total",
+    "loading": "Chargement...",
+    "form": {
+      "title_contact": "Information du Contact",
+      "title_shipping_address": "Adresse de livraison",
+      "title_invoice_address": "Adresse de facturation",
+      "invoice_address_same": "Utiliser la même adresse",
+      "no_item_yet": "Aucune photos dans le panier.",
+      "explore_and_start": "Explorez et ajoutez une ou plusieurs photos à votre panier.",
+      "order": "Placer la commande",
+      "bottom_instructions": "Après le placement de votre commande, nous vous contacterons sous 2 jours ouvrés avec les informations pour procéder au paiement.",
+      "invalid_fields": "Certains champs sont invalides",
+      "fields": {
+        "email": "Adresse é-mail",
+        "phone": "Numéro de téléphone",
+        "firstName": "Prénom",
+        "lastName": "Nom",
+        "building": "Batiment, Etage, numéro de porte",
+        "address": "Adresse",
+        "city": "Ville",
+        "postalCode": "Code Postal",
+        "province": "Département / Région",
+        "country": "Pays"
+      },
+      "errors": {
+        "invalid": "invalide",
+        "required": "champ obligatoire"
+      }
+    }
+  },
+  "item_added": {
+    "item_added": "Photo ajoutée",
+    "congrats": "Bravo, votre photo est dans le panier!",
+    "continue_shopping": "Continuer les achats",
+    "checkout_now": "Placer la commande maintenant"
+  },
+  "confirm_email": {
+    "shipping": "Frais de port et système de fixation métallique arrière monté d’usine inclus.",
+    "tax": "TVA non applicable, art. 293B du CGI.",
+    "rights": "Tous droits réservés",
+    "date": "Date",
+    "order_placed": "Commande en cours de traitement",
+    "see_item": "Voir la photo",
+    "order_received": "Votre commande de photos sur A Vue De Coucou a bien été reçue!",
+    "next_step": "Nous vous contacterons sous 5 jours ouvrés pour le paiement.",
+    "contact_info": "Vos coordonées",
+    "name": "Nom",
+    "phone": "Téléphone",
+    "email": "Email",
+    "address_shipping_and_invoice": "Adresse de facturation et livraison:",
+    "address_shipping": "Adresse de livraison:",
+    "address_invoice": "Adresse de facturation:",
+    "your_order": "Votre commande",
+    "total": "Total",
+    "photos": "Photos"
   },
   "share": {
-    "share_photo": "Partager",
+    "share_button": "Partager",
+    "share_photo": "Partager la photo",
     "link_to_photo_copied": "Le lien de la photo est copier dans le press-papier."
   },
+  "nav": {
+    "next": "SUIVANTE",
+    "prev": "PRECEDENTE"
+  },
   "link_to_photo_copied": "Liens de la photo copié.",
-  "photo": "photo",
-  "share_photo": "Partager la photo"
+  "photo": "photo"
 }

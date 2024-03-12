@@ -6,7 +6,6 @@ import AddModal from '@/checkout/AddModal';
 export default function PhotoAddModal({ photo }: { photo: Photo }) {
   return (
     <AddModal
-      title="Ajouter la photo au panier"
       photo={photo}
       pathClose={pathForPhoto(photo)}
     >

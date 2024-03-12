@@ -1,9 +1,10 @@
 import { Photo } from '@/photo';
 import { BASE_URL } from './config';
+import { defaultLocale, locales } from '@/i18n';
 
 // Core paths
 export const PATH_ROOT = '/';
-export const PATH_GRID = '/grid';
+export const PATH_FULL = '/full';
 export const PATH_SETS = '/sets';
 export const PATH_OG = '/og';
 
@@ -22,7 +23,7 @@ const pathWithNext = (path: string, next?: number) => (next !== undefined ? `${p
 
 export const pathForRoot = (next?: number) => pathWithNext(PATH_ROOT, next);
 
-export const pathForGrid = (next?: number) => pathWithNext(PATH_GRID, next);
+export const pathForGrid = (next?: number) => pathWithNext(PATH_FULL, next);
 
 export const pathForOg = (next?: number) => pathWithNext(PATH_OG, next);
 
@@ -31,7 +32,11 @@ type PhotoOrPhotoId = Photo | string;
 const getPhotoId = (photoOrPhotoId: PhotoOrPhotoId) =>
   typeof photoOrPhotoId === 'string' ? photoOrPhotoId : photoOrPhotoId.id;
 
-export const pathForPhoto = (photo: PhotoOrPhotoId) => `${PREFIX_PHOTO}/${getPhotoId(photo)}`;
+export const pathForPhoto = (photo: PhotoOrPhotoId) =>
+  `${PREFIX_PHOTO}/${getPhotoId(photo)}`;
+
+export const pathForPhotoWithLocale = (locale = defaultLocale, photo: PhotoOrPhotoId) =>
+  `/${locale}${PREFIX_PHOTO}/${getPhotoId(photo)}`;
 
 export const absolutePathForPhotoImage = (photo: Photo) => `${BASE_URL}/${photo.url}`;
 
@@ -39,31 +44,37 @@ export const pathForPhotoShare = (photo: PhotoOrPhotoId) => `${pathForPhoto(phot
 
 export const pathForPhotoAddCart = (photo: PhotoOrPhotoId) => `${pathForPhoto(photo)}/${ADD}`;
 
-export const absolutePathForPhoto = (photo: PhotoOrPhotoId) => `${BASE_URL}${pathForPhoto(photo)}`;
+export const absolutePathForPhoto = (locale: string, photo: PhotoOrPhotoId) =>
+  `${BASE_URL}${pathForPhotoWithLocale(locale, photo)}`;
 
-// p/[photoId]
-export const isPathPhoto = (pathname = '') => new RegExp(`^${PREFIX_PHOTO}/[^/]+/?$`).test(pathname);
+// locale/photo/[photoId]
+export const isPathPhoto = (pathname = '') =>
+  new RegExp(`^/(${locales.join('|')})${PREFIX_PHOTO}/[^/]+/?$`).test(pathname);
 
 // p/[photoId]/share
-export const isPathPhotoShare = (pathname = '') => new RegExp(`^${PREFIX_PHOTO}/[^/]+/${SHARE}/?$`).test(pathname);
+export const isPathPhotoShare = (pathname = '') =>
+  (new RegExp(`^/(${locales.join('|')})${PREFIX_PHOTO}/[^/]+/${SHARE}/?$`).test(pathname));
 
-export const checkPathPrefix = (pathname = '', prefix: string) => pathname.toLowerCase().startsWith(prefix);
+export const checkPathPrefix = (locale = defaultLocale, pathname = '', prefix: string) =>
+  pathname.toLowerCase().startsWith(`/${locale}${prefix}`);
 
-export const isPathGrid = (pathname?: string) => checkPathPrefix(pathname, PATH_GRID);
+export const isPathGrid = (locale?: string, pathname?: string) => checkPathPrefix(locale, pathname, PATH_FULL);
 
-export const isPathSets = (pathname?: string) => checkPathPrefix(pathname, PATH_SETS);
+export const isPathSets = (locale?: string, pathname?: string) => checkPathPrefix(locale, pathname, PATH_SETS);
 
 export const getPathComponents = (pathname = ''): { photoId?: string } => {
   return {
-    photoId: pathname.match(new RegExp(`^${PREFIX_PHOTO}/([^/]+)`))?.[1],
+    photoId: pathname.match(new RegExp(`^/(${locales.join('|')})${PREFIX_PHOTO}/([^/]+)`))?.[1],
   };
 };
 
-export const getEscapePath = (pathname?: string) => {
+export const getEscapePath = (locale: string, pathname?: string) => {
   const { photoId } = getPathComponents(pathname);
   if (photoId && isPathPhoto(pathname)) {
-    return PATH_GRID;
+    return PATH_FULL;
+  } else if (photoId) {
+    return pathForPhotoWithLocale(locale, photoId);
   } else {
-    return pathForPhoto(photoId || '');
+    return PATH_ROOT;
   }
 };

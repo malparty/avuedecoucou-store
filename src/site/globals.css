@@ -2,6 +2,48 @@
 @tailwind components;
 @tailwind utilities;
 
+@font-face {
+  font-family: Sansation;
+  font-weight: normal;
+  font-style: normal;
+  src: url("../../public/fonts/Sansation-Regular.ttf");
+}
+
+@font-face {
+  font-family: Sansation;
+  font-weight: normal;
+  font-style: italic;
+  src: url("../../public/fonts/Sansation-Italic.ttf");
+}
+
+@font-face {
+  font-family: Sansation;
+  font-weight: bold;
+  font-style: italic;
+  src: url("../../public/fonts/Sansation-BoldItalic.ttf");
+}
+
+@font-face {
+  font-family: Sansation;
+  font-weight: bold;
+  font-style: normal;
+  src: url("../../public/fonts/Sansation-Bold.ttf");
+}
+
+@font-face {
+  font-family: Sansation;
+  font-weight: light;
+  font-style: italic;
+  src: url("../../public/fonts/Sansation-LightItalic.ttf");
+}
+
+@font-face {
+  font-family: Sansation;
+  font-weight: light;
+  font-style: normal;
+  src: url("../../public/fonts/Sansation-Light.ttf");
+}
+
 @layer base {
   /* Core */
   body {
@@ -18,7 +60,7 @@
       tracking-wider
   }
   button, .button,
-  input[type=text], input[type=email], input[type=password], select {
+  input[type=text], input[type=tel], input[type=email], input[type=password], select {
     @apply
       px-2.5 py-2
       border rounded-md
@@ -27,12 +69,12 @@
       font-mono text-base leading-tight
       min-h-[2.4rem]
   }
-  input[type=text], input[type=email], input[type=password], select {
+  input[type=text], input[type=tel], input[type=email], input[type=password], select {
     @apply
       text-[1rem] /* Prevent iOS auto-zoom behavior */
-      min-w-[20rem] read-only:cursor-default
+      min-w-full read-only:cursor-default
   }
-  input[type=text], input[type=email], input[type=password] {
+  input[type=text], input[type=tel], input[type=email], input[type=password] {
     @apply
       read-only:bg-gray-100
       dark:read-only:bg-gray-900 dark:read-only:text-gray-400
@@ -123,15 +165,15 @@
   }
   .text-medium {
     @apply
-      text-gray-500 dark:text-gray-400
+      text-gray-500 dark:text-gray-300
   }
   .text-dim {
     @apply
-      text-gray-400 dark:text-gray-500
+      text-gray-400 dark:text-gray-400
   }
   .text-extra-dim {
     @apply
-      text-gray-400/80 dark:text-gray-400/50
+      text-gray-400/80 dark:text-gray-300/50
   }
   .text-icon {
     @apply

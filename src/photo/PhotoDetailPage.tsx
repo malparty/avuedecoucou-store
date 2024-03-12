@@ -26,7 +26,6 @@ export default function PhotoDetailPage({
             photo={photo}
             priority
             prefetchActions
-            shouldScrollOnActions={false}
           />,
         ]}
       />

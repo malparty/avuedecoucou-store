@@ -5,19 +5,20 @@ import { TbPhotoShare } from 'react-icons/tb';
 import { Photo } from '@/photo';
 import { clsx } from 'clsx/lite';
 import { ReactNode } from 'react';
-import CheckOutForm from './CheckOutForm';
+import { useTranslations } from 'next-intl';
+import InfoBlock from '@/components/InfoBlock';
 
 export default function AddModal({
-  title = 'Ajouter au panier',
   photo,
   pathClose,
   children,
 }: {
-  title?: string;
   photo: Photo;
   pathClose: string;
   children: ReactNode;
 }) {
+  const t = useTranslations('checkout');
+
   return (
     <Modal onClosePath={pathClose} large>
       <div className="space-y-3 md:space-y-4 w-full">
@@ -26,19 +27,20 @@ export default function AddModal({
             size={22}
             className="hidden xs:block"
           />
-          <div className="flex-grow">{title}</div>
+          <div className="flex-grow">{t('add_cart')}</div>
         </div>
         {children}
         <div
           className={clsx(
             'rounded-md',
             'w-full overflow-hidden',
-            'flex items-center justify-stretch',
             'border border-gray-200 dark:border-gray-800'
           )}
         >
           <div className="truncate p-2 w-full">{photo.title}</div>
-          <CheckOutForm />
+          <InfoBlock>
+            Photo ajoutée avec success!! (ce message sera remplacé par une mini notification!)
+          </InfoBlock>
         </div>
       </div>
     </Modal>
