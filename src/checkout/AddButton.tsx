@@ -9,6 +9,9 @@ import { CartClient } from '@/checkout/cart/models/CartClient';
 import IconButton from '@/components/IconButton';
 import { formatKeysType, supportType } from './data';
 import { Photo } from '@/photo';
+import { useRouter } from '@/navigation';
+import { usePathname } from 'next/navigation';
+import { pathForPhoto } from '@/site/paths';
 
 interface AddButtonnProps {
   title: string;
@@ -27,7 +30,7 @@ export default function AddButton({
 }: AddButtonnProps) {
   const  loaderDelay = 250;
   const { setCartCount } = useAppState();
-
+  const router = useRouter();
   const [isPending, startTransition] = useTransition();
 
   const [shouldShowLoader, setShouldShowLoader] = useState(false);
@@ -50,6 +53,12 @@ export default function AddButton({
     />
   );
 
+  const onAdded = () => {
+    startTransition(() => {
+      router.push(`${pathForPhoto(photo.id)}/added`);
+    });
+  };
+
   return (
     <IconButton
       icon={icon}
@@ -65,6 +74,7 @@ export default function AddButton({
             photoUrl: photo.url,
             quantity: quantity}));
         setCartCount?.(cart.getItems().length);
+        onAdded();
       })}
       isLoading={shouldShowLoader}
       className={clsx(

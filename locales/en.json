@@ -49,6 +49,12 @@
       }
     }
   },
+  "item_added": {
+    "item_added": "Photo added",
+    "congrats": "Congrats, the photo was added to your cart!",
+    "continue_shopping": "Continue shopping",
+    "checkout_now": "Checkout now"
+  },
   "confirm_email": {
     "shipping": "Shipping costs and factory-fitted rear metal mounting system are included.",
     "tax": "VAT not applicable, art. 293B from CGI.",

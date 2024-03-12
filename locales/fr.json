@@ -49,6 +49,12 @@
       }
     }
   },
+  "item_added": {
+    "item_added": "Photo ajoutée",
+    "congrats": "Bravo, votre photo est dans le panier!",
+    "continue_shopping": "Continuer les achats",
+    "checkout_now": "Placer la commande maintenant"
+  },
   "confirm_email": {
     "shipping": "Frais de port et système de fixation métallique arrière monté d’usine inclus.",
     "tax": "TVA non applicable, art. 293B du CGI.",
