@@ -10,7 +10,6 @@ import IconButton from '@/components/IconButton';
 import { formatKeysType, supportType } from './data';
 import { Photo } from '@/photo';
 import { useRouter } from '@/navigation';
-import { usePathname } from 'next/navigation';
 import { pathForPhoto } from '@/site/paths';
 
 interface AddButtonnProps {

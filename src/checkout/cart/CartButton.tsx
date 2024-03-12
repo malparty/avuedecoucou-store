@@ -27,20 +27,22 @@ export default function CartButton({
   const title = `${t('cart_button')}${numberItems}`;
 
   return (
-    <IconPathButton
-      {...{
-        path,
-        title: title,
-        icon: (
-          <FaCartShopping
-            size={34}
-            className={'text-dim'}
-          />
-        ),
-        prefetch,
-        shouldScroll,
-        spinnerColor: 'dim',
-      }}
-    />
+    <div className="mt-1 pt-2">
+      <IconPathButton
+        {...{
+          path,
+          title: title,
+          icon: (
+            <FaCartShopping
+              size={34}
+              className={'text-dim'}
+            />
+          ),
+          prefetch,
+          shouldScroll,
+          spinnerColor: 'dim',
+        }}
+      />
+    </div>
   );
 }

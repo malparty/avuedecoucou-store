@@ -80,6 +80,10 @@
     "share_photo": "Share photo",
     "link_to_photo_copied": "The link of the photo has been saved to the clipboard."
   },
+  "nav": {
+    "next": "NEXT",
+    "prev": "PREV"
+  },
   "link_to_photo_copied": "Link to photo copied",
   "photo": "photo"
 }

@@ -1,4 +1,5 @@
 import { Cart } from '@/checkout/cart/models/Cart';
+import { FORMATS } from '@/checkout/data';
 import { CustomerInfo } from '@/checkout/order/customerInfo';
 import {
   Body,
@@ -150,7 +151,7 @@ export default async function OrderConfirmationTemplate(customerInfo: CustomerIn
                 </Column>
                 <Column style={{ paddingLeft: '22px' }}>
                   <Text style={productTitle}>{item.photoTitle}</Text>
-                  <Text style={productDescription}>{item.formatKey} / {item.support}</Text>
+                  <Text style={productDescription}>{FORMATS[item.formatKey]} {item.support}</Text>
                   <Text style={productDescription}>
                     {item.quantity} x {item.unitPrice()}EUR
                   </Text>

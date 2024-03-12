@@ -80,6 +80,10 @@
     "share_photo": "Partager la photo",
     "link_to_photo_copied": "Le lien de la photo est copier dans le press-papier."
   },
+  "nav": {
+    "next": "SUIVANTE",
+    "prev": "PRECEDENTE"
+  },
   "link_to_photo_copied": "Liens de la photo copié.",
   "photo": "photo"
 }
