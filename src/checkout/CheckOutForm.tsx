@@ -46,7 +46,7 @@ export default function CheckOutForm() {
 
   const router = useRouter();
 
-  const {cartCount} = useAppState();
+  const {setCartCount, cartCount} = useAppState();
 
   const currentCustomerInfo = () => new CustomerInfo({
     firstName,
@@ -95,6 +95,8 @@ export default function CheckOutForm() {
 
     localStorage.setItem(LAST_ORDER_KEY, body);
     localStorage.removeItem(CART_ITEMS_KEY);
+
+    if(setCartCount) setCartCount(0);
 
     return router.push('/confirmation');
   };
