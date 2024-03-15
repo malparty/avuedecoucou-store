@@ -1,7 +1,5 @@
 import { PHOTOS } from './data';
 
-export const GRID_THUMBNAILS_TO_SHOW_MAX = 12;
-
 export interface Photo {
   id: string;
   title: string;
