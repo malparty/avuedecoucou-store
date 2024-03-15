@@ -13,11 +13,12 @@ export const runtime = 'edge';
 
 export default async function FullPage({ searchParams, params: { locale } }: PaginationParams) {
   unstable_setRequestLocale(locale);
-  const { offset, limit } = getPaginationForSearchParams(searchParams, 12);
+  // Currently disabling infinite scrool as we have a limited number of photos
+  const itemPerPage = 30;
+  const { offset, limit } = getPaginationForSearchParams(searchParams, itemPerPage);
+  const showMorePhotos = PHOTOS_COUNT > limit;
 
   const photos = getPhotos(limit, offset);
-
-  const showMorePhotos = PHOTOS_COUNT > photos.length;
 
   return photos.length > 0 ? (
     <div className="space-y-4">
