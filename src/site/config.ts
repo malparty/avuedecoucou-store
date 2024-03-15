@@ -2,15 +2,9 @@ import { makeUrlAbsolute } from '@/utility/url';
 
 // META / DOMAINS
 
-const VERCEL_BRANCH_URL = process.env.NEXT_PUBLIC_VERCEL_BRANCH_URL;
-const VERCEL_BRANCH = process.env.NEXT_PUBLIC_VERCEL_GIT_COMMIT_REF;
-const VERCEL_URL = VERCEL_BRANCH_URL && VERCEL_BRANCH
-  ? `${VERCEL_BRANCH_URL.split(`-git-${VERCEL_BRANCH}-`)[0]}.vercel.app`
-  : undefined;
-
 const SITE_DOMAIN =
   process.env.NEXT_PUBLIC_SITE_DOMAIN ||
-  VERCEL_URL;
+  'https://avuedecoucou.vercel.app/';
 
 export const SITE_DESCRIPTION =
   process.env.NEXT_PUBLIC_SITE_DESCRIPTION ||
