@@ -6,10 +6,26 @@ export const PHOTOS: Photo[] = [
     title: 'Aube d\'automne sur la Route des Vins',
     url: '/img/aube_automne_sur_la_route_des_vins.jpg',
   },
-  { id: 'envol_aube',title: 'Envol de l\'aube', url: '/img/envol_aube.jpg'},
-  { id: 'piper_et_haut_koenigsbourg',title: 'Piper et Haut-Koenigsbourg', url: '/img/piper_et_haut_koenigsbourg.jpg'},
-  { id: 'cascades_vosgiennes',title: 'Cascades Vosgiennes', url: '/img/cascades_vosgiennes.jpg'},
-  { id: 'etoile_de_vauban',title: 'L\'Etoile de Vauban', url: '/img/etoile_de_vauban.jpg'},
+  {
+    id: 'envol_aube',
+    title: 'Envol de l\'aube',
+    url: '/img/envol_aube.jpg',
+  },
+  {
+    id: 'piper_et_haut_koenigsbourg',
+    title: 'Piper et Haut-Koenigsbourg',
+    url: '/img/piper_et_haut_koenigsbourg.jpg',
+  },
+  {
+    id: 'cascades_vosgiennes',
+    title: 'Cascades Vosgiennes',
+    url: '/img/cascades_vosgiennes.jpg',
+  },
+  {
+    id: 'etoile_de_vauban',
+    title: 'L\'Etoile de Vauban',
+    url: '/img/etoile_de_vauban.jpg',
+  },
   {
     id: 'communion_des_saisons_au_hohneck',
     title: 'Communion des saisons au Hohneck',
@@ -20,7 +36,11 @@ export const PHOTOS: Photo[] = [
     title: 'Miracle dans la Vallée Noble',
     url: '/img/miracle_dans_la_vallee_noble.jpg',
   },
-  { id: 'lac_de_pierre_percee',title: 'Lac de Pierre-Percée', url: '/img/lac_de_pierre_percee.jpg'},
+  {
+    id: 'lac_de_pierre_percee',
+    title: 'Lac de Pierre-Percée',
+    url: '/img/lac_de_pierre_percee.jpg',
+  },
   {
     id: 'piper_sur_la_route_des_vins',
     title: 'Piper sur la Route des Vins',
