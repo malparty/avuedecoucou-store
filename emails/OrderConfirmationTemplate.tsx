@@ -1,6 +1,7 @@
 import { Cart } from '@/checkout/cart/models/Cart';
 import { FORMATS } from '@/checkout/data';
 import { CustomerInfo } from '@/checkout/order/customerInfo';
+import { BASE_URL } from '@/site/config';
 import {
   Body,
   Container,
@@ -17,8 +18,6 @@ import {
 } from '@react-email/components';
 import { getTranslations } from 'next-intl/server';
 
-const baseUrl = process.env.BASE_URL;
-
 export default async function OrderConfirmationTemplate(customerInfo: CustomerInfo, cart: Cart, locale: string) {
   const t = await getTranslations({locale: locale, namespace: 'confirm_email'});
   const now = new Date();
@@ -34,7 +33,7 @@ export default async function OrderConfirmationTemplate(customerInfo: CustomerIn
             <Row>
               <Column>
                 <Img
-                  src={`${baseUrl}/img/assets/logo_txt.png`}
+                  src={`${BASE_URL}/img/assets/logo_txt.png`}
                   width="217"
                   height="42"
                   alt="Logo A Vue de Coucou"
@@ -142,7 +141,7 @@ export default async function OrderConfirmationTemplate(customerInfo: CustomerIn
               <Row key={index}>
                 <Column style={{ width: '64px' }}>
                   <Img
-                    src={`${baseUrl}/${item.photoUrl}`}
+                    src={`${BASE_URL}/${item.photoUrl}`}
                     width="64"
                     height="64"
                     alt={`Photo: ${item.photoTitle}`}
@@ -156,7 +155,7 @@ export default async function OrderConfirmationTemplate(customerInfo: CustomerIn
                     {item.quantity} x {item.unitPrice()}EUR
                   </Text>
                   <Link
-                    href={`${baseUrl}/photo/${item.photoId}`}
+                    href={`${BASE_URL}/photo/${item.photoId}`}
                     style={productLink}
                   >
                     {t('see_item')}
