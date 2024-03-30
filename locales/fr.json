@@ -82,6 +82,24 @@
     "share_photo": "Partager la photo",
     "link_to_photo_copied": "Le lien de la photo est copier dans le press-papier."
   },
+  "supports": {
+    "forex": {
+      "title": "Forex",
+      "description": "Impression sur un panneau PVC fin et moderne de 5 mm, finition mate"
+    },
+    "toile": {
+      "title": "Toile",
+      "description": "Impression sur une toile tendue polyester sur cadre en bois de 18 mm, finition mate"
+    },
+    "aluminium": {
+      "title": "Dibond",
+      "description": "Impression sur un panneau aluminium épuré et contemporain de 3mm, finition mate"
+    },
+    "acrylique": {
+      "title": "Acrylique",
+      "description": "Impression au dos d'une plaque de verre acrylique de 4mm et fixation d’un film blanc et noir à l’arrière, finition brillante"
+    }
+  },
   "nav": {
     "next": "SUIVANTE",
     "prev": "PRECEDENTE"

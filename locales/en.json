@@ -82,6 +82,24 @@
     "share_photo": "Share photo",
     "link_to_photo_copied": "The link of the photo has been saved to the clipboard."
   },
+  "supports": {
+    "forex": {
+      "title": "Forex",
+      "description": "Printed on a 5mm thin and modern PVC panel, matte finish"
+    },
+    "toile": {
+      "title": "Canvas",
+      "description": "Printed on a 18mm wooden frame polyester stretched canvas, matte finish"
+    },
+    "aluminium": {
+      "title": "Dibond",
+      "description": "Printed on a 3mm sleek and contemporary aluminium panel, matte finish"
+    },
+    "acrylique": {
+      "title": "Acrylic",
+      "description": "Printed on the back of a 4mm acrylic glass plate and fixing of a black and white film on the back, glossy finish"
+    }
+  },
   "nav": {
     "next": "NEXT",
     "prev": "PREV"
