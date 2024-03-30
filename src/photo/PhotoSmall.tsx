@@ -9,6 +9,7 @@ export default function PhotoSmall({ photo, selected }: { photo: Photo; selected
     <Link
       href={pathForPhoto(photo)}
       className={clsx('active:brightness-75', selected && 'brightness-50')}
+      data-testid="photo-link"
     >
       <ImageSmall
         src={photo.url}

@@ -44,7 +44,7 @@ function AnimateItems({
   } = useAppState();
 
   const prefersReducedMotion = usePrefersReducedMotion();
-  
+
   const hasLoadedInitial = useRef(hasLoaded);
   const nextPhotoAnimationInitial = useRef(nextPhotoAnimation);
 

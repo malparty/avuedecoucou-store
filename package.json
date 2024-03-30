@@ -8,7 +8,9 @@
     "lint": "next lint",
     "test": "jest --watch",
     "preview-email": "email dev",
-    "analyze": "ANALYZE=true next build"
+    "analyze": "ANALYZE=true next build",
+    "cypress:open": "cypress open",
+    "cypress:ci": "start-server-and-test start http://localhost:3000 \"cypress run --e2e\""
   },
   "dependencies": {
     "@headlessui/react": "2.0.0-alpha.4",
@@ -52,9 +54,13 @@
     "react-email": "^2.0.0",
     "react-icons": "^5.0.1",
     "sonner": "^1.4.0",
+    "start-server-and-test": "^2.0.3",
     "tailwind-scrollbar": "^3.1.0",
     "tailwindcss": "3.4.1",
     "ts-exif-parser": "^0.2.2",
     "typescript": "5.3.3"
+  },
+  "devDependencies": {
+    "cypress": "^13.7.1"
   }
 }
