@@ -11,6 +11,7 @@
     "add_info": {
       "shipping": "Frais de port et système de fixation métallique arrière monté d’usine inclus.",
       "tax": "TVA non applicable, art. 293B du CGI.",
+      "payment": "Règlement par virement bancaire ou chèque.",
       "contact": "Pour tout tirage d'une autre photo du site me contacter.",
       "contact_me": "Me contacter"
     },
@@ -57,6 +58,7 @@
   },
   "confirm_email": {
     "shipping": "Frais de port et système de fixation métallique arrière monté d’usine inclus.",
+    "payment": "Règlement par virement bancaire ou chèque.",
     "tax": "TVA non applicable, art. 293B du CGI.",
     "rights": "Tous droits réservés",
     "date": "Date",

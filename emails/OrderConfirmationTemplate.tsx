@@ -182,6 +182,7 @@ export default async function OrderConfirmationTemplate(customerInfo: CustomerIn
           </Section>
           <Text style={footerText}>
             {t('shipping')}<br />
+            {t('payment')}<br />
             {t('tax')}
           </Text>
           <Text style={footerCopyright}>
