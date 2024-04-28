@@ -11,6 +11,7 @@ export default function IconButton({
   className,
   spinnerColor,
   spinnerSize,
+  testid,
 }: {
   icon: JSX.Element
   title?: string
@@ -19,12 +20,13 @@ export default function IconButton({
   className?: string
   spinnerColor?: SpinnerColor
   spinnerSize?: number
+  testid?: string
 }) {
   return (
     <span className={clsx(
       className,
       'relative inline-flex items-start'
-    )}>
+    )} data-testid={testid} >
       {!isLoading
         ? <button
           onClick={onClick}
