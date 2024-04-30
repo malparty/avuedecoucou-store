@@ -128,7 +128,7 @@ export default function CheckOutForm() {
 
   return (
     <InfoBlock>
-      <form action={formAction}>
+      <form action={formAction} data-testid="checkout-form">
         <div className="space-y-8">
           {formState?.success === false && <ErrorNote>{t('form.invalid_fields')}</ErrorNote>}
           <div className="text-3xl font-bold">{t('form.title_contact')}</div>

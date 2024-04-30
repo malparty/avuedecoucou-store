@@ -41,7 +41,7 @@ export default function FormatsPicker({photo}: {photo: Photo}) {
       </div>
       <div className='flex my-4 gap-1'>
         <div className='text-3xl mr-1'>Prix</div>
-        <div className='text-3xl font-bold'>{price} EUR</div>
+        <div className='text-3xl font-bold'>{price}EUR</div>
       </div>
       <AddButton title={t('add_cart')}
         formatKey={currentFormatKey}

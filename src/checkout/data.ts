@@ -5,7 +5,7 @@ export type supportType = 'toile' | 'forex' | 'aluminium' | 'acrylique';
 type formatsType = {[key in formatKeysType]: string}
 type formatType = keyof formatsType;
 
-export const FORMATS: formatsType = { a: '45x30mm', b: '60x40mm', c: '75x50mm', d: '90x60mm', e: '105x70mm' };
+export const FORMATS: formatsType = { a: '45x30cm', b: '60x40cm', c: '75x50cm', d: '90x60cm', e: '105x70cm' };
 export const SUPPORTS: supportType[] = ['toile', 'forex', 'aluminium', 'acrylique'];
 export const PRICES: {[key in supportType]: { [key in formatType]: number }} = {
   'toile': { a: 140, b: 150, c: 160, d: 190, e: 270 },

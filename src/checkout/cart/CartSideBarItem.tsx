@@ -46,6 +46,7 @@ export default function CartSideBarItem({item, index, plusQuantity, minusQuantit
         </div>
         <div>
           <IconButton
+            testid="cart-item__decrement"
             {...{
               onClick: () => { setQuantity(quantity - 1); minusQuantity(index);},
               icon:(
@@ -56,6 +57,7 @@ export default function CartSideBarItem({item, index, plusQuantity, minusQuantit
             } />
           <span className="text-xl font-bold px-1 relative -top-3">{quantity}</span>
           <IconButton
+            testid="cart-item__increment"
             {...{
               onClick: () => { setQuantity(quantity + 1); plusQuantity(index);},
               icon:(

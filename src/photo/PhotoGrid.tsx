@@ -27,7 +27,7 @@ export default function PhotoGrid({
   small?: boolean;
 }) {
   return (
-    <div className="space-y-4">
+    <div className="space-y-4" data-testid="photo-grid">
       <AnimateItems
         className={clsx(
           'grid gap-0.5 sm:gap-1',
