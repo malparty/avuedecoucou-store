@@ -109,26 +109,26 @@ export default async function OrderConfirmationTemplate(customerInfo: CustomerIn
                   <Text style={informationTableValue}>{customerInfo.shippingBuilding}</Text>
                   <Text style={informationTableValue}>{customerInfo.shippingAddress}</Text>
                   <Text style={informationTableValue}>
-                    {customerInfo.useSameAddress ? t('address_shipping_and_invoice') : t('address_shipping')}
+                    {[customerInfo.shippingCity, customerInfo.shippingPostalCode].join(' - ')}
                   </Text>
                   <Text style={informationTableValue}>
-                    {[customerInfo.invoiceProvince, customerInfo.invoiceCountry].filter(x => x).join(' - ')}
+                    {[customerInfo.shippingProvince, customerInfo.shippingCountry].filter(x => x).join(' - ')}
                   </Text>
                 </Row>
                 { !customerInfo.useSameAddress &&
-<Row>
-  <Text style={informationTableLabel}>
-    {t('address_invoice')}
-  </Text>
-  <Text style={informationTableValue}>{customerInfo.invoiceBuilding}</Text>
-  <Text style={informationTableValue}>{customerInfo.invoiceAddress}</Text>
-  <Text style={informationTableValue}>
-    {customerInfo.useSameAddress ? t('address_shipping_and_invoice') : t('address_shipping')}
-  </Text>
-  <Text style={informationTableValue}>
-    {[customerInfo.invoiceProvince, customerInfo.invoiceCountry].filter(x => x).join(' - ')}
-  </Text>
-</Row>
+                  <Row>
+                    <Text style={informationTableLabel}>
+                      {t('address_invoice')}
+                    </Text>
+                    <Text style={informationTableValue}>{customerInfo.invoiceBuilding}</Text>
+                    <Text style={informationTableValue}>{customerInfo.invoiceAddress}</Text>
+                    <Text style={informationTableValue}>
+                      {[customerInfo.invoiceCity, customerInfo.invoicePostalCode].join(' - ')}
+                    </Text>
+                    <Text style={informationTableValue}>
+                      {[customerInfo.invoiceProvince, customerInfo.invoiceCountry].filter(x => x).join(' - ')}
+                    </Text>
+                  </Row>
                 }
               </Column>
             </Row>
