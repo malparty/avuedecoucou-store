@@ -24,6 +24,8 @@ export default function CheckOutForm() {
   const [lastName, setLastName] = useState('');
   const [phone, setPhone] = useState('');
   // Shipping address
+  const [shippingFirstName, setShippingFirstName] = useState('');
+  const [shippingLastName, setShippingLastName] = useState('');
   const [shippingAddress, setShippingAddress] = useState('');
   const [shippingBuilding, setShippingBuilding] = useState('');
   const [shippingCity, setShippingCity] = useState('');
@@ -31,6 +33,8 @@ export default function CheckOutForm() {
   const [shippingProvince, setShippingProvince] = useState('');
   const [shippingCountry, setShippingCountry] = useState('FR');
   // Invoice address
+  const [invoiceFirstName, setInvoiceFirstName] = useState('');
+  const [invoiceLastName, setInvoiceLastName] = useState('');
   const [useSameAddress, setUseSameAddress] = useState(true);
   const [invoiceAddress, setInvoiceAddress] = useState('');
   const [invoiceBuilding, setInvoiceBuilding] = useState('');
@@ -53,12 +57,16 @@ export default function CheckOutForm() {
     lastName,
     email,
     phone,
+    shippingFirstName,
+    shippingLastName,
     shippingAddress,
     shippingBuilding,
     shippingCity,
     shippingPostalCode,
     shippingProvince,
     shippingCountry,
+    invoiceFirstName,
+    invoiceLastName,
     invoiceAddress,
     invoiceCity,
     invoiceCountry,
@@ -132,8 +140,8 @@ export default function CheckOutForm() {
         <div className="space-y-8">
           {formState?.success === false && <ErrorNote>{t('form.invalid_fields')}</ErrorNote>}
           <div className="text-3xl font-bold">{t('form.title_contact')}</div>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-            <div className="space-y-4">
+          <div className="space-y-4">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               <FieldSetWithStatus
                 id="firstName"
                 inputRef={firstNameRef}
@@ -155,7 +163,7 @@ export default function CheckOutForm() {
               />
             </div>
 
-            <div className="space-y-4">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               <FieldSetWithStatus
                 id="email"
                 required
@@ -180,6 +188,8 @@ export default function CheckOutForm() {
           <div  className="text-3xl font-bold">{t('form.title_shipping_address')}</div>
           <AddressField customerInfo={formState?.customerInfo}
             prefix="shipping"
+            firstName={shippingFirstName} setFirstName={setShippingFirstName}
+            lastName={shippingLastName} setLastName={setShippingLastName}
             address={shippingAddress} setAddress={setShippingAddress}
             building={shippingBuilding} setBuilding={setShippingBuilding}
             city={shippingCity} setCity={setShippingCity}
@@ -200,6 +210,8 @@ export default function CheckOutForm() {
 
           { !useSameAddress && <AddressField customerInfo={formState?.customerInfo}
             prefix="invoice"
+            firstName={invoiceFirstName} setFirstName={setInvoiceFirstName}
+            lastName={invoiceLastName} setLastName={setInvoiceLastName}
             address={invoiceAddress} setAddress={setInvoiceAddress}
             building={invoiceBuilding} setBuilding={setInvoiceBuilding}
             city={invoiceCity} setCity={setInvoiceCity}
