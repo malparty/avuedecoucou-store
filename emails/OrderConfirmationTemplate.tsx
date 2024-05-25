@@ -106,6 +106,11 @@ export default async function OrderConfirmationTemplate(customerInfo: CustomerIn
                   <Text style={informationTableLabel}>
                     {customerInfo.useSameAddress ? t('address_shipping_and_invoice') : t('address_shipping')}
                   </Text>
+                  {(customerInfo.shippingFirstName || customerInfo.shippingLastName) &&
+                    (<Text style={informationTableValue}>
+                      {customerInfo.shippingFirstName} {customerInfo.shippingLastName}
+                    </Text>
+                    )}
                   <Text style={informationTableValue}>{customerInfo.shippingBuilding}</Text>
                   <Text style={informationTableValue}>{customerInfo.shippingAddress}</Text>
                   <Text style={informationTableValue}>
@@ -120,6 +125,11 @@ export default async function OrderConfirmationTemplate(customerInfo: CustomerIn
                     <Text style={informationTableLabel}>
                       {t('address_invoice')}
                     </Text>
+                    {(customerInfo.invoiceFirstName || customerInfo.invoiceLastName) &&
+                      (<Text style={informationTableValue}>
+                        {customerInfo.invoiceFirstName} {customerInfo.invoiceLastName}
+                      </Text>
+                      )}
                     <Text style={informationTableValue}>{customerInfo.invoiceBuilding}</Text>
                     <Text style={informationTableValue}>{customerInfo.invoiceAddress}</Text>
                     <Text style={informationTableValue}>

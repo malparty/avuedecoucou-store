@@ -10,6 +10,8 @@ interface AddressFieldProps {
   customerInfo?: CustomerInfo
   prefix: string
 
+  firstName: string,
+  lastName: string,
   address: string,
   building: string,
   city: string,
@@ -17,6 +19,8 @@ interface AddressFieldProps {
   province: string,
   country: string,
 
+  setFirstName: (value: string) => void,
+  setLastName: (value: string) => void,
   setAddress: (value: string) => void,
   setBuilding: (value: string) => void,
   setCity: (value: string) => void,
@@ -27,6 +31,8 @@ interface AddressFieldProps {
 export default function AddressField({
   customerInfo,
   prefix,
+  firstName, setFirstName,
+  lastName, setLastName,
   address, setAddress,
   building, setBuilding,
   city, setCity,
@@ -40,8 +46,27 @@ export default function AddressField({
   const [isOpen, setIsOpen] = useState(false);
 
   return (
-    <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-      <div className="space-y-4">
+    <div className="space-y-4">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <FieldSetWithStatus
+          id={`${prefix}FirstName`}
+          label={t('form.fields.firstName')}
+          type="text"
+          value={firstName}
+          onChange={setFirstName}
+          error={customerInfo?.fieldErrorMessage(`${prefix}FirstName`, t)}
+        />
+        <FieldSetWithStatus
+          id={`${prefix}LastName`}
+          label={t('form.fields.lastName')}
+          type="text"
+          value={lastName}
+          onChange={setLastName}
+          error={customerInfo?.fieldErrorMessage(`${prefix}LastName`, t)}
+        />
+      </div>
+
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
         <FieldSetWithStatus
           id={`${prefix}Building`}
           label={t('form.fields.building')}
@@ -50,7 +75,6 @@ export default function AddressField({
           onChange={setBuilding}
           error={customerInfo?.fieldErrorMessage(`${prefix}Building`, t)}
         />
-
         <FieldSetWithStatus
           id={`${prefix}Address`}
           required
@@ -60,7 +84,9 @@ export default function AddressField({
           onChange={setAddress}
           error={customerInfo?.fieldErrorMessage(`${prefix}Address`, t)}
         />
+      </div>
 
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
         <FieldSetWithStatus
           id={`${prefix}City`}
           required
@@ -70,9 +96,6 @@ export default function AddressField({
           onChange={setCity}
           error={customerInfo?.fieldErrorMessage(`${prefix}City`, t)}
         />
-      </div>
-
-      <div className="space-y-4">
         <FieldSetWithStatus
           id={`${prefix}PostalCode`}
           required
@@ -82,7 +105,9 @@ export default function AddressField({
           onChange={setPostalCode}
           error={customerInfo?.fieldErrorMessage(`${prefix}PostalCode`, t)}
         />
+      </div>
 
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
         <FieldSetWithStatus
           id={`${prefix}Province`}
           label={t('form.fields.province')}
@@ -91,7 +116,6 @@ export default function AddressField({
           onChange={setProvince}
           error={customerInfo?.fieldErrorMessage(`${prefix}Province`, t)}
         />
-
         <CountrySelector
           id={`${prefix}Countries`}
           countries={countries}
