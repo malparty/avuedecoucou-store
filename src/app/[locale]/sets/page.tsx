@@ -2,8 +2,8 @@ import InfoBlock from '@/components/InfoBlock';
 import RedirectOnDesktop from '@/components/RedirectOnDesktop';
 import SiteGrid from '@/components/SiteGrid';
 import PhotoGridSidebar from '@/photo/PhotoGridSidebar';
-import { PATH_FULL } from '@/site/paths';
 import { PHOTOS_COUNT } from '@/photo/data';
+import { PATH_FULL } from '@/site/paths';
 
 export const runtime = 'edge';
 

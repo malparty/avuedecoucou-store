@@ -1,4 +1,4 @@
-import { locales } from '@/i18n';
+import { routing } from '@/i18n/routing';
 import LangSwitchLink from './LangSwitchLink';
 import { useLocale } from 'next-intl';
 
@@ -7,7 +7,7 @@ export default function LangSwitch() {
 
   return (
     <div className="divide-x-2">
-      {locales.map((locale) => (
+      {routing.locales.map((locale) => (
         <LangSwitchLink
           key={locale}
           currentLocale={currentLocale}

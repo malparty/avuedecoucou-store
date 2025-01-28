@@ -1,4 +1,4 @@
-import { locales } from '@/i18n';
+import { routing } from '@/i18n/routing';
 import { Link } from '@/navigation';
 import clsx from 'clsx';
 import { usePathname } from 'next/navigation';
@@ -15,7 +15,7 @@ export default function LangSwitchLink({
   const pathname = usePathname();
 
   const removeLeadingLocales = (path: string): string => {
-    const regex = new RegExp(`^\/(${locales.join('|')})\/`);
+    const regex = new RegExp(`^\/(${routing.locales.join('|')})\/`);
     return path.replace(regex, '/');
   };
 
