@@ -1,23 +1,17 @@
 import AnimateItems from '@/components/AnimateItems';
-import MorePhotos from '@/photo/MorePhotos';
-import SiteGrid from '@/components/SiteGrid';
 import PhotoLarge from '@/photo/PhotoLarge';
 import PhotosEmptyState from '@/photo/PhotosEmptyState';
 import { PaginationParams, getPaginationForSearchParams } from '@/site/pagination';
-import { pathForRoot } from '@/site/paths';
 import { getPhotos } from '@/photo';
-import { PHOTOS_COUNT } from '@/photo/data';
-import { unstable_setRequestLocale } from 'next-intl/server';
+import { setRequestLocale } from 'next-intl/server';
 
 export const runtime = 'edge';
 
 export default async function FullPage({ searchParams, params: { locale } }: PaginationParams) {
-  unstable_setRequestLocale(locale);
+  setRequestLocale(locale);
   // Currently disabling infinite scrool as we have a limited number of photos
-  const itemPerPage = 30;
+  const itemPerPage = 50;
   const { offset, limit } = getPaginationForSearchParams(searchParams, itemPerPage);
-  const showMorePhotos = PHOTOS_COUNT > limit;
-
   const photos = getPhotos(limit, offset);
 
   return photos.length > 0 ? (
@@ -36,7 +30,6 @@ export default async function FullPage({ searchParams, params: { locale } }: Pag
           />
         ))}
       />
-      {showMorePhotos && <SiteGrid contentMain={<MorePhotos path={pathForRoot(offset + 1)} />} />}
     </div>
   ) : (
     <PhotosEmptyState />

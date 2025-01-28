@@ -1,7 +1,7 @@
 import ConfirmationPage from '@/checkout/confirmation/ConfirmationPage';
 import SiteGrid from '@/components/SiteGrid';
 import { PaginationParams } from '@/site/pagination';
-import { unstable_setRequestLocale } from 'next-intl/server';
+import { setRequestLocale } from 'next-intl/server';
 import dynamic from 'next/dynamic';
 
 const ConfirmationSideBar = dynamic(() => import('@/checkout/confirmation/ConfirmationSideBar'), { ssr: false });
@@ -9,7 +9,7 @@ const ConfirmationSideBar = dynamic(() => import('@/checkout/confirmation/Confir
 export const runtime = 'edge';
 
 export default async function CartAppPage({ params: { locale } }: PaginationParams) {
-  unstable_setRequestLocale(locale);
+  setRequestLocale(locale);
 
   return (
     <SiteGrid

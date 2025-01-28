@@ -3,7 +3,7 @@ import { redirect } from 'next/navigation';
 import { PATH_ROOT, absolutePathForPhotoImage } from '@/site/paths';
 import PhotoDetailPage from '@/photo/PhotoDetailPage';
 import { Providers } from '@/providers';
-import { unstable_setRequestLocale } from 'next-intl/server';
+import { setRequestLocale } from 'next-intl/server';
 import { PHOTOS } from '@/photo/data';
 
 export const runtime = 'edge';
@@ -29,7 +29,7 @@ export default function PhotoPage({
   photos.splice(photoIndex, 1);
 
   // Warm OG image without waiting on response
-  unstable_setRequestLocale(locale);
+  setRequestLocale(locale);
   fetch(absolutePathForPhotoImage(photo));
 
   const messages = useMessages();

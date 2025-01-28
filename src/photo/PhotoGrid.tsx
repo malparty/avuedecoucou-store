@@ -2,7 +2,6 @@ import { Photo } from '.';
 import PhotoSmall from './PhotoSmall';
 import { clsx } from 'clsx/lite';
 import AnimateItems from '@/components/AnimateItems';
-import MorePhotos from '@/photo/MorePhotos';
 import { GRID_ASPECT_RATIO, HIGH_DENSITY_GRID } from '@/site/config';
 
 export default function PhotoGrid({
@@ -12,7 +11,6 @@ export default function PhotoGrid({
   animate = true,
   animateOnFirstLoadOnly,
   staggerOnFirstLoadOnly = true,
-  showMorePath,
   additionalTile,
   small,
 }: {
@@ -22,7 +20,6 @@ export default function PhotoGrid({
   animate?: boolean;
   animateOnFirstLoadOnly?: boolean;
   staggerOnFirstLoadOnly?: boolean;
-  showMorePath?: string;
   additionalTile?: JSX.Element;
   small?: boolean;
 }) {
@@ -74,7 +71,6 @@ export default function PhotoGrid({
           ))
           .concat(additionalTile ?? [])}
       />
-      {showMorePath && <MorePhotos path={showMorePath} />}
     </div>
   );
 }

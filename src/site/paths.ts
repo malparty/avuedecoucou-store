@@ -1,11 +1,11 @@
 import { Photo } from '@/photo';
 import { BASE_URL } from './config';
-import { defaultLocale, locales } from '@/i18n';
+import { defaultLocale } from '@/i18n/request';
+import { routing } from '@/i18n/routing';
 
 // Core paths
 export const PATH_ROOT = '/';
 export const PATH_FULL = '/full';
-export const PATH_SETS = '/sets';
 export const PATH_OG = '/og';
 
 // Path prefixes
@@ -20,8 +20,6 @@ const NEXT = 'next';
 export const ABSOLUTE_PATH_FOR_HOME_IMAGE = `${BASE_URL}/home-image`;
 
 const pathWithNext = (path: string, next?: number) => (next !== undefined ? `${path}?${NEXT}=${next}` : path);
-
-export const pathForRoot = (next?: number) => pathWithNext(PATH_ROOT, next);
 
 export const pathForGrid = (next?: number) => pathWithNext(PATH_FULL, next);
 
@@ -49,22 +47,20 @@ export const absolutePathForPhoto = (locale: string, photo: PhotoOrPhotoId) =>
 
 // locale/photo/[photoId]
 export const isPathPhoto = (pathname = '') =>
-  new RegExp(`^/(${locales.join('|')})${PREFIX_PHOTO}/[^/]+/?$`).test(pathname);
+  new RegExp(`^/(${routing.locales.join('|')})${PREFIX_PHOTO}/[^/]+/?$`).test(pathname);
 
 // p/[photoId]/share
 export const isPathPhotoShare = (pathname = '') =>
-  (new RegExp(`^/(${locales.join('|')})${PREFIX_PHOTO}/[^/]+/${SHARE}/?$`).test(pathname));
+  (new RegExp(`^/(${routing.locales.join('|')})${PREFIX_PHOTO}/[^/]+/${SHARE}/?$`).test(pathname));
 
 export const checkPathPrefix = (locale = defaultLocale, pathname = '', prefix: string) =>
   pathname.toLowerCase().startsWith(`/${locale}${prefix}`);
 
-export const isPathGrid = (locale?: string, pathname?: string) => checkPathPrefix(locale, pathname, PATH_FULL);
-
-export const isPathSets = (locale?: string, pathname?: string) => checkPathPrefix(locale, pathname, PATH_SETS);
+export const isPathFull = (locale?: string, pathname?: string) => checkPathPrefix(locale, pathname, PATH_FULL);
 
 export const getPathComponents = (pathname = ''): { photoId?: string } => {
   return {
-    photoId: pathname.match(new RegExp(`^/(${locales.join('|')})${PREFIX_PHOTO}/([^/]+)`))?.[1],
+    photoId: pathname.match(new RegExp(`^/(${routing.locales.join('|')})${PREFIX_PHOTO}/([^/]+)`))?.[1],
   };
 };
 

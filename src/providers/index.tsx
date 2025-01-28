@@ -2,7 +2,7 @@
 
 import { AbstractIntlMessages, NextIntlClientProvider } from 'next-intl';
 
-import { timeZone } from '@/i18n';
+import { timeZone } from '@/i18n/request';
 
 const Providers = ({
   children,

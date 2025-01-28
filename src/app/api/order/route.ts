@@ -25,7 +25,7 @@ export async function POST(request: NextRequest) {
     return Response.json({data: {success: false, customerInfo: customerInfo}}, {status: 422});
   }
   const cart = new Cart(items.map(i => (new CartItem(i))));
-  const emailHtml = render(await OrderConfirmationTemplate(customerInfo, cart, body.locale));
+  const emailHtml = await render(await OrderConfirmationTemplate(customerInfo, cart, body.locale));
   // Send order placement email.
   await sendMail({
     to: customerInfo.email,
