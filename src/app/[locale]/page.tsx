@@ -3,25 +3,22 @@ import { PHOTOS_COUNT } from '@/photo/data';
 import SiteGrid from '@/components/SiteGrid';
 import PhotoGrid from '@/photo/PhotoGrid';
 import PhotosEmptyState from '@/photo/PhotosEmptyState';
-import { pathForGrid } from '@/site/paths';
 import { PaginationParams, getPaginationForSearchParams } from '@/site/pagination';
 import PhotoGridSidebar from '@/photo/PhotoGridSidebar';
-import { unstable_setRequestLocale } from 'next-intl/server';
+import { setRequestLocale } from 'next-intl/server';
 
 export const runtime = 'edge';
 
 export default async function HomePage({ searchParams, params: { locale } }: PaginationParams) {
-  unstable_setRequestLocale(locale);
+  setRequestLocale(locale);
 
   const { offset, limit } = getPaginationForSearchParams(searchParams);
 
   const photos = getPhotos(limit, offset);
 
-  const showMorePath = PHOTOS_COUNT > photos.length ? pathForGrid(offset + 1) : undefined;
-
   return photos.length > 0 ? (
     <SiteGrid
-      contentMain={<PhotoGrid {...{ photos, showMorePath }} />}
+      contentMain={<PhotoGrid photos={photos} />}
       contentSide={
         <div className="sticky top-4 space-y-4">
           <PhotoGridSidebar photosCount={PHOTOS_COUNT} />

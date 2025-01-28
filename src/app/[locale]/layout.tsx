@@ -14,13 +14,13 @@ import FooterClient from '@/site/FooterClient';
 import NavClient from '@/site/NavClient';
 
 import '../../site/globals.css';
-import { locales } from '../../i18n';
+import { routing } from '../../i18n/routing';
 import { useMessages } from 'next-intl';
 import { Providers } from '@/providers';
-import { unstable_setRequestLocale } from 'next-intl/server';
+import { setRequestLocale } from 'next-intl/server';
 
 export function generateStaticParams() {
-  return locales.map((locale) => ({ locale }));
+  return routing.locales.map((locale) => ({ locale }));
 }
 
 const SITE_TITLE_META_DATA = 'A Vue De Coucou – La boutique | The shop';
@@ -72,7 +72,7 @@ interface RootLayoutProps {
 }
 
 export default function RootLayout({ children, params: { locale } }: RootLayoutProps) {
-  unstable_setRequestLocale(locale);
+  setRequestLocale(locale);
   const messages = useMessages();
   return (
     <html

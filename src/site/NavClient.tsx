@@ -5,7 +5,7 @@ import { usePathname } from 'next/navigation';
 import { Link } from '../navigation';
 import SiteGrid from '../components/SiteGrid';
 import ViewSwitcher, { SwitcherSelection } from '@/site/ViewSwitcher';
-import { PATH_ROOT, isPathGrid, isPathSets } from '@/site/paths';
+import { PATH_ROOT, isPathFull } from '@/site/paths';
 import AnimateItems from '../components/AnimateItems';
 import CartButton from '@/checkout/cart/CartButton';
 import { useLocale, useTranslations } from 'next-intl';
@@ -23,15 +23,8 @@ export default function NavClient() {
       <button onClick={linkOrAction}>{text}</button>
     );
 
-  const switcherSelectionForPath = (): SwitcherSelection | undefined => {
-    if (pathname === `/${locale}/`) {
-      return 'grid';
-    } else if (isPathGrid(locale, pathname)) {
-      return 'full-frame';
-    } else if (isPathSets(locale, pathname)) {
-      return 'sets';
-    }
-  };
+  const switcherSelectionForPath = (): SwitcherSelection | undefined => 
+    isPathFull(locale, pathname) ? 'full-frame' : 'grid';
 
   return (
     <SiteGrid

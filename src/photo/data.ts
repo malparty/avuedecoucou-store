@@ -2,6 +2,61 @@ import { Photo } from '.';
 
 export const PHOTOS: Photo[] = [
   {
+    id: 'auberge_hohneck_alpes_bernoises',
+    title: 'Auberge Hohneck Vs Alpes Bernoises',
+    url: '/img/2025-01/auberge_hohneck_alpes_bernoises.jpg',
+  },
+  {
+    id: 'grand_ballon_alpes_bernoises_2',
+    title: 'Grand Ballon Vs Alpes Bernoises (2)',
+    url: '/img/2025-01/grand_ballon_alpes_bernoises_2.jpg',
+  },
+  {
+    id: 'grand_ballon_alpes_bernoises',
+    title: 'Grand Ballon Vs Alpes Bernoises',
+    url: '/img/2025-01/grand_ballon_alpes_bernoises.jpg',
+  },
+  {
+    id: 'grand_ballon_bale',
+    title: 'Grand Ballon Vs Bâle',
+    url: '/img/2025-01/grand_ballon_bale.jpg',
+  },
+  {
+    id: 'hohneck_bale',
+    title: 'Hohneck Vs Bâle',
+    url: '/img/2025-01/hohneck_bale.jpg',
+  },
+  {
+    id: 'hohneck_alpes_bernoises',
+    title: 'Hohneck vs Alpes Bernoises',
+    url: '/img/2025-01/hohneck_alpes_bernoises.jpg',
+  },
+  {
+    id: 'lac_de_longemer',
+    title: 'Lac de Longemer',
+    url: '/img/2025-01/lac_de_longemer.jpg',
+  },
+  {
+    id: 'lac_de_pierre_percee_2',
+    title: 'Lac de Pierre-Percée',
+    url: '/img/2025-01/lac_de_pierre_percee_2.jpg',
+  },
+  {
+    id: 'mer_de_nuages_au_hohneck',
+    title: 'Mer de nuages au Hohneck',
+    url: '/img/2025-01/mer_de_nuages_au_hohneck.jpg',
+  },
+  {
+    id: 'route_des_cretes',
+    title: 'Route des Crêtes',
+    url: '/img/2025-01/route_des_cretes.jpg',
+  },
+  {
+    id: 'route_des_vins_2',
+    title: 'Route des Vins',
+    url: '/img/2025-01/route_des_vins_2.jpg',
+  },
+  {
     id: 'aube_automne_sur_la_route_des_vins',
     title: 'Aube d\'automne sur la Route des Vins',
     url: '/img/aube_automne_sur_la_route_des_vins.jpg',
