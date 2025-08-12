@@ -4,14 +4,14 @@ import PhotosEmptyState from '@/photo/PhotosEmptyState';
 import { PaginationParams, getPaginationForSearchParams } from '@/site/pagination';
 import { getPhotos } from '@/photo';
 import { setRequestLocale } from 'next-intl/server';
+import { PHOTOS_COUNT } from '@/photo/data';
 
 export const runtime = 'edge';
 
 export default async function FullPage({ searchParams, params: { locale } }: PaginationParams) {
   setRequestLocale(locale);
   // Currently disabling infinite scrool as we have a limited number of photos
-  const itemPerPage = 50;
-  const { offset, limit } = getPaginationForSearchParams(searchParams, itemPerPage);
+  const { offset, limit } = getPaginationForSearchParams(searchParams, PHOTOS_COUNT);
   const photos = getPhotos(limit, offset);
 
   return photos.length > 0 ? (

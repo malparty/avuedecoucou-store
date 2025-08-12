@@ -18,8 +18,14 @@ Phase 2:
 - [ ] Multi-language (EN/FR)
 - [ ] Display the details of each variant in a modal
 
-## Contribution
+## Pre-requisites
 
-1. Clone code
-2. Run `pnpm i` to install dependencies
-3. Run `vc dev` to start dev server, and utilize Vercel-stored environment variables
+- Tool version management (we recommend mise or asdf).
+- pnpm: `npm i -g pnpm`
+- Vercel CLI (see https://vercel.com/docs/cli): `pnpm i -g vercel`
+
+## Start the project
+
+```
+vercel dev
+```
