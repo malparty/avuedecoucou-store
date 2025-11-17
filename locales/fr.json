@@ -83,6 +83,14 @@
     "link_to_photo_copied": "Le lien de la photo est copier dans le press-papier."
   },
   "supports": {
+    "paper_mat": {
+      "title": "Papier photo mat",
+      "description": "Impression sur papier de haute qualité finition extra mate."
+    },
+    "paper_shiny": {
+      "title": "Papier photo brillan",
+      "description": "Impression sur papier de haute qualité finition brillante."
+    },
     "forex": {
       "title": "Forex",
       "description": "Impression sur un panneau PVC fin et moderne de 5 mm, finition mate"
