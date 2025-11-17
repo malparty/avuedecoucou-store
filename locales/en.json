@@ -83,6 +83,14 @@
     "link_to_photo_copied": "The link of the photo has been saved to the clipboard."
   },
   "supports": {
+    "paper_mat": {
+      "title": "Mat photo paper",
+      "description": "Printed on high-quality paper with an extra-matte finish."
+    },
+    "paper_brillant": {
+      "title": "Glossy photo paper",
+      "description": "Printed on high-quality paper with a glossy finish."
+    },
     "forex": {
       "title": "Forex",
       "description": "Printed on a 5mm thin and modern PVC panel, matte finish"
