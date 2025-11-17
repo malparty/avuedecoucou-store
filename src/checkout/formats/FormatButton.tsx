@@ -1,10 +1,10 @@
 import clsx from 'clsx';
-import { FORMATS, formatKeysType } from '../data';
+import { FORMATS, formatType } from '../data';
 import { MouseEventHandler } from 'react';
 
 interface FormatButtonProps {
   isSelected: boolean
-  formatKey: formatKeysType
+  formatKey: formatType
   onClick: MouseEventHandler<HTMLButtonElement>
 };
 

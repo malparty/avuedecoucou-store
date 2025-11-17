@@ -1,7 +1,7 @@
 'use client';
 
 import { useEffect, useState } from 'react';
-import { FORMAT_KEYS, PRICES, SUPPORTS } from '../data';
+import { FORMAT_KEYS, formatType, PRICES, SUPPORTS, supportType } from '../data';
 import FormatButton from './FormatButton';
 import SupportButton from './SupportButton';
 import AddButton from '../AddButton';
@@ -10,8 +10,8 @@ import SideInfo from '../SideInfo';
 import { Photo } from '@/photo';
 
 export default function FormatsPicker({photo}: {photo: Photo}) {
-  const [currentFormatKey, setCurrentFormatKey] = useState(FORMAT_KEYS[0]);
-  const [currentSupport, setCurrentSupport] = useState(SUPPORTS[0]);
+  const [currentFormatKey, setCurrentFormatKey] = useState<formatType>(FORMAT_KEYS[0]);
+  const [currentSupport, setCurrentSupport] = useState<supportType>(SUPPORTS[0]);
   const [price, setPrice] = useState(0);
   const t = useTranslations('checkout');
 

@@ -7,14 +7,14 @@ import { clsx } from 'clsx/lite';
 import { CartItem } from '@/checkout/cart/models/CartItem';
 import { CartClient } from '@/checkout/cart/models/CartClient';
 import IconButton from '@/components/IconButton';
-import { formatKeysType, supportType } from './data';
+import { formatType, supportType } from './data';
 import { Photo } from '@/photo';
 import { useRouter } from '@/navigation';
 import { pathForPhoto } from '@/site/paths';
 
 interface AddButtonnProps {
   title: string;
-  formatKey: formatKeysType;
+  formatKey: formatType;
   support: supportType;
   photo: Photo;
   quantity: number;
