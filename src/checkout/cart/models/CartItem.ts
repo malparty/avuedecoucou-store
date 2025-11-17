@@ -1,5 +1,5 @@
-import { PRICES, formatType, supportType } from "../../data";
-import { CartItemProps } from "./CartTypes";
+import { PRICES, formatType, supportType } from '../../data';
+import { CartItemProps } from './CartTypes';
 
 export class CartItem implements CartItemProps {
   photoTitle: string;

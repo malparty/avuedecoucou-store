@@ -1,4 +1,4 @@
-import { formatType, supportType } from "../../data";
+import { formatType, supportType } from '../../data';
 
 export interface CartItemProps {
   photoTitle: string;
