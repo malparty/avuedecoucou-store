@@ -14,6 +14,7 @@ import { LAST_ORDER_KEY } from '../cart/models/constants';
 
 export default function ConfirmationSideBar() {
   const t = useTranslations('checkout');
+  const tSupports = useTranslations('supports');
 
   if (!localStorage.getItem(LAST_ORDER_KEY)){
     return <div></div>;
@@ -47,7 +48,7 @@ export default function ConfirmationSideBar() {
                 </PhotoLink>
               </div>
               <div>
-                <div className="capitalize">{item.support}</div>
+                <div className="capitalize">{tSupports(`${item.support}.title`)}</div>
                 <div>{FORMATS[item.formatKey]}</div>
                 <div className="font-bold">{item.totalPrice()}EUR</div>
               </div>
