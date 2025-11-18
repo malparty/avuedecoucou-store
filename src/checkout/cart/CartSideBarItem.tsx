@@ -8,6 +8,7 @@ import IconButton from '@/components/IconButton';
 import { CiCircleMinus, CiCirclePlus } from 'react-icons/ci';
 import { type CartItem } from './models/CartItem';
 import { useState } from 'react';
+import { useTranslations } from 'next-intl';
 
 interface CartSideBarItemProps {
 item: CartItem,
@@ -17,11 +18,10 @@ plusQuantity: (index: number)=> void,
 }
 
 export default function CartSideBarItem({item, index, plusQuantity, minusQuantity}: CartSideBarItemProps) {
+  const tSupports = useTranslations('supports');
   const [quantity, setQuantity] = useState(item.quantity);
 
   const photo = PHOTOS.find(photo => photo.title == item.photoTitle);
-  console.log('GO!', item.photoTitle);
-  console.log('GO!', index);
   if(photo == undefined)
     return;
 
@@ -40,7 +40,7 @@ export default function CartSideBarItem({item, index, plusQuantity, minusQuantit
           </PhotoLink>
         </div>
         <div>
-          <div className="capitalize">{item.support}</div>
+          <div className="capitalize">{tSupports(`${item.support}.title`)}</div>
           <div>{FORMATS[item.formatKey]}</div>
           <div className="font-bold">{item.totalPrice()}EUR</div>
         </div>
