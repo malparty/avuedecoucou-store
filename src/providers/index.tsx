@@ -17,9 +17,6 @@ const Providers = ({
     <NextIntlClientProvider
       timeZone={timeZone}
       locale={locale}
-      defaultTranslationValues={{
-        i: (text) => <i>{text}</i>,
-      }}
       messages={messages}
     >
       {children}

@@ -7,7 +7,7 @@ import { clsx } from 'clsx/lite';
 import { toastSuccess } from '@/toast';
 
 interface Props extends HTMLProps<HTMLButtonElement> {
-  icon?: JSX.Element
+  icon?: React.JSX.Element
   styleAsLink?: boolean
   spinnerColor?: SpinnerColor
   onFormSubmitToastMessage?: string

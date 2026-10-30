@@ -16,4 +16,14 @@ const config = {
 };
  
 // createJestConfig is exported this way to ensure that next/jest can load the Next.js config which is async
-export default createJestConfig(config);
+// next-intl (and use-intl) are ESM-only, so they must be transformed: next/jest ignores node_modules by default
+export default async () => {
+  const jestConfig = await createJestConfig(config)();
+  return {
+    ...jestConfig,
+    transformIgnorePatterns: [
+      '/node_modules/(?!(\\.pnpm/)?(next-intl|use-intl|geist|next)[@/+])',
+      ...jestConfig.transformIgnorePatterns.filter((pattern) => !pattern.startsWith('/node_modules')),
+    ],
+  };
+};

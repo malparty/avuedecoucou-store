@@ -1,6 +1,6 @@
 import { CustomerInfo, CustomerInfoParams } from '@/checkout/order/customerInfo';
 import { sendMail } from '@/utility/emails';
-import { render } from '@react-email/render';
+import { render } from 'react-email';
 import { NextRequest } from 'next/server';
 import OrderConfirmationTemplate from '../../../../emails/OrderConfirmationTemplate';
 import { CartItemProps } from '@/checkout/cart/models/CartTypes';

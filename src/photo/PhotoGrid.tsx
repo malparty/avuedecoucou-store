@@ -20,7 +20,7 @@ export default function PhotoGrid({
   animate?: boolean;
   animateOnFirstLoadOnly?: boolean;
   staggerOnFirstLoadOnly?: boolean;
-  additionalTile?: JSX.Element;
+  additionalTile?: React.JSX.Element;
   small?: boolean;
 }) {
   return (

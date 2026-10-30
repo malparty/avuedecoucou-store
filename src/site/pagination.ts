@@ -2,8 +2,8 @@ export type PaginationSearchParams = { next: string };
 export type PaginationParamsParams = { locale: string };
 
 export interface PaginationParams {
-  searchParams?: PaginationSearchParams;
-  params: PaginationParamsParams;
+  searchParams?: Promise<PaginationSearchParams>;
+  params: Promise<PaginationParamsParams>;
 }
 
 export const getPaginationForSearchParams = (query?: PaginationSearchParams, limitPerOffset = 24) => {

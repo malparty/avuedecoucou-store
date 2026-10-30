@@ -3,19 +3,18 @@ import ImageCaption from './components/ImageCaption';
 import ImageContainer from './components/ImageContainer';
 import ImagePhotoGrid from './components/ImagePhotoGrid';
 import { NextImageSize } from '@/services/next-image';
-import { useTranslations } from 'next-intl';
 
 export default function HomeImageResponse({
   photos,
+  title,
   width,
   height,
 }: {
   photos: Photo[]
+  title: string
   width: NextImageSize
   height: number
 }) {
-  const t = useTranslations('layout');
-
   return (
     <ImageContainer {...{ width, height }} >
       <ImagePhotoGrid
@@ -26,7 +25,7 @@ export default function HomeImageResponse({
         }}
       />
       <ImageCaption {...{ width, height }}>
-        {t('header_title')}
+        {title}
       </ImageCaption>
     </ImageContainer>
   );

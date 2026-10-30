@@ -3,7 +3,9 @@ import PhotoAddModal from '@/photo/PhotoAddModal';
 import { PATH_ROOT } from '@/site/paths';
 import { redirect } from 'next/navigation';
 
-export default function AddPage({ params: { photoId } }: { params: { photoId: string } }) {
+export default async function AddPage(props: { params: Promise<{ photoId: string }> }) {
+  const { photoId } = await props.params;
+
   const photo = getPhoto(photoId);
 
   if (!photo) {

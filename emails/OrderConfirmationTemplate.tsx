@@ -15,7 +15,7 @@ import {
   Row,
   Section,
   Text,
-} from '@react-email/components';
+} from 'react-email';
 import { getTranslations } from 'next-intl/server';
 
 export default async function OrderConfirmationTemplate(customerInfo: CustomerInfo, cart: Cart, locale: string) {

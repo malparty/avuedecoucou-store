@@ -8,8 +8,8 @@ export default function SiteGrid({
   sideHiddenOnMobile,
 }: {
   className?: string
-  contentMain: JSX.Element
-  contentSide?: JSX.Element
+  contentMain: React.JSX.Element
+  contentSide?: React.JSX.Element
   sideFirstOnMobile?: boolean
   sideHiddenOnMobile?: boolean
 }) {

@@ -7,17 +7,18 @@ describe('Order many photos', () => {
 
     // Select the first photo
     cy.get('@links').first().click();
-    cy.url().should('include', '/photo/aube_automne_sur_la_route_des_vins');
-    cy.contains('Aube d\'automne sur la Route des Vins');
-    cy.contains('140EUR');
+    cy.url().should('include', '/photo/ambiance_polaire_sur_gerardmer');
+    cy.contains('Ambiance polaire sur Gérardmer');
+    // Default: glossy paper, 45x30cm
+    cy.contains('80EUR');
 
     // Change format
-    cy.contains('90x60mm').click();
-    cy.contains('190EUR');
+    cy.contains('90x60cm').click();
+    cy.contains('125EUR');
 
     // Change support
     cy.contains('Acrylique').click();
-    cy.contains('290EUR');
+    cy.contains('320EUR');
 
     // Add to cart
     cy.contains('Ajouter au panier').click();
@@ -28,7 +29,7 @@ describe('Order many photos', () => {
 
     // Select the last photo
     cy.get('@links').last().click();
-    cy.url().should('include', '/photo/levant_bernoises');
+    cy.url().should('include', '/photo/route_des_cretes_printemps');
 
     // Add to cart
     cy.contains('Ajouter au panier').click();
@@ -38,15 +39,15 @@ describe('Order many photos', () => {
 
     // Select the previous photo
     cy.contains('PRECEDENTE').click();
-    cy.url().should('include', '/photo/pleine_lune_hiver_hohneck');
+    cy.url().should('include', '/photo/miracle_au_christ_du_galtz');
 
     // Change the size
-    cy.contains('105x70mm').click();
-    cy.contains('270EUR');
+    cy.contains('105x70cm').click();
+    cy.contains('135EUR');
 
     // Change the support
     cy.contains('Dibond').click();
-    cy.contains('300EUR');
+    cy.contains('320EUR');
 
     // Add to cart
     cy.contains('Ajouter au panier').click();
@@ -57,17 +58,17 @@ describe('Order many photos', () => {
 
     // Recaps of the current cart:
     cy.contains('3 photos dans le panier');
-    cy.contains('730EUR');
+    cy.contains('720EUR');
 
     // Add 2 more of the first photo
     cy.get('[data-testid=cart-item__increment]').first().click();
-    cy.contains('1020EUR');
+    cy.contains('1040EUR');
     cy.get('[data-testid=cart-item__increment]').first().click();
-    cy.contains('1310EUR');
+    cy.contains('1360EUR');
 
     // Remove the last photo
-    cy.contains('Pleine lune d\'hiver au Hohneck');
+    cy.contains('Miracle au Christ du Galtz');
     cy.get('[data-testid=cart-item__decrement]').last().click();
-    cy.contains('Pleine lune d\'hiver au Hohneck').should('not.exist');
+    cy.contains('Miracle au Christ du Galtz').should('not.exist');
   });
 });

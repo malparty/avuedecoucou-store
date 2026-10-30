@@ -1,14 +1,12 @@
-import ConfirmationPage from '@/checkout/confirmation/ConfirmationPage';
 import SiteGrid from '@/components/SiteGrid';
 import { PaginationParams } from '@/site/pagination';
+import ConfirmationSideBar, { ConfirmationPage } from '@/checkout/confirmation/ConfirmationSideBarClient';
 import { setRequestLocale } from 'next-intl/server';
-import dynamic from 'next/dynamic';
-
-const ConfirmationSideBar = dynamic(() => import('@/checkout/confirmation/ConfirmationSideBar'), { ssr: false });
-
 export const runtime = 'edge';
 
-export default async function CartAppPage({ params: { locale } }: PaginationParams) {
+export default async function CartAppPage(props: PaginationParams) {
+  const { locale } = await props.params;
+
   setRequestLocale(locale);
 
   return (
