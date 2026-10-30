@@ -1,3 +1,4 @@
+import { use } from 'react';
 import { useMessages } from 'next-intl';
 import { redirect } from 'next/navigation';
 import { PATH_ROOT, absolutePathForPhotoImage } from '@/site/paths';
@@ -9,13 +10,11 @@ import { PHOTOS } from '@/photo/data';
 export const runtime = 'edge';
 
 interface PhotoProps {
-  params: { photoId: string; locale: string };
+  params: Promise<{ photoId: string; locale: string }>;
 }
 
-export default function PhotoPage({
-  params: { photoId, locale },
-  children,
-}: PhotoProps & { children: React.ReactNode }) {
+export default function PhotoPage({ children, params }: PhotoProps & { children: React.ReactNode }) {
+  const { photoId, locale } = use(params);
   const photoIndex = PHOTOS.findIndex((p) => p.id === photoId);
 
   if (photoIndex === -1) {
@@ -24,7 +23,7 @@ export default function PhotoPage({
 
   const photo = PHOTOS[photoIndex];
   // Copy the array of references
-  let photos = [...PHOTOS];
+  const photos = [...PHOTOS];
   // Remove photo so it is not suggested in the next photos
   photos.splice(photoIndex, 1);
 

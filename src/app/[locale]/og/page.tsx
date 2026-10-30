@@ -4,7 +4,10 @@ import StaggeredOgPhotos from '@/photo/StaggeredOgPhotos';
 import { PaginationParams, getPaginationForSearchParams } from '@/site/pagination';
 import { setRequestLocale } from 'next-intl/server';
 
-export default async function OgPage({ searchParams, params: { locale } }: PaginationParams) {
+export default async function OgPage(props: PaginationParams) {
+  const { locale } = await props.params;
+
+  const searchParams = await props.searchParams;
   setRequestLocale(locale);
   const { offset, limit } = getPaginationForSearchParams(searchParams, PHOTOS_COUNT);
 

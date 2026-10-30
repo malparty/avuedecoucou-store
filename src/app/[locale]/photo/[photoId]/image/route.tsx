@@ -5,8 +5,9 @@ import { ImageResponse } from 'next/og';
 
 export const runtime = 'edge';
 
-export async function GET(_: Request, context: { params: { photoId: string } }) {
-  const photo = await getPhoto(context.params.photoId);
+export async function GET(_: Request, context: { params: Promise<{ photoId: string }> }) {
+  const { photoId } = await context.params;
+  const photo = await getPhoto(photoId);
 
   if (!photo) {
     return new Response('Photo not found', { status: 404 });

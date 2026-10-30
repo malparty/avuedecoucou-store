@@ -10,7 +10,7 @@ export default function HeaderList({
 }: {
   title?: string,
   className?: string,
-  icon?: JSX.Element,
+  icon?: React.JSX.Element,
   items: ReactNode[]
 }) {
   return (

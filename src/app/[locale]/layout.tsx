@@ -9,7 +9,7 @@ import Nav from '@/site/Nav';
 import ToasterWithThemes from '@/toast/ToasterWithThemes';
 import PhotoEscapeHandler from '@/photo/PhotoEscapeHandler';
 import Footer from '@/site/Footer';
-import { Suspense } from 'react';
+import { Suspense, use } from 'react';
 import FooterClient from '@/site/FooterClient';
 import NavClient from '@/site/NavClient';
 
@@ -68,10 +68,11 @@ export const metadata: Metadata = {
 
 interface RootLayoutProps {
   children: React.ReactNode;
-  params: { locale: string };
+  params: Promise<{ locale: string }>;
 }
 
-export default function RootLayout({ children, params: { locale } }: RootLayoutProps) {
+export default function RootLayout({ children, params }: RootLayoutProps) {
+  const { locale } = use(params);
   setRequestLocale(locale);
   const messages = useMessages();
   return (
@@ -99,10 +100,10 @@ export default function RootLayout({ children, params: { locale } }: RootLayoutP
               </main>
             </ThemeProviderClient>
           </StateProvider>
+          <PhotoEscapeHandler />
         </Providers>
         <Analytics />
         <SpeedInsights />
-        <PhotoEscapeHandler />
         <ToasterWithThemes />
       </body>
     </html>

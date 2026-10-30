@@ -13,7 +13,7 @@ export default function IconButton({
   spinnerSize,
   testid,
 }: {
-  icon: JSX.Element
+  icon: React.JSX.Element
   title?: string
   onClick?: () => void
   isLoading?: boolean

@@ -8,7 +8,10 @@ import { PHOTOS_COUNT } from '@/photo/data';
 
 export const runtime = 'edge';
 
-export default async function FullPage({ searchParams, params: { locale } }: PaginationParams) {
+export default async function FullPage(props: PaginationParams) {
+  const { locale } = await props.params;
+
+  const searchParams = await props.searchParams;
   setRequestLocale(locale);
   // Currently disabling infinite scrool as we have a limited number of photos
   const { offset, limit } = getPaginationForSearchParams(searchParams, PHOTOS_COUNT);

@@ -16,7 +16,7 @@ export default function CartSideBar() {
 
   const refreshItems = () => {
     const newItems = cart.getItems();
-    setItems(newItems);
+    setItems([...newItems]);
     setCartCount?.(newItems.length);
   };
 

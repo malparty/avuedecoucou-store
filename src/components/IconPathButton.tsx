@@ -16,7 +16,7 @@ export default function IconPathButton({
   shouldReplace,
   spinnerColor,
 }: {
-  icon: JSX.Element
+  icon: React.JSX.Element
   title?: string
   path: string
   prefetch?: boolean

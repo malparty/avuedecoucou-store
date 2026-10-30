@@ -16,7 +16,7 @@ export default function PhotoLarge({
   priority?: boolean;
   prefetchActions?: boolean;
 }) {
-  const renderMiniGrid = (children: JSX.Element, rightPadding = true) => (
+  const renderMiniGrid = (children: React.JSX.Element, rightPadding = true) => (
     <div
       className={clsx('flex gap-y-4', 'flex-col sm:flex-row md:flex-col', '[&>*]:sm:flex-grow', rightPadding && 'pr-2')}
     >

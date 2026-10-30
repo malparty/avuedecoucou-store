@@ -1,5 +1,9 @@
 allowBuilds:
+  '@parcel/watcher': false
   '@swc/core': false
   cypress: false
   esbuild: false
   unrs-resolver: false
+
+overrides:
+  postcss-selector-parser@6: ^6.1.5

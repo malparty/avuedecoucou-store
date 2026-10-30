@@ -9,7 +9,10 @@ import { setRequestLocale } from 'next-intl/server';
 
 export const runtime = 'edge';
 
-export default async function HomePage({ searchParams, params: { locale } }: PaginationParams) {
+export default async function HomePage(props: PaginationParams) {
+  const { locale } = await props.params;
+
+  const searchParams = await props.searchParams;
   setRequestLocale(locale);
 
   const { offset, limit } = getPaginationForSearchParams(searchParams, PHOTOS_COUNT);

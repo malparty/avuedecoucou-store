@@ -9,7 +9,7 @@ export default function SwitcherItem({
   active,
   noPadding,
 }: {
-  icon: JSX.Element
+  icon: React.JSX.Element
   href?: string
   className?: string
   onClick?: () => void
